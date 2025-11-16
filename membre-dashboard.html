@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Membres - AFRICA.TECH21</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #2c5530;
+            --secondary: #d4af37;
+            --dark: #1a2f3b;
+            --light: #f8f9fa;
+        }
+
+        body {
+            background: var(--light);
+            color: #333;
+        }
+
+        .member-header {
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .member-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logout-btn {
+            background: var(--secondary);
+            color: var(--dark);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .dashboard {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .welcome-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .forum-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .forum-messages {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 1rem;
+        }
+
+        .message {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .message:last-child {
+            border-bottom: none;
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .forum-input {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .forum-input input {
+            flex-grow: 1;
+            padding: 1rem;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+        }
+
+        .send-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header class="member-header">
+        <nav class="member-nav">
+            <div class="logo">
+                <h1>AFRICA.<span>TECH21</span> | Espace Membres</h1>
+            </div>
+            <div class="member-info">
+                <span id="userEmail">Membre</span>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="dashboard">
+        <section class="welcome-section">
+            <h2>Bienvenue dans l'Espace Membres</h2>
+            <p>Plateforme de collaboration et d'échanges pour les membres d'AFRICA.TECH21</p>
+        </section>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <h3>Projets Internes</h3>
+                <p>Accédez aux documents et discussions sur nos projets confidentiels</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Équipe</h3>
+                <p>Rencontrez les autres membres et collaborez ensemble</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h3>Événements</h3>
+                <p>Restez informé des réunions et événements à venir</p>
+            </div>
+        </div>
+
+        <section class="forum-section">
+            <h3>Forum de Discussion</h3>
+            <div class="forum-messages" id="forumMessages">
+                <div class="message">
+                    <div class="message-header">
+                        <strong>Admin</strong>
+                        <span>05 Jan 2024</span>
+                    </div>
+                    <p>Bienvenue à tous dans notre nouvel espace membres ! Utilisez ce forum pour échanger sur les projets.</p>
+                </div>
+            </div>
+            
+            <div class="forum-input">
+                <input type="text" id="newMessage" placeholder="Votre message...">
+                <button class="send-btn" onclick="sendMessage()">
+                    <i class="fas fa-paper-plane"></i> Envoyer
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Vérifier la connexion
+        if (localStorage.getItem('memberLoggedIn') !== 'true') {
+            window.location.href = 'espace-membres.html';
+        }
+
+        // Afficher l'email de l'utilisateur
+        document.getElementById('userEmail').textContent = localStorage.getItem('memberEmail') || 'Membre';
+
+        // Gestion du forum
+        function sendMessage() {
+            const messageInput = document.getElementById('newMessage');
+            const message = messageInput.value.trim();
+            
+            if (message) {
+                const forumMessages = document.getElementById('forumMessages');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message';
+                
+                const now = new Date();
+                const dateStr = now.toLocaleDateString('fr-FR');
+                
+                messageDiv.innerHTML = `
+                    <div class="message-header">
+                        <strong>${localStorage.getItem('memberEmail')}</strong>
+                        <span>${dateStr}</span>
+                    </div>
+                    <p>${message}</p>
+                `;
+                
+                forumMessages.appendChild(messageDiv);
+                messageInput.value = '';
+                forumMessages.scrollTop = forumMessages.scrollHeight;
+                
+                // Sauvegarder dans le localStorage
+                saveMessageToStorage(message, dateStr);
+            }
+        }
+
+        function saveMessageToStorage(message, date) {
+            const messages = JSON.parse(localStorage.getItem('forumMessages') || '[]');
+            messages.push({
+                email: localStorage.getItem('memberEmail'),
+                message: message,
+                date: date
+            });
+            localStorage.setItem('forumMessages', JSON.stringify(messages));
+        }
+
+        function loadMessages() {
+            const messages = JSON.parse(localStorage.getItem('forumMessages') || '[]');
+            const forumMessages = document.getElementById('forumMessages');
+            
+            messages.forEach(msg => {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message';
+                messageDiv.innerHTML = `
+                    <div class="message-header">
+                        <strong>${msg.email}</strong>
+                        <span>${msg.date}</span>
+                    </div>
+                    <p>${msg.message}</p>
+                `;
+                forumMessages.appendChild(messageDiv);
+            });
+            
+            forumMessages.scrollTop = forumMessages.scrollHeight;
+        }
+
+        function logout() {
+            localStorage.removeItem('memberLoggedIn');
+            localStorage.removeItem('memberEmail');
+            window.location.href = 'espace-membres.html';
+        }
+
+        // Charger les messages au démarrage
+        loadMessages();
+
+        // Envoyer avec Enter
+        document.getElementById('newMessage').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
