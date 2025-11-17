@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Profil - AFRICA.TECH21</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #2c5530;
+            --secondary: #d4af37;
+            --dark: #1a2f3b;
+            --light: #f8f9fa;
+        }
+
+        body {
+            background: var(--light);
+            color: #333;
+        }
+
+        .member-header {
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            background: var(--secondary);
+            color: var(--dark);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .profile-container {
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .profile-header {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            margin: 0 auto 1rem;
+        }
+
+        .profile-name {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-email {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .profile-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .info-card, .stats-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-title {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 0.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .info-value {
+            color: #666;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .edit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+
+        .edit-btn:hover {
+            background: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 20px;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            background: #f8f9fa;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-cancel {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-save {
+            background: var(--primary);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .profile-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="member-header">
+        <nav class="member-nav">
+            <div class="logo">
+                <h1>AFRICA.<span>TECH21</span> | Mon Profil</h1>
+            </div>
+            <div class="nav-buttons">
+                <a href="auth-dashboard.html" class="nav-btn">
+                    <i class="fas fa-arrow-left"></i> Retour
+                </a>
+                <button class="nav-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="profile-container">
+        <section class="profile-header">
+            <div class="profile-avatar" id="profileAvatar">U</div>
+            <h1 class="profile-name" id="profileName">Utilisateur</h1>
+            <p class="profile-email" id="profileEmail">utilisateur@email.com</p>
+            <button class="edit-btn" onclick="openEditModal()">
+                <i class="fas fa-edit"></i> Modifier le profil
+            </button>
+        </section>
+
+        <div class="profile-content">
+            <div class="info-card">
+                <h2 class="card-title">Informations Personnelles</h2>
+                <div class="info-item">
+                    <span class="info-label">Nom complet:</span>
+                    <span class="info-value" id="infoFullName">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Email:</span>
+                    <span class="info-value" id="infoEmail">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Téléphone:</span>
+                    <span class="info-value" id="infoPhone">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Niveau d'étude:</span>
+                    <span class="info-value" id="infoEducation">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Domaine d'intérêt:</span>
+                    <span class="info-value" id="infoDomain">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Date d'inscription:</span>
+                    <span class="info-value" id="infoJoinDate">-</span>
+                </div>
+            </div>
+
+            <div class="stats-card">
+                <h2 class="card-title">Statistiques</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" id="statDays">1</div>
+                        <div class="stat-label">Jours membre</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="statProjects">1</div>
+                        <div class="stat-label">Projets suivis</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="statMessages">0</div>
+                        <div class="stat-label">Messages</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="statActivity">100%</div>
+                        <div class="stat-label">Activité</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal d'édition -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Modifier le profil</h2>
+                <span class="close" onclick="closeEditModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <div class="form-group">
+                        <label for="editPrenom">Prénom</label>
+                        <input type="text" id="editPrenom" name="prenom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editNom">Nom</label>
+                        <input type="text" id="editNom" name="nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editEmail">Email</label>
+                        <input type="email" id="editEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editTelephone">Téléphone</label>
+                        <input type="tel" id="editTelephone" name="telephone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editNiveauEtude">Niveau d'étude</label>
+                        <select id="editNiveauEtude" name="niveau_etude" required>
+                            <option value="Bac">Bac</option>
+                            <option value="Bac+2">Bac+2</option>
+                            <option value="Bac+3">Bac+3</option>
+                            <option value="Bac+5">Bac+5</option>
+                            <option value="Doctorat">Doctorat</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editDomaine">Domaine d'intérêt</label>
+                        <select id="editDomaine" name="domaine" required>
+                            <option value="Robotique">🤖 Robotique</option>
+                            <option value="Informatique">💻 Informatique</option>
+                            <option value="Electronique">🔌 Électronique</option>
+                            <option value="Mecanique">⚙️ Mécanique</option>
+                            <option value="Multidisciplinaire">🌐 Multidisciplinaire</option>
+                        </select>
+                    </div>
+                    <div class="modal-buttons">
+                        <button type="button" class="btn btn-cancel" onclick="closeEditModal()">Annuler</button>
+                        <button type="submit" class="btn btn-save">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Vérifier la connexion
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        
+        if (!currentUser) {
+            window.location.href = 'login.html';
+        }
+
+        // Afficher les informations du profil
+        function loadProfile() {
+            document.getElementById('profileAvatar').textContent = currentUser.prenom.charAt(0).toUpperCase();
+            document.getElementById('profileName').textContent = currentUser.prenom + ' ' + currentUser.nom;
+            document.getElementById('profileEmail').textContent = currentUser.email;
+            
+            document.getElementById('infoFullName').textContent = currentUser.prenom + ' ' + currentUser.nom;
+            document.getElementById('infoEmail').textContent = currentUser.email;
+            document.getElementById('infoPhone').textContent = currentUser.telephone;
+            document.getElementById('infoEducation').textContent = currentUser.niveau_etude;
+            document.getElementById('infoDomain').textContent = currentUser.domaine;
+            
+            // Formater la date d'inscription
+            const joinDate = new Date(currentUser.date_inscription);
+            document.getElementById('infoJoinDate').textContent = joinDate.toLocaleDateString('fr-FR');
+
+            // Calculer les jours de membre
+            const today = new Date();
+            const diffTime = Math.abs(today - joinDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            document.getElementById('statDays').textContent = diffDays;
+
+            // Compter les messages
+            const messages = JSON.parse(localStorage.getItem('forumMessages') || '[]');
+            const userMessages = messages.filter(msg => msg.userId === currentUser.id).length;
+            document.getElementById('statMessages').textContent = userMessages;
+        }
+
+        // Modal d'édition
+        function openEditModal() {
+            // Remplir le formulaire avec les données actuelles
+            document.getElementById('editPrenom').value = currentUser.prenom;
+            document.getElementById('editNom').value = currentUser.nom;
+            document.getElementById('editEmail').value = currentUser.email;
+            document.getElementById('editTelephone').value = currentUser.telephone;
+            document.getElementById('editNiveauEtude').value = currentUser.niveau_etude;
+            document.getElementById('editDomaine').value = currentUser.domaine;
+            
+            document.getElementById('editModal').style.display = 'block';
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').style.display = 'none';
+        }
+
+        // Sauvegarder les modifications
+        document.getElementById('editForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Mettre à jour l'utilisateur
+            currentUser.prenom = document.getElementById('editPrenom').value;
+            currentUser.nom = document.getElementById('editNom').value;
+            currentUser.email = document.getElementById('editEmail').value;
+            currentUser.telephone = document.getElementById('editTelephone').value;
+            currentUser.niveau_etude = document.getElementById('editNiveauEtude').value;
+            currentUser.domaine = document.getElementById('editDomaine').value;
+            
+            // Mettre à jour le localStorage
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const userIndex = users.findIndex(u => u.id === currentUser.id);
+            if (userIndex !== -1) {
+                users[userIndex] = currentUser;
+                localStorage.setItem('users', JSON.stringify(users));
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            }
+            
+            // Recharger le profil
+            loadProfile();
+            closeEditModal();
+            
+            alert('Profil mis à jour avec succès !');
+        });
+
+        function logout() {
+            localStorage.removeItem('userLoggedIn');
+            localStorage.removeItem('currentUser');
+            window.location.href = 'index.html';
+        }
+
+        // Fermer la modal en cliquant à l'extérieur
+        window.onclick = function(event) {
+            const modal = document.getElementById('editModal');
+            if (event.target === modal) {
+                closeEditModal();
+            }
+        }
+
+        // Charger le profil au démarrage
+        loadProfile();
+    </script>
+</body>
+</html>
