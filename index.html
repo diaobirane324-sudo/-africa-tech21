@@ -922,10 +922,20 @@
                 <li><a href="#aide">Besoin d'Aide ?</a></li>
                 <li><a href="espace-membres.html">Espace Membres</a></li>
             </ul>
-            
-            <div class="auth-buttons">
-                <a href="#connexion" class="btn btn-outline">Connexion</a>
-            </div>
+            <div class="auth-buttons" id="authButtons">
+    <!-- État déconnecté -->
+    <div id="loggedOut">
+        <a href="login.html" class="btn btn-outline">Connexion</a>
+        <a href="signup.html" class="btn btn-primary">S'inscrire</a>
+    </div>
+    
+    <!-- État connecté -->
+    <div id="loggedIn" style="display: none;">
+        <a href="profile.html" class="btn btn-outline">Mon Profil</a>
+        <a href="auth-dashboard.html" class="btn btn-primary">Espace Membres</a>
+        <button onclick="logout()" class="btn btn-outline">Déconnexion</button>
+    </div>
+</div>
         </div>
     </header>
 
@@ -2111,6 +2121,7 @@ document.addEventListener('keydown', function(event) {
 </body>
 </html>
               
+
 
 
 
