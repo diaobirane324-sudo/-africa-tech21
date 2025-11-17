@@ -410,14 +410,14 @@
                 }
             });
             
-            // Afficher le succès
-            errorMessage.style.display = 'none';
-            successMessage.style.display = 'block';
-            
-            // Rediriger après 2 secondes
-            setTimeout(() => {
-                window.location.href = 'login.html';
-            }, 2000);
+           // Afficher le succès
+errorMessage.style.display = 'none';
+successMessage.style.display = 'block';
+
+// Rediriger vers le profil après 2 secondes
+setTimeout(() => {
+    window.location.href = 'profile.html';
+}, 2000);
         });
 
         // Fonction pour s'inscrire avec Google
