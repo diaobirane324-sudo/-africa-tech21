@@ -2118,9 +2118,27 @@ document.addEventListener('keydown', function(event) {
 <!-- ==================== -->
 <!-- FIN JAVASCRIPT & STYLES -->
 <!-- ==================== -->
+    <script>
+// Base de données des employés AFRICA.TECH21
+const employesAFRICA = {
+    "DIAO_BIRANE_001": {
+        nom: "Diao",
+        prenom: "Birane",
+        poste: "Co-fondateur", 
+        departement: "Robotique",
+        id: "DIAO_BIRANE_001",
+        date_embauche: "2024-01-01"
+    }
+    // Vous pourrez ajouter d'autres employés ici plus tard
+};
+
+// Sauvegarder dans le localStorage
+localStorage.setItem('employesAFRICA', JSON.stringify(employesAFRICA));
+</script>
 </body>
 </html>
               
+
 
 
 
