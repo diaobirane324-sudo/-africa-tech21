@@ -167,17 +167,45 @@
         let scanning = false;
 
         function startScanner() {
-            navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
-                .then(function(stream) {
-                    video.srcObject = stream;
-                    video.play();
-                    scanning = true;
-                    scanQRCode();
-                })
-                .catch(function(err) {
-                    alert("Erreur caméra: " + err.message);
-                });
+    // Arrêter le scan précédent si actif
+    if (video.srcObject) {
+        video.srcObject.getTracks().forEach(track => track.stop());
+    }
+
+    // Options caméra améliorées
+    const constraints = {
+        video: { 
+            facingMode: "environment",
+            width: { ideal: 1280 },
+            height: { ideal: 720 }
         }
+    };
+
+    navigator.mediaDevices.getUserMedia(constraints)
+        .then(function(stream) {
+            video.srcObject = stream;
+            video.setAttribute("playsinline", true);
+            scanning = true;
+            scanQRCode();
+        })
+        .catch(function(err) {
+            console.error("Erreur caméra:", err);
+            // Message d'erreur amélioré
+            const resultDiv = document.getElementById('result');
+            resultDiv.className = 'result error';
+            resultDiv.innerHTML = `
+                <h3>❌ Accès caméra refusé</h3>
+                <p>Veuillez :</p>
+                <ul style="text-align: left; margin: 10px 0;">
+                    <li>Autoriser l'accès à la caméra</li>
+                    <li>Utiliser HTTPS</li>
+                    <li>Vérifier les permissions</li>
+                </ul>
+                <button class="scan-btn" onclick="startScanner()">Réessayer</button>
+            `;
+            resultDiv.style.display = 'block';
+        });
+}
 
         function scanQRCode() {
             if (!scanning) return;
