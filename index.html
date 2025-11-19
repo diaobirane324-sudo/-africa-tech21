@@ -1158,7 +1158,7 @@
                 </div>
                 
                 <div class="form-body">
-                    <form id="registrationForm" action="https://formspree.io/f/xnnlbgvj" method="POST">
+                   <form id="registrationForm" name="candidature-africa-tech" netlify action="/success.html" method="POST">
                         <div class="form-row">
                             <div class="form-column">
                                 <div class="form-group">
@@ -1447,17 +1447,17 @@
         });
 
         // Form Submission
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            const domaines = document.querySelectorAll('input[name^="interet_"]:checked');
-            if (domaines.length === 0) {
-                e.preventDefault();
-                alert('Veuillez sélectionner au moins un domaine d\'intérêt.');
-                return;
-            }
-            
-            // Form will be submitted to Formspree
-            alert('Formulaire envoyé ! Nous vous contacterons rapidement.');
-        });
+document.getElementById('registrationForm').addEventListener('submit', function(e) {
+    const domaines = document.querySelectorAll('input[name^="interet_"]:checked');
+    if (domaines.length === 0) {
+        e.preventDefault();
+        alert('Veuillez sélectionner au moins un domaine d\'intérêt.');
+        return;
+    }
+    
+    // Netlify Forms gère l'envoi automatiquement
+    alert('Formulaire envoyé ! Redirection vers la page de confirmation...');
+});
 
         // Mobile Menu Toggle
         document.querySelector('.menu-toggle').addEventListener('click', function() {
@@ -2181,6 +2181,7 @@ localStorage.setItem('employesAFRICA', JSON.stringify(employesAFRICA));
 </body>
 </html>
               
+
 
 
 
