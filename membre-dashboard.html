@@ -157,6 +157,119 @@
             border-radius: 10px;
             cursor: pointer;
         }
+        /* === STYLES ADMIN CANDIDATS - À AJOUTER À LA FIN === */
+.admin-candidates-section {
+    display: none; /* Caché par défaut */
+    margin-top: 3rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.admin-security {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.security-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+}
+
+.verify-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.candidates-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.candidate-item {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary);
+}
+
+.candidate-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+}
+
+.candidate-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.status-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.btn-reject { background: #e74c3c; color: white; }
+.btn-accept { background: #27ae60; color: white; }
+.btn-pending { background: #f39c12; color: white; }
+
+.current-status {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: 1rem;
+}
+
+.status-pending { background: #fff3cd; color: #856404; }
+.status-accepted { background: #d1edff; color: #004085; }
+.status-rejected { background: #f8d7da; color: #721c24; }
+
+.error-message {
+    color: #e74c3c;
+    margin-top: 1rem;
+    display: none;
+}
     </style>
 </head>
 <body>
@@ -253,6 +366,60 @@
                 </button>
             </div>
         </section>
+        <!-- === SECTION ADMIN CANDIDATS - À AJOUTER À LA FIN DU MAIN === -->
+<section class="admin-candidates-section" id="adminCandidatesSection">
+    <div class="admin-security">
+        <h3>🔒 Dossiers Candidats - Accès Admin</h3>
+        <p>Espace réservé à l'administration</p>
+        
+        <form class="security-form" id="securityForm">
+            <div class="form-group">
+                <label for="adminCode">Code d'Accès</label>
+                <input type="password" id="adminCode" required placeholder="Entrez le code d'accès">
+            </div>
+            
+            <div class="form-group">
+                <label for="adminMatricule">Matricule</label>
+                <input type="text" id="adminMatricule" required placeholder="Entrez votre matricule">
+            </div>
+            
+            <button type="submit" class="verify-btn">
+                <i class="fas fa-lock"></i> Vérifier l'Identité
+            </button>
+            
+            <div class="error-message" id="securityError">
+                Code d'accès ou matricule incorrect
+            </div>
+        </form>
+    </div>
+
+    <div class="candidates-content" id="candidatesContent" style="display: none;">
+        <h3>📁 Dossiers des Candidats</h3>
+        
+        <div class="candidates-stats">
+            <div class="stat-card">
+                <div class="stat-number" id="totalCandidates">0</div>
+                <div>Total</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="pendingCandidates">0</div>
+                <div>En Attente</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="acceptedCandidates">0</div>
+                <div>Acceptés</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="rejectedCandidates">0</div>
+                <div>Refusés</div>
+            </div>
+        </div>
+
+        <div id="candidatesList">
+            <!-- Les candidatures apparaîtront ici -->
+        </div>
+    </div>
+</section>
     </main>
 
     <script>
@@ -353,6 +520,107 @@
         <i class="fas fa-water"></i> ACCÉDER AUX DÉTAILS COMPLETS
     </a>
 </div>
+        // === SCRIPT ADMIN CANDIDATS - À AJOUTER À LA FIN ===
+const ADMIN_CODE = "Birane186@00";
+const ADMIN_MATRICULE = "N07519920251";
+
+// Afficher la section admin (cachée par défaut)
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('adminCandidatesSection').style.display = 'block';
+});
+
+// Vérification de sécurité
+document.getElementById('securityForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const code = document.getElementById('adminCode').value;
+    const matricule = document.getElementById('adminMatricule').value;
+    const errorDiv = document.getElementById('securityError');
+    
+    if (code === ADMIN_CODE && matricule === ADMIN_MATRICULE) {
+        document.getElementById('candidatesContent').style.display = 'block';
+        document.querySelector('.admin-security').style.display = 'none';
+        loadCandidates();
+    } else {
+        errorDiv.style.display = 'block';
+    }
+});
+
+function loadCandidates() {
+    const candidates = JSON.parse(localStorage.getItem('africaTechCandidates') || '[]');
+    const candidatesList = document.getElementById('candidatesList');
+    
+    updateStats(candidates);
+    
+    if (candidates.length === 0) {
+        candidatesList.innerHTML = '<p style="text-align: center; padding: 2rem; color: #666;">Aucune candidature pour le moment</p>';
+        return;
+    }
+    
+    let html = '';
+    candidates.forEach((candidate, index) => {
+        const date = new Date(candidate.timestamp).toLocaleDateString('fr-FR');
+        const status = candidate.status || 'En attente';
+        
+        html += `
+            <div class="candidate-item">
+                <div class="candidate-header">
+                    <div>
+                        <h4>${candidate.civilite} ${candidate.prenom} ${candidate.nom}</h4>
+                        <div>📧 ${candidate.email} | 📞 ${candidate.telephone}</div>
+                        <div>📅 ${date} <span class="current-status status-${getStatusClass(status)}">${status}</span></div>
+                    </div>
+                    <div class="candidate-actions">
+                        <button class="status-btn btn-reject" onclick="updateCandidateStatus(${index}, 'Refusé')">Refuser</button>
+                        <button class="status-btn btn-accept" onclick="updateCandidateStatus(${index}, 'Accepté')">Accepter</button>
+                        <button class="status-btn btn-pending" onclick="updateCandidateStatus(${index}, 'En attente')">En attente</button>
+                    </div>
+                </div>
+                <div>
+                    <strong>Profession:</strong> ${candidate.profession}<br>
+                    <strong>Domaines:</strong> ${getCandidateInterests(candidate)}<br>
+                    <strong>Motivation:</strong> ${candidate.motivation}
+                </div>
+            </div>
+        `;
+    });
+    
+    candidatesList.innerHTML = html;
+}
+
+function updateCandidateStatus(index, newStatus) {
+    const candidates = JSON.parse(localStorage.getItem('africaTechCandidates') || '[]');
+    if (candidates[index]) {
+        candidates[index].status = newStatus;
+        localStorage.setItem('africaTechCandidates', JSON.stringify(candidates));
+        loadCandidates();
+    }
+}
+
+function updateStats(candidates) {
+    document.getElementById('totalCandidates').textContent = candidates.length;
+    document.getElementById('pendingCandidates').textContent = candidates.filter(c => !c.status || c.status === 'En attente').length;
+    document.getElementById('acceptedCandidates').textContent = candidates.filter(c => c.status === 'Accepté').length;
+    document.getElementById('rejectedCandidates').textContent = candidates.filter(c => c.status === 'Refusé').length;
+}
+
+function getStatusClass(status) {
+    const statusMap = {
+        'En attente': 'pending',
+        'Accepté': 'accepted', 
+        'Refusé': 'rejected'
+    };
+    return statusMap[status] || 'pending';
+}
+
+function getCandidateInterests(candidate) {
+    const interests = [];
+    if (candidate.interet_robotique) interests.push('Robotique');
+    if (candidate.interet_informatique) interests.push('Informatique');
+    if (candidate.interet_electronique) interests.push('Électronique');
+    if (candidate.interet_mecanique) interests.push('Mécanique');
+    return interests.join(', ') || 'Aucun domaine spécifié';
+}
     </script>
 </body>
 </html>
