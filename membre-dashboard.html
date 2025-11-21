@@ -663,6 +663,7 @@
             border-radius: 10px;
             border: 1px solid #2d3748;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .project-item:hover {
@@ -682,7 +683,7 @@
             <h2 style="color: var(--cyber-blue); text-align: center; margin-bottom: 2rem; text-transform: uppercase;">PROJETS INTERNES CONFIDENTIELS</h2>
             
             <div class="project-list">
-                <div class="project-item">
+                <div class="project-item" onclick="window.location.href='rsma.html'">
                     <h3 style="color: var(--cyber-blue); margin-bottom: 1rem;">🤖 R.S.M.A - ROBOT SOUS-MARIN AUTONOME</h3>
                     <p style="color: var(--text-secondary); margin-bottom: 1rem;">Système d'exploration maritime avancé avec intelligence artificielle intégrée.</p>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem;">
@@ -699,6 +700,7 @@
                             <div style="color: var(--text-secondary); font-size: 0.9rem;">IA Avancée</div>
                         </div>
                     </div>
+                    <div style="color: var(--cyber-blue); font-weight: 600; margin-top: 1rem; text-align: center;">CLIQUEZ POUR ACCÉDER AUX DÉTAILS COMPLETS</div>
                 </div>
 
                 <div class="project-item">
@@ -740,14 +742,7 @@
         <section class="cyber-welcome">
             <h2>TABLEAU DE BORD PRINCIPAL</h2>
             <p>Interface de contrôle et de collaboration pour les membres d'AFRICA.TECH21</p>
-            
-            <!-- Nouveau : Suivi de connexion -->
-            <div class="member-tracking">
-                <h4 style="color: var(--cyber-blue); margin-bottom: 1rem; text-transform: uppercase;">STATISTIQUES DE CONNEXION</h4>
-                <div class="tracking-info" id="connectionStats">
-                    <!-- Les stats seront affichées ici -->
-                </div>
-            </div>
+            <!-- SUPPRIMÉ : Les stats de connexion ne sont plus ici -->
         </section>
 
         <div class="cyber-grid">
@@ -953,54 +948,6 @@
                 email: userEmail,
                 loginTime: now.toISOString()
             }));
-            
-            // Mettre à jour l'affichage
-            updateConnectionStats();
-        }
-
-        // Mettre à jour les stats de connexion
-        function updateConnectionStats() {
-            const userEmail = localStorage.getItem('memberEmail');
-            const memberActivity = JSON.parse(localStorage.getItem('memberActivity') || '{}');
-            const userData = memberActivity[userEmail];
-            
-            if (userData) {
-                const statsHTML = `
-                    <div class="tracking-item">
-                        <div class="tracking-value">${userData.totalConnections}</div>
-                        <div>CONNEXIONS TOTALES</div>
-                    </div>
-                    <div class="tracking-item">
-                        <div class="tracking-value">${calculateTotalTime(userData)}min</div>
-                        <div>TEMP
-                                                <div>TEMPS TOTAL</div>
-                    </div>
-                    <div class="tracking-item">
-                        <div class="tracking-value">${userData.connections.length}</div>
-                        <div>SESSIONS</div>
-                    </div>
-                    <div class="tracking-item">
-                        <div class="tracking-value">${getLastConnection(userData)}</div>
-                        <div>DERNIÈRE ACTIVITÉ</div>
-                    </div>
-                `;
-                document.getElementById('connectionStats').innerHTML = statsHTML;
-            }
-        }
-
-        function calculateTotalTime(userData) {
-            return userData.connections.reduce((total, session) => {
-                return total + (session.duration || 0);
-            }, 0);
-        }
-
-        function getLastConnection(userData) {
-            if (userData.connections.length > 0) {
-                const lastConnection = userData.connections[userData.connections.length - 1];
-                const date = new Date(lastConnection.loginTime);
-                return date.toLocaleDateString('fr-FR');
-            }
-            return 'Aucune';
         }
 
         // Enregistrer la déconnexion
@@ -1169,7 +1116,7 @@
                 Math.round(members.reduce((total, member) => total + memberActivity[member].totalTime, 0) / members.length) : 0;
             document.getElementById('avgTime').textContent = avgTime + 'min';
             
-            // Afficher la liste des membres
+            // Afficher la liste des membres avec leurs emails
             if (members.length === 0) {
                 membersList.innerHTML = '<div style="text-align: center; padding: 3rem; color: var(--text-secondary);">AUCUNE ACTIVITÉ ENREGISTRÉE</div>';
                 return;
