@@ -1101,11 +1101,19 @@
             }
         }
 
-        function loadMemberTracking() {
-            const memberActivity = JSON.parse(localStorage.getItem('memberActivity') || '{}');
-            const membersList = document.getElementById('membersActivityList');
-            
-            const members = Object.keys(memberActivity);
+     function loadMemberTracking() {
+    const memberActivity = JSON.parse(localStorage.getItem('memberActivity') || '{}');
+    const membersList = document.getElementById('membersActivityList');
+    
+    const members = Object.keys(memberActivity);
+    function clearAllStats() {
+    if (confirm('Êtes-vous sûr de vouloir supprimer TOUTES les statistiques des membres ? Cette action est irréversible.')) {
+        localStorage.removeItem('memberActivity');
+        localStorage.removeItem('currentSession');
+        alert('✅ Toutes les statistiques ont été supprimées !');
+        loadMemberTracking(); // Recharger l'affichage
+    }
+}
             
             // Mettre à jour les stats globales
             document.getElementById('totalMembers').textContent = members.length;
