@@ -543,6 +543,37 @@
             display: none;
         }
 
+        /* Nouveau : Section suivi des membres */
+        .member-tracking {
+            background: rgba(10, 10, 18, 0.6);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            border: 1px solid #2d3748;
+        }
+
+        .tracking-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tracking-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(16, 16, 32, 0.8);
+            border-radius: 8px;
+            border: 1px solid #2d3748;
+        }
+
+        .tracking-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--cyber-blue);
+            margin-bottom: 0.5rem;
+        }
+
         /* Effets de particules */
         .particles {
             position: fixed;
@@ -579,11 +610,117 @@
                 opacity: 0;
             }
         }
+
+        /* Modal pour projets internes */
+        .cyber-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--panel-bg);
+            padding: 3rem;
+            border-radius: 15px;
+            border: 2px solid var(--cyber-blue);
+            box-shadow: var(--neon-glow);
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--cyber-blue);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .project-list {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .project-item {
+            background: rgba(10, 10, 18, 0.6);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid #2d3748;
+            transition: all 0.3s ease;
+        }
+
+        .project-item:hover {
+            border-color: var(--cyber-blue);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
     </style>
 </head>
 <body>
     <!-- Effet de particules -->
     <div class="particles" id="particles"></div>
+
+    <!-- Modal Projets Internes -->
+    <div class="cyber-modal" id="projectsModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeProjectsModal()">×</button>
+            <h2 style="color: var(--cyber-blue); text-align: center; margin-bottom: 2rem; text-transform: uppercase;">PROJETS INTERNES CONFIDENTIELS</h2>
+            
+            <div class="project-list">
+                <div class="project-item">
+                    <h3 style="color: var(--cyber-blue); margin-bottom: 1rem;">🤖 R.S.M.A - ROBOT SOUS-MARIN AUTONOME</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Système d'exploration maritime avancé avec intelligence artificielle intégrée.</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        <div style="text-align: center; padding: 1rem; background: rgba(0, 240, 255, 0.1); border-radius: 8px;">
+                            <div style="color: var(--cyber-blue); font-weight: 700;">CAPTURE</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Multimédia HD</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: rgba(0, 240, 255, 0.1); border-radius: 8px;">
+                            <div style="color: var(--cyber-blue); font-weight: 700;">CARTOGRAPHIE</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">3D Temps réel</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: rgba(0, 240, 255, 0.1); border-radius: 8px;">
+                            <div style="color: var(--cyber-blue); font-weight: 700;">AUTONOMIE</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">IA Avancée</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <h3 style="color: var(--cyber-blue); margin-bottom: 1rem;">🔧 PROJET HORUS - DRONE DE SURVEILLANCE</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Système de surveillance aérienne autonome avec reconnaissance faciale.</p>
+                    <div class="cyber-progress">
+                        <div class="cyber-progress-bar" style="width: 65%"></div>
+                    </div>
+                    <div style="color: var(--cyber-blue); font-weight: 600; margin-top: 1rem;">STATUT: 65% COMPLÉTÉ</div>
+                </div>
+
+                <div class="project-item">
+                    <h3 style="color: var(--cyber-blue); margin-bottom: 1rem;">⚡ PROJET ZEUS - RÉSEAU ÉNERGÉTIQUE</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Développement de micro-réseaux énergétiques intelligents pour zones rurales.</p>
+                    <div class="cyber-progress">
+                        <div class="cyber-progress-bar" style="width: 40%"></div>
+                    </div>
+                    <div style="color: var(--cyber-blue); font-weight: 600; margin-top: 1rem;">STATUT: 40% COMPLÉTÉ</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <header class="cyber-header">
         <nav class="cyber-nav">
@@ -603,6 +740,14 @@
         <section class="cyber-welcome">
             <h2>TABLEAU DE BORD PRINCIPAL</h2>
             <p>Interface de contrôle et de collaboration pour les membres d'AFRICA.TECH21</p>
+            
+            <!-- Nouveau : Suivi de connexion -->
+            <div class="member-tracking">
+                <h4 style="color: var(--cyber-blue); margin-bottom: 1rem; text-transform: uppercase;">STATISTIQUES DE CONNEXION</h4>
+                <div class="tracking-info" id="connectionStats">
+                    <!-- Les stats seront affichées ici -->
+                </div>
+            </div>
         </section>
 
         <div class="cyber-grid">
@@ -618,22 +763,13 @@
                 <span style="color: var(--cyber-blue); font-weight: 600;">STATUT: 30% COMPLÉTÉ</span>
             </div>
             
-            <div class="cyber-card" onclick="window.location.href='rsma.html'">
-                <div class="cyber-icon">
-                    <i class="fas fa-water"></i>
-                </div>
-                <h3>R.S.M.A</h3>
-                <p>Robot Sous-marin Autonome - Exploration maritime avec intelligence artificielle avancée</p>
-                <div style="color: var(--cyber-blue); font-weight: 600; margin-top: 1rem;">ACCÈS AUTORISÉ</div>
-            </div>
-            
-            <div class="cyber-card">
+            <div class="cyber-card" onclick="openProjectsModal()">
                 <div class="cyber-icon">
                     <i class="fas fa-project-diagram"></i>
                 </div>
                 <h3>PROJETS INTERNES</h3>
                 <p>Accès aux documents techniques et discussions sur les projets confidentiels</p>
-                <div style="color: var(--text-secondary); margin-top: 1rem;">SYSTÈME EN MAINTENANCE</div>
+                <div style="color: var(--cyber-blue); font-weight: 600; margin-top: 1rem;">ACCÈS AUTORISÉ - CLIQUEZ</div>
             </div>
 
             <div class="cyber-card">
@@ -643,6 +779,15 @@
                 <h3>RÉSEAU ÉQUIPE</h3>
                 <p>Interface de collaboration avec les autres membres et partenaires techniques</p>
                 <div style="color: var(--text-secondary); margin-top: 1rem;">ACCÈS EN CONFIGURATION</div>
+            </div>
+
+            <div class="cyber-card">
+                <div class="cyber-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3>ARCHIVES TECHNIQUES</h3>
+                <p>Base de données documentaire contenant les recherches et développements</p>
+                <div style="color: var(--text-secondary); margin-top: 1rem;">SYSTÈME EN MAINTENANCE</div>
             </div>
         </div>
 
@@ -670,7 +815,7 @@
         <section class="cyber-admin" id="adminCandidatesSection">
             <div class="cyber-security">
                 <h3>🔒 MODULE ADMINISTRATION</h3>
-                <p style="color: var(--text-secondary);">Accès sécurisé aux dossiers candidats</p>
+                <p style="color: var(--text-secondary);">Accès sécurisé aux dossiers candidats et suivi des membres</p>
                 
                 <form class="cyber-form" id="securityForm">
                     <div class="form-group">
@@ -694,29 +839,66 @@
             </div>
 
             <div class="candidates-content" id="candidatesContent" style="display: none;">
-                <h3 style="text-align: center; color: var(--cyber-blue); margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1px;">📁 DOSSIERS CANDIDATS</h3>
-                
-                <div class="cyber-stats">
-                    <div class="cyber-stat">
-                        <div class="stat-number" id="totalCandidates">0</div>
-                        <div>TOTAL</div>
+                <!-- Onglets -->
+                <div style="display: flex; gap: 1rem; margin-bottom: 2rem; border-bottom: 1px solid #2d3748;">
+                    <button class="cyber-tab active" onclick="showAdminTab('candidates')" style="background: var(--cyber-blue); color: var(--dark-bg); padding: 1rem 2rem; border: none; border-radius: 8px 8px 0 0; cursor: pointer; font-weight: 700;">CANDIDATURES</button>
+                    <button class="cyber-tab" onclick="showAdminTab('tracking')" style="background: transparent; color: var(--text-secondary); padding: 1rem 2rem; border: none; border-radius: 8px 8px 0 0; cursor: pointer; font-weight: 700;">SUIVI MEMBRES</button>
+                </div>
+
+                <!-- Contenu Candidatures -->
+                <div id="adminCandidatesTab">
+                    <h3 style="text-align: center; color: var(--cyber-blue); margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1px;">📁 DOSSIERS CANDIDATS</h3>
+                    
+                    <div class="cyber-stats">
+                        <div class="cyber-stat">
+                            <div class="stat-number" id="totalCandidates">0</div>
+                            <div>TOTAL</div>
+                        </div>
+                        <div class="cyber-stat">
+                            <div class="stat-number" id="pendingCandidates">0</div>
+                            <div>EN ATTENTE</div>
+                        </div>
+                        <div class="cyber-stat">
+                            <div class="stat-number" id="acceptedCandidates">0</div>
+                            <div>ACCEPTÉS</div>
+                        </div>
+                        <div class="cyber-stat">
+                            <div class="stat-number" id="rejectedCandidates">0</div>
+                            <div>REFUSÉS</div>
+                        </div>
                     </div>
-                    <div class="cyber-stat">
-                        <div class="stat-number" id="pendingCandidates">0</div>
-                        <div>EN ATTENTE</div>
-                    </div>
-                    <div class="cyber-stat">
-                        <div class="stat-number" id="acceptedCandidates">0</div>
-                        <div>ACCEPTÉS</div>
-                    </div>
-                    <div class="cyber-stat">
-                        <div class="stat-number" id="rejectedCandidates">0</div>
-                        <div>REFUSÉS</div>
+
+                    <div id="candidatesList">
+                        <!-- Les candidatures apparaîtront ici -->
                     </div>
                 </div>
 
-                <div id="candidatesList">
-                    <!-- Les candidatures apparaîtront ici -->
+                <!-- Contenu Suivi Membres -->
+                <div id="adminTrackingTab" style="display: none;">
+                    <h3 style="text-align: center; color: var(--cyber-blue); margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1px;">📊 ACTIVITÉ DES MEMBRES</h3>
+                    
+                    <div class="cyber-stats">
+                        <div class="cyber-stat">
+                            <div class="stat-number" id="totalMembers">0</div>
+                            <div>MEMBRES</div>
+                        </div>
+                        <div class="cyber-stat">
+                            <div class="stat-number" id="totalConnections">0</div>
+                            <div>CONNEXIONS</div>
+                        </div>
+                        <div class="cyber-stat">
+                            <div class="stat-number" id="activeToday">0</div>
+                            <div>ACTIFS AJD</div>
+                        </div>
+                        <div class="cyber-stat">
+                            <div class="stat-number" id="avgTime">0min</div>
+                            <div>MOY. TEMPS</div>
+                        </div>
+                    </div>
+
+                    <div id="membersActivityList">
+                        <!-- Liste des membres et leur activité -->
+                    </div>
                 </div>
             </div>
         </section>
@@ -736,15 +918,129 @@
             }
         }
 
+        // ==================== NOUVEAU : SYSTÈME DE SUIVI ====================
+        
+        // Enregistrer la connexion
+        function trackLogin() {
+            const userEmail = localStorage.getItem('memberEmail');
+            const now = new Date();
+            
+            // Récupérer les données existantes
+            const memberActivity = JSON.parse(localStorage.getItem('memberActivity') || '{}');
+            
+            if (!memberActivity[userEmail]) {
+                memberActivity[userEmail] = {
+                    totalConnections: 0,
+                    totalTime: 0,
+                    lastLogin: null,
+                    connections: []
+                };
+            }
+            
+            // Incrémenter le compteur
+            memberActivity[userEmail].totalConnections++;
+            memberActivity[userEmail].lastLogin = now.toISOString();
+            
+            // Ajouter cette connexion
+            memberActivity[userEmail].connections.push({
+                loginTime: now.toISOString(),
+                logoutTime: null,
+                duration: 0
+            });
+            
+            localStorage.setItem('memberActivity', JSON.stringify(memberActivity));
+            localStorage.setItem('currentSession', JSON.stringify({
+                email: userEmail,
+                loginTime: now.toISOString()
+            }));
+            
+            // Mettre à jour l'affichage
+            updateConnectionStats();
+        }
+
+        // Mettre à jour les stats de connexion
+        function updateConnectionStats() {
+            const userEmail = localStorage.getItem('memberEmail');
+            const memberActivity = JSON.parse(localStorage.getItem('memberActivity') || '{}');
+            const userData = memberActivity[userEmail];
+            
+            if (userData) {
+                const statsHTML = `
+                    <div class="tracking-item">
+                        <div class="tracking-value">${userData.totalConnections}</div>
+                        <div>CONNEXIONS TOTALES</div>
+                    </div>
+                    <div class="tracking-item">
+                        <div class="tracking-value">${calculateTotalTime(userData)}min</div>
+                        <div>TEMP
+                                                <div>TEMPS TOTAL</div>
+                    </div>
+                    <div class="tracking-item">
+                        <div class="tracking-value">${userData.connections.length}</div>
+                        <div>SESSIONS</div>
+                    </div>
+                    <div class="tracking-item">
+                        <div class="tracking-value">${getLastConnection(userData)}</div>
+                        <div>DERNIÈRE ACTIVITÉ</div>
+                    </div>
+                `;
+                document.getElementById('connectionStats').innerHTML = statsHTML;
+            }
+        }
+
+        function calculateTotalTime(userData) {
+            return userData.connections.reduce((total, session) => {
+                return total + (session.duration || 0);
+            }, 0);
+        }
+
+        function getLastConnection(userData) {
+            if (userData.connections.length > 0) {
+                const lastConnection = userData.connections[userData.connections.length - 1];
+                const date = new Date(lastConnection.loginTime);
+                return date.toLocaleDateString('fr-FR');
+            }
+            return 'Aucune';
+        }
+
+        // Enregistrer la déconnexion
+        function trackLogout() {
+            const currentSession = JSON.parse(localStorage.getItem('currentSession') || '{}');
+            if (currentSession.email) {
+                const now = new Date();
+                const loginTime = new Date(currentSession.loginTime);
+                const duration = Math.round((now - loginTime) / 60000); // en minutes
+                
+                const memberActivity = JSON.parse(localStorage.getItem('memberActivity') || '{}');
+                if (memberActivity[currentSession.email]) {
+                    const lastConnection = memberActivity[currentSession.email].connections[memberActivity[currentSession.email].connections.length - 1];
+                    if (lastConnection && !lastConnection.logoutTime) {
+                        lastConnection.logoutTime = now.toISOString();
+                        lastConnection.duration = duration;
+                        memberActivity[currentSession.email].totalTime += duration;
+                        localStorage.setItem('memberActivity', JSON.stringify(memberActivity));
+                    }
+                }
+                localStorage.removeItem('currentSession');
+            }
+        }
+
+        // ==================== FIN SYSTÈME DE SUIVI ====================
+
         // Vérifier la connexion
         if (localStorage.getItem('memberLoggedIn') !== 'true') {
             window.location.href = 'espace-membres.html';
+        } else {
+            // Démarrer le suivi
+            trackLogin();
         }
 
         // Afficher l'email de l'utilisateur
         document.getElementById('userEmail').textContent = localStorage.getItem('memberEmail') || 'UTILISATEUR';
 
-        // Gestion du forum
+        // ==================== CORRECTION FORUM ====================
+        
+        // Gestion du forum - CORRIGÉ pour sauvegarder correctement
         function sendMessage() {
             const messageInput = document.getElementById('newMessage');
             const message = messageInput.value.trim();
@@ -755,7 +1051,7 @@
                 messageDiv.className = 'cyber-message';
                 
                 const now = new Date();
-                const dateStr = now.toLocaleDateString('fr-FR');
+                const dateStr = now.toLocaleDateString('fr-FR') + ' ' + now.toLocaleTimeString('fr-FR');
                 
                 messageDiv.innerHTML = `
                     <div class="message-header">
@@ -769,18 +1065,20 @@
                 messageInput.value = '';
                 forumMessages.scrollTop = forumMessages.scrollHeight;
                 
-                // Sauvegarder dans le localStorage
+                // CORRECTION : Sauvegarder dans le localStorage avec structure améliorée
                 saveMessageToStorage(message, dateStr);
             }
         }
 
         function saveMessageToStorage(message, date) {
             const messages = JSON.parse(localStorage.getItem('forumMessages') || '[]');
-            messages.push({
+            const newMessage = {
                 email: localStorage.getItem('memberEmail'),
                 message: message,
-                date: date
-            });
+                date: date,
+                timestamp: new Date().toISOString()
+            };
+            messages.push(newMessage);
             localStorage.setItem('forumMessages', JSON.stringify(messages));
         }
 
@@ -788,6 +1086,15 @@
             const messages = JSON.parse(localStorage.getItem('forumMessages') || '[]');
             const forumMessages = document.getElementById('forumMessages');
             
+            // Vider les messages existants sauf le premier (message système)
+            while (forumMessages.children.length > 1) {
+                forumMessages.removeChild(forumMessages.lastChild);
+            }
+            
+            // Trier les messages par timestamp
+            messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+            
+            // Ajouter tous les messages
             messages.forEach(msg => {
                 const messageDiv = document.createElement('div');
                 messageDiv.className = 'cyber-message';
@@ -804,8 +1111,111 @@
             forumMessages.scrollTop = forumMessages.scrollHeight;
         }
 
+        // ==================== FONCTIONS MODAL PROJETS ====================
+
+        function openProjectsModal() {
+            document.getElementById('projectsModal').style.display = 'block';
+        }
+
+        function closeProjectsModal() {
+            document.getElementById('projectsModal').style.display = 'none';
+        }
+
+        // ==================== FONCTIONS ADMIN ====================
+
+        function showAdminTab(tabName) {
+            // Masquer tous les onglets
+            document.getElementById('adminCandidatesTab').style.display = 'none';
+            document.getElementById('adminTrackingTab').style.display = 'none';
+            
+            // Désactiver tous les boutons
+            document.querySelectorAll('.cyber-tab').forEach(tab => {
+                tab.style.background = 'transparent';
+                tab.style.color = 'var(--text-secondary)';
+            });
+            
+            // Afficher l'onglet sélectionné
+            if (tabName === 'candidates') {
+                document.getElementById('adminCandidatesTab').style.display = 'block';
+                document.querySelector('.cyber-tab').style.background = 'var(--cyber-blue)';
+                document.querySelector('.cyber-tab').style.color = 'var(--dark-bg)';
+                loadCandidates();
+            } else if (tabName === 'tracking') {
+                document.getElementById('adminTrackingTab').style.display = 'block';
+                document.querySelectorAll('.cyber-tab')[1].style.background = 'var(--cyber-blue)';
+                document.querySelectorAll('.cyber-tab')[1].style.color = 'var(--dark-bg)';
+                loadMemberTracking();
+            }
+        }
+
+        function loadMemberTracking() {
+            const memberActivity = JSON.parse(localStorage.getItem('memberActivity') || '{}');
+            const membersList = document.getElementById('membersActivityList');
+            
+            const members = Object.keys(memberActivity);
+            
+            // Mettre à jour les stats globales
+            document.getElementById('totalMembers').textContent = members.length;
+            document.getElementById('totalConnections').textContent = members.reduce((total, member) => total + memberActivity[member].totalConnections, 0);
+            
+            const today = new Date().toDateString();
+            const activeToday = members.filter(member => {
+                const lastLogin = new Date(memberActivity[member].lastLogin);
+                return lastLogin.toDateString() === today;
+            }).length;
+            document.getElementById('activeToday').textContent = activeToday;
+            
+            const avgTime = members.length > 0 ? 
+                Math.round(members.reduce((total, member) => total + memberActivity[member].totalTime, 0) / members.length) : 0;
+            document.getElementById('avgTime').textContent = avgTime + 'min';
+            
+            // Afficher la liste des membres
+            if (members.length === 0) {
+                membersList.innerHTML = '<div style="text-align: center; padding: 3rem; color: var(--text-secondary);">AUCUNE ACTIVITÉ ENREGISTRÉE</div>';
+                return;
+            }
+            
+            let html = '';
+            members.forEach(memberEmail => {
+                const data = memberActivity[memberEmail];
+                const lastLogin = data.lastLogin ? new Date(data.lastLogin).toLocaleString('fr-FR') : 'Jamais';
+                
+                html += `
+                    <div class="cyber-candidate">
+                        <div class="candidate-header">
+                            <div class="candidate-info">
+                                <h4>${memberEmail}</h4>
+                                <div class="candidate-meta">
+                                    📊 ${data.totalConnections} connexions | ⏱️ ${data.totalTime} minutes total
+                                </div>
+                                <div class="candidate-meta">
+                                    📅 Dernière activité: ${lastLogin}
+                                </div>
+                            </div>
+                            <div class="cyber-actions">
+                                <span class="current-status ${data.totalConnections > 10 ? 'status-accepted' : data.totalConnections > 5 ? 'status-pending' : 'status-rejected'}">
+                                    ${data.totalConnections > 10 ? 'ACTIF' : data.totalConnections > 5 ? 'MOYEN' : 'FAIBLE'}
+                                </span>
+                            </div>
+                        </div>
+                        <div style="color: var(--text-secondary); line-height: 1.6;">
+                            <strong style="color: var(--cyber-blue);">DERNIÈRES SESSIONS:</strong><br>
+                            ${data.connections.slice(-3).map(session => {
+                                const login = new Date(session.loginTime).toLocaleString('fr-FR');
+                                const duration = session.duration ? session.duration + 'min' : 'En cours';
+                                return `• ${login} (${duration})`;
+                            }).join('<br>')}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            membersList.innerHTML = html;
+        }
+
         // Fonction de déconnexion
         function logout() {
+            trackLogout();
             localStorage.removeItem('memberLoggedIn');
             localStorage.removeItem('memberEmail');
             window.location.href = 'index.html';
@@ -821,7 +1231,8 @@
             }
         });
 
-        // Script Admin Candidats
+        // ==================== SCRIPT ADMIN CANDIDATS ====================
+
         const ADMIN_CODE = "Birane186@00";
         const ADMIN_MATRICULE = "N07519920251";
 
@@ -924,6 +1335,14 @@
 
         // Initialiser les particules
         createParticles();
+
+        // Fermer la modal en cliquant en dehors
+        window.onclick = function(event) {
+            const modal = document.getElementById('projectsModal');
+            if (event.target === modal) {
+                closeProjectsModal();
+            }
+        }
     </script>
 </body>
 </html>
