@@ -3,416 +3,715 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espace Membres - AFRICA.TECH21</title>
+    <title>Tableau de Bord - AFRICA.TECH21</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         :root {
-            --primary: #2c5530;
-            --secondary: #d4af37;
-            --dark: #1a2f3b;
-            --light: #f8f9fa;
+            --cyber-blue: #00f0ff;
+            --cyber-purple: #7b2cbf;
+            --dark-bg: #0a0a12;
+            --panel-bg: rgba(16, 16, 32, 0.9);
+            --neon-glow: 0 0 10px var(--cyber-blue), 0 0 20px var(--cyber-blue);
+            --text-primary: #e2e8f0;
+            --text-secondary: #8892b0;
         }
 
         body {
-            background: var(--light);
-            color: #333;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        .member-header {
-            background: linear-gradient(135deg, var(--dark), var(--primary));
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        /* Effet de grille cyberpunk */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            pointer-events: none;
+            z-index: -1;
         }
 
-        .member-nav {
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .cyber-header {
+            background: var(--panel-bg);
+            border-bottom: 2px solid var(--cyber-blue);
+            box-shadow: var(--neon-glow);
+            padding: 1rem 2rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .cyber-nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo h1 {
-            font-size: 1.5rem;
-        }
-
-        .logo span {
-            color: var(--secondary);
-        }
-
-        .member-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logout-btn {
-            background: var(--secondary);
-            color: var(--dark);
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .dashboard {
-            padding: 2rem;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .welcome-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            text-align: center;
+        .cyber-logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, var(--cyber-blue), #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            letter-spacing: 1px;
+            font-weight: 800;
+            text-transform: uppercase;
         }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+        .cyber-user {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
         }
 
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s;
+        .user-info {
+            color: var(--cyber-blue);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .cyber-logout {
+            background: linear-gradient(45deg, var(--cyber-purple), var(--cyber-blue));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
             cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .feature-card:hover {
+        .cyber-logout:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(123, 44, 191, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .cyber-dashboard {
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .cyber-welcome {
+            background: var(--panel-bg);
+            padding: 3rem;
+            border-radius: 15px;
+            border: 1px solid var(--cyber-blue);
+            box-shadow: var(--neon-glow);
+            margin-bottom: 3rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            animation: panelGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes panelGlow {
+            0% { box-shadow: 0 0 10px var(--cyber-blue), 0 0 20px var(--cyber-blue); }
+            100% { box-shadow: 0 0 20px var(--cyber-blue), 0 0 40px var(--cyber-blue); }
+        }
+
+        .cyber-welcome h2 {
+            font-size: 2.5rem;
+            color: var(--cyber-blue);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .cyber-welcome p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .cyber-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .cyber-card {
+            background: var(--panel-bg);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid #2d3748;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyber-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .cyber-card:hover {
+            border-color: var(--cyber-blue);
+            box-shadow: var(--neon-glow);
             transform: translateY(-5px);
         }
 
-        .feature-icon {
-            font-size: 3rem;
-            color: var(--primary);
+        .cyber-card:hover::before {
+            left: 100%;
+        }
+
+        .cyber-icon {
+            font-size: 3.5rem;
+            color: var(--cyber-blue);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+        }
+
+        .cyber-card h3 {
+            font-size: 1.5rem;
+            color: var(--cyber-blue);
             margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .forum-section {
-            background: white;
-            padding: 2rem;
+        .cyber-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .cyber-progress {
+            width: 100%;
+            height: 8px;
+            background: #2d3748;
+            border-radius: 4px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .cyber-progress-bar {
+            height: 100%;
+            background: linear-gradient(45deg, var(--cyber-purple), var(--cyber-blue));
+            border-radius: 4px;
+            animation: progressGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes progressGlow {
+            0% { box-shadow: 0 0 5px var(--cyber-blue); }
+            100% { box-shadow: 0 0 15px var(--cyber-blue); }
+        }
+
+        .cyber-forum {
+            background: var(--panel-bg);
+            padding: 2.5rem;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid #2d3748;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
 
-        .forum-messages {
+        .cyber-forum h3 {
+            font-size: 1.8rem;
+            color: var(--cyber-blue);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .cyber-messages {
             max-height: 400px;
             overflow-y: auto;
-            margin-bottom: 1rem;
-            border: 1px solid #e9ecef;
+            margin-bottom: 2rem;
+            border: 1px solid #2d3748;
             border-radius: 10px;
-            padding: 1rem;
+            padding: 1.5rem;
+            background: rgba(10, 10, 18, 0.6);
         }
 
-        .message {
-            padding: 1rem;
-            border-bottom: 1px solid #e9ecef;
+        .cyber-message {
+            padding: 1.5rem;
+            border-bottom: 1px solid #2d3748;
+            transition: all 0.3s ease;
         }
 
-        .message:last-child {
+        .cyber-message:hover {
+            background: rgba(0, 240, 255, 0.05);
+            border-left: 3px solid var(--cyber-blue);
+        }
+
+        .cyber-message:last-child {
             border-bottom: none;
         }
 
         .message-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             font-size: 0.9rem;
-            color: #666;
+            color: var(--text-secondary);
         }
 
-        .forum-input {
+        .message-user {
+            color: var(--cyber-blue);
+            font-weight: 600;
+        }
+
+        .cyber-input-group {
             display: flex;
             gap: 1rem;
         }
 
-        .forum-input input {
+        .cyber-input {
             flex-grow: 1;
-            padding: 1rem;
-            border: 1px solid #e9ecef;
-            border-radius: 10px;
+            padding: 1.2rem;
+            background: rgba(10, 10, 18, 0.8);
+            border: 1px solid #2d3748;
+            border-radius: 8px;
+            color: var(--cyber-blue);
+            font-size: 16px;
+            transition: all 0.3s ease;
         }
 
-        .send-btn {
-            background: var(--primary);
+        .cyber-input:focus {
+            outline: none;
+            border-color: var(--cyber-blue);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+        }
+
+        .cyber-send {
+            background: linear-gradient(45deg, var(--cyber-purple), var(--cyber-blue));
             color: white;
             border: none;
-            padding: 1rem 2rem;
-            border-radius: 10px;
+            padding: 1.2rem 2.5rem;
+            border-radius: 8px;
             cursor: pointer;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: #e9ecef;
-            border-radius: 4px;
-            margin: 0.5rem 0;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
             overflow: hidden;
         }
 
-        .progress {
-            height: 100%;
-            background: var(--primary);
-            border-radius: 4px;
+        .cyber-send:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(123, 44, 191, 0.5);
+            letter-spacing: 2px;
         }
 
-        /* Styles Admin Candidats */
-        .admin-candidates-section {
+        /* Styles Admin Candidats Cyberpunk */
+        .cyber-admin {
             margin-top: 3rem;
-            padding: 2rem;
-            background: white;
+            background: var(--panel-bg);
+            padding: 2.5rem;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid #2d3748;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
 
-        .admin-security {
+        .cyber-security {
             text-align: center;
             margin-bottom: 2rem;
         }
 
-        .security-form {
-            max-width: 400px;
+        .cyber-security h3 {
+            font-size: 1.8rem;
+            color: var(--cyber-blue);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cyber-form {
+            max-width: 500px;
             margin: 0 auto;
         }
 
         .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             text-align: left;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--cyber-blue);
             font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
         }
 
         .form-group input {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #e9ecef;
+            padding: 1.2rem;
+            background: rgba(10, 10, 18, 0.8);
+            border: 1px solid #2d3748;
             border-radius: 8px;
+            color: var(--cyber-blue);
+            font-size: 16px;
+            transition: all 0.3s ease;
         }
 
-        .verify-btn {
-            background: var(--primary);
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--cyber-blue);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+        }
+
+        .cyber-verify {
+            background: linear-gradient(45deg, var(--cyber-purple), var(--cyber-blue));
             color: white;
             border: none;
-            padding: 12px 30px;
+            padding: 1.2rem 2.5rem;
             border-radius: 8px;
             cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             width: 100%;
+            transition: all 0.3s ease;
         }
 
-        .candidates-stats {
+        .cyber-verify:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(123, 44, 191, 0.5);
+        }
+
+        .cyber-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
         }
 
-        .stat-card {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .candidate-item {
-            background: #f8f9fa;
+        .cyber-stat {
+            background: rgba(10, 10, 18, 0.6);
             padding: 1.5rem;
-            margin-bottom: 1rem;
             border-radius: 10px;
-            border-left: 4px solid var(--primary);
+            border: 1px solid #2d3748;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .cyber-stat:hover {
+            border-color: var(--cyber-blue);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--cyber-blue);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+
+        .cyber-candidate {
+            background: rgba(10, 10, 18, 0.6);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--cyber-blue);
+            border: 1px solid #2d3748;
+            transition: all 0.3s ease;
+        }
+
+        .cyber-candidate:hover {
+            border-color: var(--cyber-blue);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
         }
 
         .candidate-header {
             display: flex;
             justify-content: space-between;
             align-items: start;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .candidate-actions {
+        .candidate-info h4 {
+            color: var(--cyber-blue);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .candidate-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .cyber-actions {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.8rem;
         }
 
         .status-btn {
-            padding: 6px 12px;
+            padding: 8px 16px;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 0.8rem;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
         }
 
-        .btn-reject { background: #e74c3c; color: white; }
-        .btn-accept { background: #27ae60; color: white; }
-        .btn-pending { background: #f39c12; color: white; }
+        .btn-reject { 
+            background: linear-gradient(45deg, #dc2626, #ef4444);
+            color: white; 
+        }
+        .btn-accept { 
+            background: linear-gradient(45deg, #16a34a, #22c55e);
+            color: white; 
+        }
+        .btn-pending { 
+            background: linear-gradient(45deg, #d97706, #f59e0b);
+            color: white; 
+        }
+
+        .status-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
 
         .current-status {
             display: inline-block;
-            padding: 4px 8px;
-            border-radius: 15px;
+            padding: 6px 12px;
+            border-radius: 20px;
             font-size: 0.8rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-left: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .status-pending { background: #fff3cd; color: #856404; }
-        .status-accepted { background: #d1edff; color: #004085; }
-        .status-rejected { background: #f8d7da; color: #721c24; }
+        .status-pending { 
+            background: linear-gradient(45deg, #d97706, #f59e0b);
+            color: white; 
+        }
+        .status-accepted { 
+            background: linear-gradient(45deg, #16a34a, #22c55e);
+            color: white; 
+        }
+        .status-rejected { 
+            background: linear-gradient(45deg, #dc2626, #ef4444);
+            color: white; 
+        }
 
-        .error-message {
-            color: #e74c3c;
+        .cyber-error {
+            color: #ff073a;
             margin-top: 1rem;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(255, 7, 58, 0.5);
             display: none;
+        }
+
+        /* Effets de particules */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--cyber-blue);
+            border-radius: 50%;
+            animation: float 8s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <header class="member-header">
-        <nav class="member-nav">
-            <div class="logo">
-                <h1>AFRICA.<span>TECH21</span> | Espace Membres</h1>
+    <!-- Effet de particules -->
+    <div class="particles" id="particles"></div>
+
+    <header class="cyber-header">
+        <nav class="cyber-nav">
+            <div class="cyber-logo">
+                <h1>AFRICA.TECH21 | SYSTÈME MEMBRES</h1>
             </div>
-            <div class="member-info">
-                <span id="userEmail">Membre</span>
-                <button class="logout-btn" onclick="logout()">
-                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+            <div class="cyber-user">
+                <span class="user-info" id="userEmail">UTILISATEUR</span>
+                <button class="cyber-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> DÉCONNEXION
                 </button>
             </div>
         </nav>
     </header>
 
-    <main class="dashboard">
-        <section class="welcome-section">
-            <h2>Bienvenue dans l'Espace Membres</h2>
-            <p>Plateforme de collaboration et d'échanges pour les membres d'AFRICA.TECH21</p>
+    <main class="cyber-dashboard">
+        <section class="cyber-welcome">
+            <h2>TABLEAU DE BORD PRINCIPAL</h2>
+            <p>Interface de contrôle et de collaboration pour les membres d'AFRICA.TECH21</p>
         </section>
 
-        <div class="features-grid">
-            <div class="feature-card" onclick="window.location.href='projet-binv.html'">
-                <div class="feature-icon">
+        <div class="cyber-grid">
+            <div class="cyber-card" onclick="window.location.href='projet-binv.html'">
+                <div class="cyber-icon">
                     <i class="fas fa-blind"></i>
                 </div>
-                <h3>Projet BINV_V360</h3>
-                <p>Bâton Intelligent pour Non-Voyants - Accédez aux détails techniques complets</p>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 30%"></div>
+                <h3>PROJET BINV_V360</h3>
+                <p>Bâton Intelligent pour Non-Voyants - Accès aux spécifications techniques complètes</p>
+                <div class="cyber-progress">
+                    <div class="cyber-progress-bar" style="width: 30%"></div>
                 </div>
-                <span>30%</span>
+                <span style="color: var(--cyber-blue); font-weight: 600;">STATUT: 30% COMPLÉTÉ</span>
             </div>
             
-            <div class="feature-card" onclick="window.location.href='rsma.html'">
-                <div class="feature-icon">
+            <div class="cyber-card" onclick="window.location.href='rsma.html'">
+                <div class="cyber-icon">
                     <i class="fas fa-water"></i>
                 </div>
-                <h3>R.S.M.A - Robot Sous-marin Autonome</h3>
-                <p>Exploration maritime avancée avec intelligence artificielle</p>
+                <h3>R.S.M.A</h3>
+                <p>Robot Sous-marin Autonome - Exploration maritime avec intelligence artificielle avancée</p>
+                <div style="color: var(--cyber-blue); font-weight: 600; margin-top: 1rem;">ACCÈS AUTORISÉ</div>
             </div>
             
-            <div class="feature-card">
-                <div class="feature-icon">
+            <div class="cyber-card">
+                <div class="cyber-icon">
                     <i class="fas fa-project-diagram"></i>
                 </div>
-                <h3>Projets Internes</h3>
-                <p>Accédez aux documents et discussions sur nos projets confidentiels</p>
+                <h3>PROJETS INTERNES</h3>
+                <p>Accès aux documents techniques et discussions sur les projets confidentiels</p>
+                <div style="color: var(--text-secondary); margin-top: 1rem;">SYSTÈME EN MAINTENANCE</div>
             </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">
+            <div class="cyber-card">
+                <div class="cyber-icon">
                     <i class="fas fa-users"></i>
                 </div>
-                <h3>Équipe</h3>
-                <p>Rencontrez les autres membres et collaborez ensemble</p>
+                <h3>RÉSEAU ÉQUIPE</h3>
+                <p>Interface de collaboration avec les autres membres et partenaires techniques</p>
+                <div style="color: var(--text-secondary); margin-top: 1rem;">ACCÈS EN CONFIGURATION</div>
             </div>
         </div>
 
-        <section class="forum-section">
-            <h3>Forum de Discussion</h3>
-            <div class="forum-messages" id="forumMessages">
-                <div class="message">
+        <section class="cyber-forum">
+            <h3>CANAL DE COMMUNICATION</h3>
+            <div class="cyber-messages" id="forumMessages">
+                <div class="cyber-message">
                     <div class="message-header">
-                        <strong>Admin</strong>
-                        <span>05 Jan 2024</span>
+                        <span class="message-user">SYSTÈME</span>
+                        <span>05 JAN 2024</span>
                     </div>
-                    <p>Bienvenue à tous dans notre nouvel espace membres ! Utilisez ce forum pour échanger sur les projets.</p>
+                    <p>Bienvenue sur le canal de communication principal. Utilisez cette interface pour les échanges techniques.</p>
                 </div>
             </div>
             
-            <div class="forum-input">
-                <input type="text" id="newMessage" placeholder="Votre message...">
-                <button class="send-btn" onclick="sendMessage()">
-                    <i class="fas fa-paper-plane"></i> Envoyer
+            <div class="cyber-input-group">
+                <input type="text" id="newMessage" placeholder="Entrez votre message..." class="cyber-input">
+                <button class="cyber-send" onclick="sendMessage()">
+                    <i class="fas fa-paper-plane"></i> TRANSMETTRE
                 </button>
             </div>
         </section>
 
         <!-- Section Admin Candidats -->
-        <section class="admin-candidates-section" id="adminCandidatesSection">
-            <div class="admin-security">
-                <h3>🔒 Dossiers Candidats - Accès Admin</h3>
-                <p>Espace réservé à l'administration</p>
+        <section class="cyber-admin" id="adminCandidatesSection">
+            <div class="cyber-security">
+                <h3>🔒 MODULE ADMINISTRATION</h3>
+                <p style="color: var(--text-secondary);">Accès sécurisé aux dossiers candidats</p>
                 
-                <form class="security-form" id="securityForm">
+                <form class="cyber-form" id="securityForm">
                     <div class="form-group">
-                        <label for="adminCode">Code d'Accès</label>
-                        <input type="password" id="adminCode" required placeholder="Entrez le code d'accès">
+                        <label for="adminCode">CODE D'ACCÈS</label>
+                        <input type="password" id="adminCode" required placeholder="●●●●●●●●●●●●">
                     </div>
                     
                     <div class="form-group">
-                        <label for="adminMatricule">Matricule</label>
-                        <input type="text" id="adminMatricule" required placeholder="Entrez votre matricule">
+                        <label for="adminMatricule">IDENTIFIANT ADMIN</label>
+                        <input type="text" id="adminMatricule" required placeholder="Entrez votre identifiant">
                     </div>
                     
-                    <button type="submit" class="verify-btn">
-                        <i class="fas fa-lock"></i> Vérifier l'Identité
+                    <button type="submit" class="cyber-verify">
+                        <i class="fas fa-lock"></i> VÉRIFIER IDENTITÉ
                     </button>
                     
-                    <div class="error-message" id="securityError">
-                        Code d'accès ou matricule incorrect
+                    <div class="cyber-error" id="securityError">
+                        <i class="fas fa-exclamation-triangle"></i> Code d'accès ou identifiant incorrect
                     </div>
                 </form>
             </div>
 
             <div class="candidates-content" id="candidatesContent" style="display: none;">
-                <h3>📁 Dossiers des Candidats</h3>
+                <h3 style="text-align: center; color: var(--cyber-blue); margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1px;">📁 DOSSIERS CANDIDATS</h3>
                 
-                <div class="candidates-stats">
-                    <div class="stat-card">
+                <div class="cyber-stats">
+                    <div class="cyber-stat">
                         <div class="stat-number" id="totalCandidates">0</div>
-                        <div>Total</div>
+                        <div>TOTAL</div>
                     </div>
-                    <div class="stat-card">
+                    <div class="cyber-stat">
                         <div class="stat-number" id="pendingCandidates">0</div>
-                        <div>En Attente</div>
+                        <div>EN ATTENTE</div>
                     </div>
-                    <div class="stat-card">
+                    <div class="cyber-stat">
                         <div class="stat-number" id="acceptedCandidates">0</div>
-                        <div>Acceptés</div>
+                        <div>ACCEPTÉS</div>
                     </div>
-                    <div class="stat-card">
+                    <div class="cyber-stat">
                         <div class="stat-number" id="rejectedCandidates">0</div>
-                        <div>Refusés</div>
+                        <div>REFUSÉS</div>
                     </div>
                 </div>
 
@@ -424,13 +723,26 @@
     </main>
 
     <script>
+        // Créer des particules
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (4 + Math.random() * 6) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
         // Vérifier la connexion
         if (localStorage.getItem('memberLoggedIn') !== 'true') {
             window.location.href = 'espace-membres.html';
         }
 
         // Afficher l'email de l'utilisateur
-        document.getElementById('userEmail').textContent = localStorage.getItem('memberEmail') || 'Membre';
+        document.getElementById('userEmail').textContent = localStorage.getItem('memberEmail') || 'UTILISATEUR';
 
         // Gestion du forum
         function sendMessage() {
@@ -440,14 +752,14 @@
             if (message) {
                 const forumMessages = document.getElementById('forumMessages');
                 const messageDiv = document.createElement('div');
-                messageDiv.className = 'message';
+                messageDiv.className = 'cyber-message';
                 
                 const now = new Date();
                 const dateStr = now.toLocaleDateString('fr-FR');
                 
                 messageDiv.innerHTML = `
                     <div class="message-header">
-                        <strong>${localStorage.getItem('memberEmail')}</strong>
+                        <span class="message-user">${localStorage.getItem('memberEmail')}</span>
                         <span>${dateStr}</span>
                     </div>
                     <p>${message}</p>
@@ -478,10 +790,10 @@
             
             messages.forEach(msg => {
                 const messageDiv = document.createElement('div');
-                messageDiv.className = 'message';
+                messageDiv.className = 'cyber-message';
                 messageDiv.innerHTML = `
                     <div class="message-header">
-                        <strong>${msg.email}</strong>
+                        <span class="message-user">${msg.email}</span>
                         <span>${msg.date}</span>
                     </div>
                     <p>${msg.message}</p>
@@ -492,11 +804,11 @@
             forumMessages.scrollTop = forumMessages.scrollHeight;
         }
 
-        // CORRECTION : Fonction de déconnexion qui redirige vers l'accueil
+        // Fonction de déconnexion
         function logout() {
             localStorage.removeItem('memberLoggedIn');
             localStorage.removeItem('memberEmail');
-            window.location.href = 'index.html'; // Redirection vers la page d'accueil
+            window.location.href = 'index.html';
         }
 
         // Charger les messages au démarrage
@@ -523,7 +835,7 @@
             
             if (code === ADMIN_CODE && matricule === ADMIN_MATRICULE) {
                 document.getElementById('candidatesContent').style.display = 'block';
-                document.querySelector('.admin-security').style.display = 'none';
+                document.querySelector('.cyber-security').style.display = 'none';
                 loadCandidates();
             } else {
                 errorDiv.style.display = 'block';
@@ -537,7 +849,7 @@
             updateStats(candidates);
             
             if (candidates.length === 0) {
-                candidatesList.innerHTML = '<p style="text-align: center; padding: 2rem; color: #666;">Aucune candidature pour le moment</p>';
+                candidatesList.innerHTML = '<div style="text-align: center; padding: 3rem; color: var(--text-secondary);">AUCUNE CANDIDATURE ENREGISTRÉE</div>';
                 return;
             }
             
@@ -547,23 +859,27 @@
                 const status = candidate.status || 'En attente';
                 
                 html += `
-                    <div class="candidate-item">
+                    <div class="cyber-candidate">
                         <div class="candidate-header">
-                            <div>
+                            <div class="candidate-info">
                                 <h4>${candidate.civilite} ${candidate.prenom} ${candidate.nom}</h4>
-                                <div>📧 ${candidate.email} | 📞 ${candidate.telephone}</div>
-                                <div>📅 ${date} <span class="current-status status-${getStatusClass(status)}">${status}</span></div>
+                                <div class="candidate-meta">
+                                    📧 ${candidate.email} | 📞 ${candidate.telephone}
+                                </div>
+                                <div class="candidate-meta">
+                                    📅 ${date} <span class="current-status status-${getStatusClass(status)}">${status.toUpperCase()}</span>
+                                </div>
                             </div>
-                            <div class="candidate-actions">
-                                <button class="status-btn btn-reject" onclick="updateCandidateStatus(${index}, 'Refusé')">Refuser</button>
-                                <button class="status-btn btn-accept" onclick="updateCandidateStatus(${index}, 'Accepté')">Accepter</button>
-                                <button class="status-btn btn-pending" onclick="updateCandidateStatus(${index}, 'En attente')">En attente</button>
+                            <div class="cyber-actions">
+                                <button class="status-btn btn-reject" onclick="updateCandidateStatus(${index}, 'Refusé')">REFUSER</button>
+                                <button class="status-btn btn-accept" onclick="updateCandidateStatus(${index}, 'Accepté')">ACCEPTER</button>
+                                <button class="status-btn btn-pending" onclick="updateCandidateStatus(${index}, 'En attente')">ATTENTE</button>
                             </div>
                         </div>
-                        <div>
-                            <strong>Profession:</strong> ${candidate.profession}<br>
-                            <strong>Domaines:</strong> ${getCandidateInterests(candidate)}<br>
-                            <strong>Motivation:</strong> ${candidate.motivation}
+                        <div style="color: var(--text-secondary); line-height: 1.6;">
+                            <strong style="color: var(--cyber-blue);">PROFESSION:</strong> ${candidate.profession}<br>
+                            <strong style="color: var(--cyber-blue);">DOMAINES:</strong> ${getCandidateInterests(candidate)}<br>
+                            <strong style="color: var(--cyber-blue);">MOTIVATION:</strong> ${candidate.motivation}
                         </div>
                     </div>
                 `;
@@ -605,6 +921,9 @@
             if (candidate.interet_mecanique) interests.push('Mécanique');
             return interests.join(', ') || 'Aucun domaine spécifié';
         }
+
+        // Initialiser les particules
+        createParticles();
     </script>
 </body>
 </html>
