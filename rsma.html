@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet R.S.M.A - AFRICA.TECH21</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #2c5530;
+            --secondary: #d4af37;
+            --dark: #1a2f3b;
+            --light: #f8f9fa;
+            --ocean: #1e3a5f;
+            --water: #4a90e2;
+        }
+
+        body {
+            background: var(--light);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .member-header {
+            background: linear-gradient(135deg, var(--ocean), var(--water));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .back-btn {
+            background: var(--secondary);
+            color: var(--dark);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .project-detail {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-hero {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .project-hero h1 {
+            color: var(--ocean);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-hero .subtitle {
+            color: var(--water);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .project-image {
+            max-width: 600px;
+            margin: 2rem auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-info, .project-tech {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .project-info h2, .project-tech h2 {
+            color: var(--ocean);
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 0.5rem;
+        }
+
+        .component-list {
+            list-style: none;
+        }
+
+        .component-list li {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .component-list li:last-child {
+            border-bottom: none;
+        }
+
+        .component-name {
+            font-weight: 600;
+            color: var(--dark);
+            min-width: 200px;
+        }
+
+        .component-role {
+            color: #666;
+            font-size: 0.9rem;
+            flex: 1;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--water);
+        }
+
+        .circuit-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .circuit-image {
+            max-width: 500px;
+            margin: 1rem auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .circuit-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        .note-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <header class="member-header">
+        <nav class="member-nav">
+            <div class="logo">
+                <h1>AFRICA.<span>TECH21</span> | Projet R.S.M.A</h1>
+            </div>
+            <a href="membre-dashboard.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Retour
+            </a>
+        </nav>
+    </header>
+
+    <main class="project-detail">
+        <section class="project-hero">
+            <h1>Robot Sous-marin Autonome</h1>
+            <div class="subtitle">R.S.M.A - Innovation Technologique pour l'Exploration Maritime</div>
+            <p>Projet révolutionnaire de robot sous-marin autonome pour l'exploration et la recherche marine</p>
+            
+            <div class="project-image">
+                <img src="https://images.unsplash.com/photo-1581093458791-8a6b22bbf7aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Robot Sous-marin Autonome">
+            </div>
+        </section>
+
+        <div class="project-content">
+            <div class="project-info">
+                <h2>Description du Projet</h2>
+                <p><strong>Objectif :</strong> Développer un robot sous-marin autonome capable d'explorer les fonds marins, de capturer des images et vidéos, et de contribuer au développement de la technologie maritime en Afrique.</p>
+                
+                <p><strong>Fonctionnalités Principales :</strong></p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <strong>📸 Capture Multimedia</strong>
+                        <p>Photos et vidéos en pleine plongée des espèces marines et œuvres sous-marines</p>
+                    </div>
+                    <div class="feature-card">
+                        <strong>🗺️ Cartographie</strong>
+                        <p>Fonctions de cartographie des fonds marins avec les modèles futurs</p>
+                    </div>
+                    <div class="feature-card">
+                        <strong>🤖 Autonomie</strong>
+                        <p>Navigation autonome avec parcours programmables</p>
+                    </div>
+                    <div class="feature-card">
+                        <strong>📡 Communication</strong>
+                        <p>Transmission WiFi en temps réel des données collectées</p>
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <strong>💡 Innovation :</strong> Ce projet pionnier va promouvoir le développement de la technologie maritime et des appareils maritimes en Afrique.
+                </div>
+            </div>
+
+            <div class="project-tech">
+                <h2>Composants Techniques</h2>
+                <ul class="component-list">
+                    <li>
+                        <div class="component-name">Arduino Uno/Mega</div>
+                        <div class="component-role">Cerveau du robot, contrôle capteurs et moteurs</div>
+                    </li>
+                    <li>
+                        <div class="component-name">ESP32</div>
+                        <div class="component-role">Communication WiFi et traitement données avec possibilité d'intégrer l'IA</div>
+                    </li>
+                    <li>
+                        <div class="component-name">3 à 6 Moteurs Thrusters</div>
+                        <div class="component-role">Pour avancer, plonger, tourner. Contrôles via ESC ou pont en H</div>
+                    </li>
+                    <li>
+                        <div class="component-name">IMU (MPU6050)</div>
+                        <div class="component-role">Capteur pour la stabilisation et l'inclinaison</div>
+                    </li>
+                    <li>
+                        <div class="component-name">Capteur Barométrique</div>
+                        <div class="component-role">Capteur de pression étanche pour mesurer la profondeur</div>
+                    </li>
+                    <li>
+                        <div class="component-name">Capteur de Température</div>
+                        <div class="component-role">Régulation et surveillance en temps réel de la température</div>
+                    </li>
+                    <li>
+                        <div class="component-name">Caméra ESP32-CAM</div>
+                        <div class="component-role">Pour les photos et vidéos (composant provisoire)</div>
+                    </li>
+                    <li>
+                        <div class="component-name">Batterie Li-ion 11,1V</div>
+                        <div class="component-role">Alimentation étanche 2200mAh pour l'autonomie</div>
+                    </li>
+                    <li>
+                        <div class="component-name">Structure PVC/Boîtier</div>
+                        <div class="component-role">Corps étanche du robot pour la protection</div>
+                    </li>
+                    <li>
+                        <div class="component-name">Détecteur d'Incendie</div>
+                        <div class="component-role">Sécurité du système électronique</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <section class="circuit-section">
+            <h2>Représentation du Circuit</h2>
+            <div class="circuit-image">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Circuit Électronique Sous-marin">
+            </div>
+            <div class="note-box">
+                <strong>⚠️ Important :</strong> Le circuit doit être isolé avec de la résine ou une autre solution étanche pour assurer la protection dans l'environnement marin.
+            </div>
+        </section>
+
+        <section class="circuit-section">
+            <h2>Représentation 3D du Robot</h2>
+            <div class="circuit-image">
+                <img src="https://images.unsplash.com/photo-1581093458791-8a6b22bbf7aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Design 3D Robot Sous-marin">
+            </div>
+            <p>La structure mécanique intègre les hélices et assure la liaison entre tous les composants pour une navigation optimale.</p>
+        </section>
+    </main>
+
+    <script>
+        // Vérifier la connexion
+        if (localStorage.getItem('memberLoggedIn') !== 'true') {
+            window.location.href = 'espace-membres.html';
+        }
+    </script>
+</body>
+</html>
