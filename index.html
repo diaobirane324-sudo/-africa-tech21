@@ -3,1516 +3,636 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AFRICA.TECH21 - Innovation Technologique Africaine</title>
-    <!-- Balises SEO Optimisées pour AFRICA.TECH21 -->
-<meta name="description" content="AFRICA.TECH21 -Startup sénégalaise en robotique et innovation technologique. Développement de robots innovants, intelligence artificielle et solutions technologiques pour l'Afrique.">
-<meta name="keywords" content="AFRICA.TECH21, robotique Sénégal, technologie africaine, robots intelligents, intelligence artificielle Afrique, innovation technologique Sénégal, électronique Dakar, informatique robotique">
-<meta name="author" content="AFRICA.TECH21">
-<meta name="robots" content="index, follow">
-
-<!-- Balises Open Graph pour les réseaux sociaux -->
-<meta property="og:title" content="AFRICA.TECH21 - Innovation Technologique Africaine">
-<meta property="og:description" content="Startup leader en robotique et technologie au Sénégal. Développeurs de robots innovants pour l'Afrique.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://diaobirane324-sudo.github.io/africa-tech21">
-<meta property="og:image" content="https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80">
-
-<!-- Balises Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AFRICA.TECH21 - Innovation Technologique Africaine">
-<meta name="twitter:description" content="Leader en robotique et technologie au Sénégal. Robots innovants pour l'Afrique.">
-
-<!-- Balises Géolocalisation -->
-<meta name="geo.region" content="SN-DK">
-<meta name="geo.placename" content="Dakar">
-<meta name="geo.position" content="14.716677;-17.467686">
-<meta name="ICBM" content="14.716677, -17.467686">
+    <title>CONNEXION - AFRICA.TECH21</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Style Bouton Postuler */
-.postuler-btn {
-    background: linear-gradient(135deg, #d4af37, #f1c40f);
-    color: #1a2f3b;
-    border: none;
-    padding: 18px 40px;
-    font-size: 1.3rem;
-    font-weight: 700;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.postuler-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
-    background: linear-gradient(135deg, #f1c40f, #d4af37);
-}
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
         }
 
         :root {
-            --primary: #2c5530;
-            --secondary: #d4af37;
-            --dark: #1a2f3b;
-            --light: #f8f9fa;
-            --gray: #6c757d;
+            --neon-blue: #00f3ff;
+            --neon-purple: #b300ff;
+            --neon-pink: #ff00c8;
+            --neon-green: #00ff88;
+            --cyber-yellow: #ffd300;
+            --dark-space: #0a0a1f;
+            --deep-space: #050510;
+            --matrix-green: #00ff41;
         }
 
         body {
-            background-color: var(--light);
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* Header & Navigation */
-        header {
-            background: linear-gradient(135deg, var(--dark), var(--primary));
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(179, 0, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 243, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 0, 200, 0.2) 0%, transparent 50%),
+                linear-gradient(135deg, var(--deep-space), var(--dark-space));
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        .logo span {
-            color: var(--secondary);
-        }
-       
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-menu li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
+            justify-content: center;
+            font-family: 'Exo 2', sans-serif;
+            overflow: hidden;
             position: relative;
         }
 
-        .nav-menu li a:hover {
-            color: var(--secondary);
+        /* EFFETS DE MATRICE EN ARRIÈRE-PLAN */
+        .matrix-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, transparent 95%, rgba(0, 255, 65, 0.03) 100%),
+                linear-gradient(transparent 95%, rgba(0, 255, 65, 0.03) 100%);
+            background-size: 50px 50px;
+            animation: matrixMove 20s infinite linear;
+            z-index: -3;
         }
 
-        .nav-menu li a::after {
+        @keyframes matrixMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50px); }
+        }
+
+        /* PARTICULES FLOTTANTES */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* CONTAINER PRINCIPAL CYBERPUNK */
+        .cyber-container {
+            background: 
+                radial-gradient(circle at center, rgba(10, 10, 31, 0.9) 0%, rgba(5, 5, 16, 0.95) 100%);
+            border: 2px solid;
+            border-image: linear-gradient(45deg, var(--neon-blue), var(--neon-purple), var(--neon-pink)) 1;
+            padding: 60px 50px;
+            width: 95%;
+            max-width: 600px;
+            position: relative;
+            backdrop-filter: blur(15px);
+            box-shadow: 
+                0 0 50px rgba(0, 243, 255, 0.3),
+                0 0 100px rgba(179, 0, 255, 0.2),
+                inset 0 0 50px rgba(0, 243, 255, 0.1);
+            animation: containerGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes containerGlow {
+            0% { box-shadow: 0 0 50px rgba(0, 243, 255, 0.3), 0 0 100px rgba(179, 0, 255, 0.2); }
+            100% { box-shadow: 0 0 60px rgba(0, 243, 255, 0.4), 0 0 120px rgba(179, 0, 255, 0.3); }
+        }
+
+        /* BORDURES CYBERPUNK ANIMÉES */
+        .cyber-border {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--neon-blue);
+            animation: borderPulse 2s infinite;
+        }
+
+        .border-tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+        .border-tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+        .border-bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+        .border-br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+        @keyframes borderPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* LOGO CYBERPUNK ÉPIQUE */
+        .cyber-logo {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .cyber-logo h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple), var(--neon-pink), var(--neon-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 
+                0 0 30px rgba(0, 243, 255, 0.7),
+                0 0 60px rgba(179, 0, 255, 0.5),
+                0 0 90px rgba(255, 0, 200, 0.3);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: textShine 3s ease-in-out infinite alternate;
+            margin-bottom: 15px;
+        }
+
+        @keyframes textShine {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .cyber-logo p {
+            color: var(--neon-blue);
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        /* TITRE BIENVENUE */
+        .welcome-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .welcome-title h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            color: var(--neon-green);
+            text-shadow: 0 0 20px var(--neon-green);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .welcome-title p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        /* FORMULAIRE CYBERPUNK */
+        .cyber-form {
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--neon-blue);
+            font-family: 'Orbitron', monospace;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .input-field {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid transparent;
+            border-image: linear-gradient(45deg, var(--neon-blue), var(--neon-purple)) 1;
+            padding: 18px 20px 18px 50px;
+            color: white;
+            font-size: 1.1rem;
+            font-family: 'Exo 2', sans-serif;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .input-field:focus {
+            outline: none;
+            box-shadow: 
+                0 0 20px rgba(0, 243, 255, 0.5),
+                inset 0 0 10px rgba(0, 243, 255, 0.1);
+            border-image: linear-gradient(45deg, var(--neon-green), var(--neon-pink)) 1;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--neon-blue);
+            font-size: 1.2rem;
+            z-index: 2;
+        }
+
+        /* BOUTON CYBERPUNK ÉPIQUE */
+        .cyber-btn {
+            width: 100%;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            border: none;
+            padding: 20px;
+            color: white;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 0 20px rgba(0, 243, 255, 0.5),
+                0 0 40px rgba(179, 0, 255, 0.3);
+            margin-bottom: 25px;
+        }
+
+        .cyber-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .cyber-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 0 30px rgba(0, 243, 255, 0.7),
+                0 0 60px rgba(179, 0, 255, 0.5);
+        }
+
+        .cyber-btn:hover::before {
+            left: 100%;
+        }
+
+        /* BOUTON GOOGLE CYBER */
+        .google-cyber {
+            width: 100%;
+            background: transparent;
+            border: 2px solid;
+            border-image: linear-gradient(45deg, var(--cyber-yellow), var(--neon-green)) 1;
+            padding: 18px;
+            color: var(--cyber-yellow);
+            font-family: 'Orbitron', monospace;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+            margin-bottom: 25px;
+        }
+
+        .google-cyber:hover {
+            background: rgba(255, 211, 0, 0.1);
+            box-shadow: 0 0 20px rgba(255, 211, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* SÉPARATEUR FUTURISTE */
+        .cyber-divider {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+            color: var(--neon-blue);
+            font-family: 'Orbitron', monospace;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .cyber-divider::before,
+        .cyber-divider::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+        }
+
+        .cyber-divider span {
+            padding: 0 20px;
+            font-size: 0.9rem;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        /* LIENS CYBERPUNK */
+        .cyber-links {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .cyber-link {
+            color: var(--neon-pink);
+            text-decoration: none;
+            font-family: 'Orbitron', monospace;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        .cyber-link::after {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--secondary);
-            transition: width 0.3s;
+            background: var(--neon-pink);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px var(--neon-pink);
         }
 
-        .nav-menu li a:hover::after {
+        .cyber-link:hover {
+            color: var(--neon-green);
+            text-shadow: 0 0 15px var(--neon-green);
+        }
+
+        .cyber-link:hover::after {
             width: 100%;
         }
 
-        .dropdown {
-            position: relative;
+        /* RETOUR ACCUEIL */
+        .cyber-home {
+            text-align: center;
         }
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background: white;
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            border-radius: 5px;
-            z-index: 1;
-            top: 100%;
-            left: 0;
-        }
-
-        .dropdown-content a {
-            color: var(--dark);
-            padding: 12px 16px;
-            display: block;
-            transition: background 0.3s;
-        }
-
-        .dropdown-content a:hover {
-            background: #f1f1f1;
-            color: var(--primary);
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .auth-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 0.6rem 1.5rem;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
+        .home-link {
+            color: var(--neon-blue);
             text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-outline {
-            border: 2px solid var(--secondary);
-            color: var(--secondary);
-            background: transparent;
-        }
-
-        .btn-primary {
-            background: var(--secondary);
-            color: var(--dark);
-            border: 2px solid var(--secondary);
-        }
-
-        .btn-outline:hover {
-            background: var(--secondary);
-            color: var(--dark);
-        }
-
-        .btn-primary:hover {
-            background: transparent;
-            color: var(--secondary);
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(26, 47, 59, 0.8), rgba(26, 47, 59, 0.9)), url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 180px 0 100px;
-            text-align: center;
-        }
-
-        .hero h2 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            opacity: 0.9;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        /* Sections */
-        section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--secondary);
-        }
-
-        .section-title p {
-            color: var(--gray);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Features */
-        .features {
-            background: white;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: 10px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        /* Projects */
-        .projects-filter {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 0.5rem 1.5rem;
-            background: white;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .project-image {
-            height: 200px;
-            background: var(--dark);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.1);
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-category {
-            display: inline-block;
-            background: var(--secondary);
-            color: var(--dark);
-            padding: 0.3rem 0.8rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .project-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-
-        .project-content p {
-            color: var(--gray);
-            margin-bottom: 1rem;
-        }
-
-        .project-status {
-            display: flex;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
+            gap: 12px;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 10px var(--neon-blue);
         }
 
-        .progress-bar {
-            flex-grow: 1;
-            height: 8px;
-            background: #e9ecef;
-            border-radius: 4px;
-            overflow: hidden;
+        .home-link:hover {
+            color: var(--neon-green);
+            text-shadow: 0 0 15px var(--neon-green);
+            transform: translateX(-5px);
         }
 
-        .progress {
-            height: 100%;
-            background: var(--primary);
-            border-radius: 4px;
-        }
-
-        .project-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-
-        /* Registration Form */
-        .registration {
-            background: linear-gradient(135deg, var(--dark), var(--primary));
-            color: white;
-        }
-
-        .registration .section-title h2 {
-            color: white;
-        }
-
-        .registration .section-title p {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .form-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        }
-
-        .form-header {
-            background: linear-gradient(135deg, var(--primary), var(--dark));
-            padding: 30px;
-            text-align: center;
-        }
-
-        .form-header h3 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .form-body {
-            padding: 40px;
-            color: #333;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-
-        .form-column {
-            flex: 1;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e1e5e9;
-            border-radius: 10px;
-            font-size: 16px;
-            transition: all 0.3s;
-            background: #f8f9fa;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: white;
-            box-shadow: 0 0 0 3px rgba(44, 85, 48, 0.1);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .checkbox-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .checkbox-item input {
-            width: auto;
-        }
-
-        .file-upload {
-            border: 2px dashed var(--primary);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            background: #f8f9fa;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .file-upload:hover {
-            background: #e8f5e8;
-        }
-
-        .file-upload input {
-            display: none;
-        }
-
-        .file-upload-label {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .submit-btn {
-            width: 100%;
+        /* MESSAGE D'ERREUR CYBER */
+        .cyber-error {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid;
+            border-image: linear-gradient(45deg, #ff0000, #ff6b6b) 1;
+            color: #ff6b6b;
             padding: 15px;
-            background: linear-gradient(135deg, var(--primary), var(--dark));
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
+            margin-top: 20px;
+            display: none;
+            font-family: 'Orbitron', monospace;
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-shadow: 0 0 10px #ff0000;
         }
 
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(44, 85, 48, 0.3);
-        }
-
-        .privacy {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-        }
-
-        .privacy a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .required {
-            color: #e74c3c;
-        }
-
-        /* Help Section */
-        .help {
-            background: white;
-        }
-
-        .help-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .help-card {
-            background: white;
-            border-radius: 10px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-        }
-
-        .help-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .help-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .help-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        /* Chat System */
-        .chat-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-
-        .chat-button {
-            width: 60px;
-            height: 60px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s;
-        }
-
-        .chat-button:hover {
-            background: var(--dark);
-            transform: scale(1.1);
-        }
-
-        .chat-window {
+        /* SCAN LINES EFFECT */
+        .scan-lines {
             position: absolute;
-            bottom: 70px;
-            right: 0;
-            width: 350px;
-            height: 450px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .chat-header {
-            background: var(--primary);
-            color: white;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .chat-header h3 {
-            margin: 0;
-            font-size: 1.2rem;
-        }
-
-        .close-chat {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-
-        .chat-messages {
-            flex-grow: 1;
-            padding: 15px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .message {
-            padding: 10px 15px;
-            border-radius: 18px;
-            max-width: 80%;
-            word-wrap: break-word;
-        }
-
-        .bot-message {
-            background: #f1f1f1;
-            align-self: flex-start;
-            border-bottom-left-radius: 5px;
-        }
-
-        .user-message {
-            background: var(--primary);
-            color: white;
-            align-self: flex-end;
-            border-bottom-right-radius: 5px;
-        }
-
-        .chat-input {
-            display: flex;
-            padding: 15px;
-            border-top: 1px solid #e9ecef;
-        }
-
-        .chat-input input {
-            flex-grow: 1;
-            padding: 10px 15px;
-            border: 1px solid #e9ecef;
-            border-radius: 30px;
-            outline: none;
-        }
-
-        .send-button {
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            margin-left: 10px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 60px 0 20px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
+            top: 0;
             left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--secondary);
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent 50%,
+                rgba(0, 255, 65, 0.03) 51%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 1;
+            animation: scanMove 2s linear infinite;
         }
 
-        .footer-links {
-            list-style: none;
+        @keyframes scanMove {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
         }
 
-        .footer-links li {
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--secondary);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .social-links a:hover {
-            background: var(--secondary);
-            color: var(--dark);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--dark);
-                flex-direction: column;
-                padding: 1rem 0;
-                text-align: center;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-menu.active {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .auth-buttons {
-                display: none;
-            }
-
-            .hero h2 {
-                font-size: 2.5rem;
-            }
-
-            .form-row {
-                flex-direction: column;
-                gap: 0;
-            }
-        }
-
+        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
-            .hero h2 {
+            .cyber-container {
+                padding: 40px 30px;
+                width: 90%;
+            }
+            
+            .cyber-logo h1 {
+                font-size: 3rem;
+            }
+            
+            .welcome-title h2 {
                 font-size: 2rem;
             }
-
-            .hero-buttons {
+            
+            .cyber-links {
                 flex-direction: column;
+                gap: 15px;
                 align-items: center;
             }
+        }
 
-            .section-title h2 {
-                font-size: 2rem;
+        @media (max-width: 480px) {
+            .cyber-container {
+                padding: 30px 20px;
             }
-
-            .chat-window {
-                width: 300px;
-                height: 400px;
+            
+            .cyber-logo h1 {
+                font-size: 2.5rem;
+            }
+            
+            .welcome-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .input-field {
+                padding: 15px 15px 15px 45px;
             }
         }
-        .scan-btn {
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
-}
-
-.scan-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
-}
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container nav-container">
-            <div class="logo">
-                <h1>AFRICA.<span>TECH21</span></h1>
-            </div>
-            
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-            
-            <ul class="nav-menu">
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#apropos">À Propos</a></li>
-                <li class="dropdown">
-                    <a href="#domaines">Nos Domaines <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="#robotique">Robotique</a>
-                        <a href="#informatique">Informatique</a>
-                        <a href="#electronique">Électronique</a>
-                        <a href="#mecanique">Mécanique</a>
-                    </div>
-                </li>
-                <li><a href="#realisations">Nos Réalisations</a></li>
-                <li><a href="#projets">Projets en Cours</a></li>
-                <li><a href="#aide">Besoin d'Aide ?</a></li>
-                <li><a href="espace-membres.html">Espace Membres</a></li>
-            </ul>
-            <div class="auth-buttons" id="authButtons">
-    <!-- État déconnecté -->
-    <div id="loggedOut">
-        <a href="login.html" class="btn btn-outline">Connexion</a>
-        <a href="signup.html" class="btn btn-primary">S'inscrire</a>
-    </div>
+    <!-- EFFET MATRICE -->
+    <div class="matrix-bg"></div>
     
-    <!-- État connecté -->
-    <div id="loggedIn" style="display: none;">
-        <a href="profile.html" class="btn btn-outline">Mon Profil</a>
-        <a href="auth-dashboard.html" class="btn btn-primary">Espace Membres</a>
-        <button onclick="logout()" class="btn btn-outline">Déconnexion</button>
-    </div>
-</div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="accueil">
-        <div class="container">
-            <h2>L'innovation technologique au service du développement africain</h2>
-            <p>AFRICA.TECH21 est une startup technologique sénégalaise spécialisée dans la robotique, l'informatique, l'électronique et la mécanique. Nous concevons des robots innovants pour simplifier la vie quotidienne.</p>
-            <div class="hero-buttons">
-                <a href="#projets" class="btn btn-primary">Découvrir nos Projets</a>
-                <a href="#inscription" class="btn btn-outline">Rejoindre l'Aventure</a>
-            </div>
-       
-</div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="apropos">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nos Domaines d'Expertise</h2>
-                <p>Nous maîtrisons l'ensemble des disciplines nécessaires à la conception de robots innovants</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>Robotique</h3>
-                    <p>Conception et développement de robots assistants pour les tâches quotidiennes, l'industrie et l'agriculture.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Informatique</h3>
-                    <p>Développement de logiciels, applications mobiles, intelligence artificielle et systèmes embarqués.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-microchip"></i>
-                    </div>
-                    <h3>Électronique</h3>
-                    <p>Conception de circuits imprimés, systèmes de contrôle et interfaces électroniques pour nos robots.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3>Mécanique</h3>
-                    <p>Ingénierie mécanique, modélisation 3D, prototypage et fabrication de pièces robotiques.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects" id="projets">
-    <div class="container">
-        <div class="section-title">
-            <h2>Nos Projets Innovants</h2>
-            <p>Des solutions technologiques au service de l'accessibilité et du développement africain</p>
+    <!-- PARTICULES ANIMÉES -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- SCAN LINES -->
+    <div class="scan-lines"></div>
+    
+    <!-- CONTAINER PRINCIPAL -->
+    <div class="cyber-container">
+        <!-- BORDURES CYBERPUNK -->
+        <div class="cyber-border border-tl"></div>
+        <div class="cyber-border border-tr"></div>
+        <div class="cyber-border border-bl"></div>
+        <div class="cyber-border border-br"></div>
+        
+        <!-- LOGO ÉPIQUE -->
+        <div class="cyber-logo">
+            <h1>AFRICA.TECH21</h1>
+            <p>ACCÈS SYSTÈME AUTHORISÉ</p>
         </div>
         
-        <div class="projects-grid">
-            <!-- PROJET BINV_V360 -->
-            <div class="project-card" data-category="robotique">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1555255694-9d6ab4c97b8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Bâton Intelligent pour Non-Voyants">
-                </div>
-                <div class="project-content">
-                    <span class="project-category">Robotique & IA</span>
-                    <h3>Bâton Intelligent BINV_V360</h3>
-                    <p>Solution innovante d'assistance aux personnes non-voyantes utilisant l'IA pour la détection d'obstacles et alertes vocales multilingues.</p>
-                    <div class="project-status">
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 30%"></div>
-                        </div>
-                        <span>30%</span>
-                    </div>
-                    <div class="project-meta">
-                        <span><i class="far fa-calendar"></i> Début: Jan 2024</span>
-                        <span><i class="fas fa-lock"></i> Accès Membres</span>
-                    </div>
-                </div>
-            </div>
+        <!-- SECTION BIENVENUE -->
+        <div class="welcome-title">
+            <h2>BIENVENUE, OPERATEUR</h2>
+            <p>IDENTIFIEZ-VOUS POUR ACCÉDER AU RÉSEAU</p>
         </div>
-    </div>
-</section>
-                <div class="project-card" data-category="robotique">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Robot Assistant">
-                    </div>
-                    <div class="project-content">
-                        <span class="project-category">Robotique</span>
-                        <h3>Robot Assistant Acceuil</h3>
-                        <p>Un robot polyvalent pour rendre service les gens dans les acceuils comme les hôpitaux, universités etc.</p>
-                        <div class="project-status">
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 75%"></div>
-                            </div>
-                            <span>75%</span>
-                        </div>
-                        <div class="project-meta">
-                            <span><i class="far fa-calendar"></i> Début: Jan 2023</span>
-                            <span><i class="far fa-clock"></i> Fin: Oct 2023</span>
-                        </div>
-                    </div>
-                </div>
-    <!-- Section Projet R.S.M.A (Version Publique) -->
-<section id="rsma" style="padding: 4rem 2rem; background: linear-gradient(135deg, #1e3a5f, #4a90e2); color: white;">
-    <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
-        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">🤖 PROJET R.S.M.A</h2>
-        <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
-            Robot Sous-marin Autonome - Exploration Maritime Confidentielle
-        </p>
         
-        <div style="max-width: 600px; margin: 0 auto 2rem auto; padding: 2rem; background: rgba(255,255,255,0.1); border-radius: 15px;">
-            <h3 style="color: #d4af37; margin-bottom: 1rem;">🔒 ACCÈS RESTREINT</h3>
-            <p>Ce projet innovant est réservé aux membres officiels d'AFRICA.TECH21</p>
-            <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 1rem;">
-                ⚠️ Les détails techniques et spécifications sont confidentiels
-            </p>
-        </div>
-
-        <a href="espace-membres.html" class="cta-button" style="background: #d4af37; color: #1a2f3b; display: inline-block;">
-            <i class="fas fa-lock"></i> ACCÉDER À L'ESPACE MEMBRES
-        </a>
-    </div>
-</section>
-                
-                <div class="project-card" data-category="informatique">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="IA Agricole">
-                    </div>
-                    <div class="project-content">
-                        <span class="project-category">Informatique</span>
-                        <h3>Système IA pour l'Agriculture</h3>
-                        <p>Intelligence artificielle pour optimiser l'irrigation et détecter les maladies des plantes.</p>
-                        <div class="project-status">
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 60%"></div>
-                            </div>
-                            <span>60%</span>
-                        </div>
-                        <div class="project-meta">
-                            <span><i class="far fa-calendar"></i> Début: Mar 2023</span>
-                            <span><i class="far fa-clock"></i> Fin: Dec 2023</span>
-                        </div>
+        <!-- FORMULAIRE DE CONNEXION -->
+        <div class="cyber-form">
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">IDENTIFIANT DE RÉSEAU</label>
+                    <div class="input-container">
+                        <input type="email" id="email" name="email" required placeholder="OPERATEUR@SYSTEME.AFRICA" class="input-field">
+                        <i class="fas fa-user-astronaut input-icon"></i>
                     </div>
                 </div>
                 
-                <div class="project-card" data-category="electronique">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Capteurs Intelligents">
-                    </div>
-                    <div class="project-content">
-                        <span class="project-category">Électronique</span>
-                        <h3>Réseau de Capteurs Intelligents</h3>
-                        <p>Développement de capteurs low-cost pour la surveillance environnementale.</p>
-                        <div class="project-status">
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 85%"></div>
-                            </div>
-                            <span>85%</span>
-                        </div>
-                        <div class="project-meta">
-                            <span><i class="far fa-calendar"></i> Début: Nov 2022</span>
-                            <span><i class="far fa-clock"></i> Fin: Aug 2023</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Registration Section -->
-    <section class="registration" id="inscription">
-        <div class="container">
-            <div class="section-title">
-                <h2>Rejoindre AFRICA.TECH21</h2>
-                <p>Postulez pour devenir membre de notre communauté technologique et participer à l'innovation africaine</p>
-            </div>
-            
-            <div class="form-container">
-                <div class="form-header">
-                    <h3>Formulaire d'Inscription</h3>
-                    <p>Devenez acteur du développement technologique de l'Afrique</p>
-                </div>
-                
-                <div class="form-body">
-                   <!-- REMPLACÉ : Formulaire avec FormSubmit.co -->
-                   <form id="registrationForm" action="https://formsubmit.co/africa.tech21.net@gmail.com" method="POST">
-                        <!-- Configuration FormSubmit -->
-                        <input type="hidden" name="_subject" value="Nouvelle Candidature AFRICA.TECH21">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="https://diaobirane324-sudo.github.io/africa-tech21/success.html">
-                        
-                        <div class="form-row">
-                            <div class="form-column">
-                                <div class="form-group">
-                                    <label for="civilite">Civilité <span class="required">*</span></label>
-                                    <select id="civilite" name="civilite" required>
-                                        <option value="">Sélectionnez</option>
-                                        <option value="M.">M.</option>
-                                        <option value="Mme">Mme</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-column">
-                                <div class="form-group">
-                                    <label for="nom">Nom <span class="required">*</span></label>
-                                    <input type="text" id="nom" name="nom" required>
-                                </div>
-                            </div>
-                            <div class="form-column">
-                                <div class="form-group">
-                                    <label for="prenom">Prénom <span class="required">*</span></label>
-                                    <input type="text" id="prenom" name="prenom" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-column">
-                                <div class="form-group">
-                                    <label for="adresse">Adresse complète <span class="required">*</span></label>
-                                    <input type="text" id="adresse" name="adresse" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-column">
-                                <div class="form-group">
-                                    <label for="telephone">Numéro de téléphone <span class="required">*</span></label>
-                                    <input type="tel" id="telephone" name="telephone" required>
-                                </div>
-                            </div>
-                            <div class="form-column">
-                                <div class="form-group">
-                                    <label for="email">Adresse e-mail <span class="required">*</span></label>
-                                    <input type="email" id="email" name="email" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="profession">Profession <span class="required">*</span></label>
-                            <select id="profession" name="profession" required>
-                                <option value="">Sélectionnez</option>
-                                <option value="Etudiant">Étudiant</option>
-                                <option value="Eleve">Élève</option>
-                                <option value="Ingenieur">Ingénieur</option>
-                                <option value="Technicien">Technicien</option>
-                                <option value="Entrepreneur">Entrepreneur</option>
-                                <option value="Autre">Autre</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Domaines d'intérêt <span class="required">*</span></label>
-                            <div class="checkbox-group">
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="interet_robotique" name="interet_robotique" value="Robotique">
-                                    <label for="interet_robotique">Robotique</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="interet_informatique" name="interet_informatique" value="Informatique">
-                                    <label for="interet_informatique">Informatique</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="interet_electronique" name="interet_electronique" value="Electronique">
-                                    <label for="interet_electronique">Électronique</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="interet_mecanique" name="interet_mecanique" value="Mecanique">
-                                    <label for="interet_mecanique">Mécanique</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="motivation">Lettre de motivation <span class="required">*</span></label>
-                            <textarea id="motivation" name="motivation" placeholder="Pourquoi souhaitez-vous rejoindre AFRICA.TECH21 ? Quelles sont vos aspirations ?..." required></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label>CV (Optionnel)</label>
-                            <div class="file-upload" id="fileUpload">
-                                <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx">
-                                <div class="file-upload-label">
-                                    📎 Cliquez pour télécharger votre CV (PDF, DOC)
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="privacy" name="privacy" required>
-                                <label for="privacy">J'accepte la <a href="#">politique de confidentialité</a> <span class="required">*</span></label>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="submit-btn">Postuler Maintenant</button>
-
-                        <div class="privacy">
-                            <p>Vos données sont sécurisées et ne seront jamais partagées sans votre consentement.</p>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Help Section -->
-    <section class="help" id="aide">
-        <div class="container">
-            <div class="section-title">
-                <h2>Besoin d'Aide ?</h2>
-                <p>Nous sommes là pour vous accompagner dans tous vos projets technologiques</p>
-            </div>
-            
-            <div class="help-container">
-                <div class="help-card">
-                    <div class="help-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3>Conseil Technique</h3>
-                    <p>Bénéficiez de notre expertise pour vos projets de robotique et d'automatisation.</p>
-                </div>
-                
-                <div class="help-card">
-                    <div class="help-icon">
-                        <i class="fas fa-hands-helping"></i>
-                    </div>
-                    <h3>Support Personnalisé</h3>
-                    <p>Notre équipe vous accompagne de la conception à la réalisation de votre projet.</p>
-                </div>
-                
-                <div class="help-card">
-                    <div class="help-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Formation</h3>
-                    <p>Formez-vous aux technologies émergentes avec nos experts.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>AFRICA.TECH21</h3>
-                    <p>L'innovation technologique au service du développement africain</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                <div class="form-group">
+                    <label class="form-label">CODE D'ACCÈS</label>
+                    <div class="input-container">
+                        <input type="password" id="password" name="password" required placeholder="●●●●●●●●●●●●" class="input-field">
+                        <i class="fas fa-key input-icon"></i>
                     </div>
                 </div>
                 
-                <div class="footer-column">
-                    <h3>Liens Rapides</h3>
-                    <ul class="footer-links">
-                        <li><a href="#accueil">Accueil</a></li>
-                        <li><a href="#apropos">À Propos</a></li>
-                        <li><a href="#projets">Projets</a></li>
-                        <li><a href="#inscription">Rejoindre</a></li>
-                        <li><a href="#aide">Aide</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Nos Contacts</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-phone"></i> +221 70 20 70 702</li>
-                        <li><i class="fas fa-envelope"></i> africa.tech21.net@gmail.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Dakar, Sénégal</li>
-                        <li><i class="fas fa-clock"></i> Lun - Ven: 8h - 18h</li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Nos Domaines</h3>
-                    <ul class="footer-links">
-                        <li><a href="#robotique">Robotique</a></li>
-                        <li><a href="#informatique">Informatique</a></li>
-                        <li><a href="#electronique">Électronique</a></li>
-                        <li><a href="#mecanique">Mécanique</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 AFRICA.TECH21. Tous droits réservés. | Développement technologique pour l'Afrique</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Chat System -->
-    <div class="chat-container">
-        <div class="chat-button" id="chatButton">
-            <i class="fas fa-comments"></i>
-        </div>
-        <div class="chat-window" id="chatWindow">
-            <div class="chat-header">
-                <h3>Chat AFRICA.TECH21</h3>
-                <button class="close-chat" id="closeChat">×</button>
-            </div>
-            <div class="chat-messages" id="chatMessages">
-                <div class="message bot-message">
-                    Bonjour ! Bienvenue chez AFRICA.TECH21. Comment pouvons-nous vous aider ?
-                </div>
-            </div>
-            <div class="chat-input">
-                <input type="text" id="chatInput" placeholder="Tapez votre message...">
-                <button class="send-button" id="sendButton">
-                    <i class="fas fa-paper-plane"></i>
+                <button type="submit" class="cyber-btn">
+                    <i class="fas fa-terminal"></i>
+                    INITIER LA CONNEXION
                 </button>
-            </div>
+
+                <div class="cyber-error" id="errorMessage">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    ERREUR: IDENTIFIANTS INVALIDES
+                </div>
+            </form>
+        </div>
+
+        <!-- SÉPARATEUR -->
+        <div class="cyber-divider">
+            <span>ACCÈS ALTERNATIF</span>
+        </div>
+
+        <!-- BOUTON GOOGLE -->
+        <button class="google-cyber" onclick="loginWithGoogle()">
+            <i class="fab fa-google"></i>
+            CONNEXION RÉSEAU GOOGLE
+        </button>
+
+        <!-- LIENS -->
+        <div class="cyber-links">
+            <a href="forgot-password.html" class="cyber-link">
+                <i class="fas fa-unlock"></i>
+                CODE PERDU ?
+            </a>
+            <a href="signup.html" class="cyber-link">
+                <i class="fas fa-user-plus"></i>
+                NOUVEL OPERATEUR
+            </a>
+        </div>
+
+        <!-- RETOUR ACCUEIL -->
+        <div class="cyber-home">
+            <a href="index.html" class="home-link">
+                <i class="fas fa-satellite-dish"></i>
+                RETOUR POSTE DE COMMANDE
+            </a>
         </div>
     </div>
 
     <script>
-        // Chat System Functionality
-        const chatButton = document.getElementById('chatButton');
-        const chatWindow = document.getElementById('chatWindow');
-        const closeChat = document.getElementById('closeChat');
-        const chatMessages = document.getElementById('chatMessages');
-        const chatInput = document.getElementById('chatInput');
-        const sendButton = document.getElementById('sendButton');
-
-        chatButton.addEventListener('click', () => {
-            chatWindow.style.display = 'flex';
-        });
-
-        closeChat.addEventListener('click', () => {
-            chatWindow.style.display = 'none';
-        });
-
-        function addMessage(text, isUser = false) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
-            messageDiv.textContent = text;
-            chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+        // CRÉATION DES PARTICULES
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
         }
 
-        sendButton.addEventListener('click', () => {
-            const message = chatInput.value.trim();
-            if (message) {
-                addMessage(message, true);
-                chatInput.value = '';
-                
-                // Auto-reply after 1 second
+        // VÉRIFICATION DE CONNEXION
+        if (localStorage.getItem('userLoggedIn') === 'true') {
+            window.location.href = 'auth-dashboard.html';
+        }
+
+        // GESTION DU FORMULAIRE
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Récupérer les utilisateurs enregistrés
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            
+            // Vérifier les identifiants
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                // Connexion réussie
+                localStorage.setItem('userLoggedIn', 'true');
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                window.location.href = 'auth-dashboard.html';
+            } else {
+                errorMessage.style.display = 'block';
                 setTimeout(() => {
-                    addMessage("Merci pour votre message ! Notre équipe vous répondra rapidement.");
-                }, 1000);
+                    errorMessage.style.display = 'none';
+                }, 5000);
             }
         });
 
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendButton.click();
-            }
-        });
-
-        // File Upload Functionality
-        document.getElementById('fileUpload').addEventListener('click', function() {
-            document.getElementById('cv').click();
-        });
-
-        document.getElementById('cv').addEventListener('change', function(e) {
-            const fileName = e.target.files[0] ? e.target.files[0].name : 'Aucun fichier sélectionné';
-            document.querySelector('.file-upload-label').textContent = '📎 ' + fileName;
-        });
-
-        // Form Submission avec FormSubmit.co et localStorage
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            const domaines = document.querySelectorAll('input[name^="interet_"]:checked');
-            if (domaines.length === 0) {
-                e.preventDefault();
-                alert('Veuillez sélectionner au moins un domaine d\'intérêt.');
-                return;
-            }
-            
-            // Sauvegarder aussi dans localStorage (optionnel)
-            saveToLocalStorage();
-            
-            // FormSubmit.co gère l'envoi automatiquement
-            alert('Formulaire envoyé ! Vous recevrez une confirmation par email.');
-        });
-
-        function saveToLocalStorage() {
-            // Récupérer les données du formulaire
-            const formData = {
-                civilite: document.getElementById('civilite').value,
-                nom: document.getElementById('nom').value,
-                prenom: document.getElementById('prenom').value,
-                adresse: document.getElementById('adresse').value,
-                telephone: document.getElementById('telephone').value,
-                email: document.getElementById('email').value,
-                profession: document.getElementById('profession').value,
-                interet_robotique: document.getElementById('interet_robotique').checked,
-                interet_informatique: document.getElementById('interet_informatique').checked,
-                interet_electronique: document.getElementById('interet_electronique').checked,
-                interet_mecanique: document.getElementById('interet_mecanique').checked,
-                motivation: document.getElementById('motivation').value,
-                timestamp: new Date().toISOString()
-            };
-
-            // Récupérer les candidatures existantes
-            const existingCandidates = JSON.parse(localStorage.getItem('africaTechCandidates') || '[]');
-            
-            // Ajouter la nouvelle candidature
-            existingCandidates.push(formData);
-            
-            // Sauvegarder dans localStorage
-            localStorage.setItem('africaTechCandidates', JSON.stringify(existingCandidates));
-            
-            console.log('Candidature sauvegardée dans localStorage');
+        // FONCTION GOOGLE
+        function loginWithGoogle() {
+            alert('SYSTÈME GOOGLE: PROTOCOLE EN DÉVELOPPEMENT\nUTILISEZ L\'ACCÈS STANDARD');
         }
 
-        // Mobile Menu Toggle
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            document.querySelector('.nav-menu').classList.toggle('active');
-        });
-
-        // Project Filtering
-        document.querySelectorAll('.filter-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const filter = this.getAttribute('data-filter');
-                
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                this.classList.add('active');
-                
-                document.querySelectorAll('.project-card').forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
+        // INITIALISATION
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
         });
     </script>
 </body>
