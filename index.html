@@ -3,715 +3,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AFRICA.TECH21 - Révolution Technologique</title>
+    <title>Connexion - AFRICA.TECH21</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
 
         :root {
-            --neon-blue: #00f3ff;
-            --neon-purple: #b300ff;
-            --neon-pink: #ff00c8;
-            --neon-green: #00ff88;
-            --cyber-yellow: #ffd300;
-            --dark-space: #0a0a1f;
-            --deep-space: #050510;
-            --matrix-green: #00ff41;
+            --primary: #2c5530;
+            --secondary: #d4af37;
+            --dark: #1a2f3b;
+            --light: #f8f9fa;
         }
 
         body {
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(179, 0, 255, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(0, 243, 255, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(255, 0, 200, 0.2) 0%, transparent 50%),
-                linear-gradient(135deg, var(--deep-space), var(--dark-space));
+            background: linear-gradient(135deg, var(--dark), var(--primary));
             min-height: 100vh;
-            font-family: 'Exo 2', sans-serif;
-            color: white;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* EFFETS DE MATRICE */
-        .matrix-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(90deg, transparent 95%, rgba(0, 255, 65, 0.03) 100%),
-                linear-gradient(transparent 95%, rgba(0, 255, 65, 0.03) 100%);
-            background-size: 50px 50px;
-            animation: matrixMove 20s infinite linear;
-            z-index: -3;
-        }
-
-        @keyframes matrixMove {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(50px); }
-        }
-
-        /* PARTICULES */
-        .particles {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--neon-blue);
-            border-radius: 50%;
-            animation: float 15s infinite linear;
-            box-shadow: 0 0 10px var(--neon-blue);
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
-        }
-
-        /* HEADER CYBERPUNK */
-        .cyber-header {
-            background: rgba(5, 5, 16, 0.9);
-            border-bottom: 2px solid;
-            border-image: linear-gradient(45deg, var(--neon-blue), var(--neon-purple)) 1;
-            padding: 1.5rem 0;
-            backdrop-filter: blur(15px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .cyber-nav {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 0 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
+            justify-content: center;
+            padding: 20px;
         }
 
-        .cyber-logo h1 {
-            font-family: 'Orbitron', monospace;
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        .logo {
+            margin-bottom: 30px;
+        }
+
+        .logo h1 {
             font-size: 2rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
-            letter-spacing: 2px;
+            color: var(--dark);
         }
 
-        .cyber-logo span {
-            color: var(--neon-green);
-            text-shadow: 0 0 15px var(--neon-green);
+        .logo span {
+            color: var(--secondary);
         }
 
-        .nav-buttons {
-            display: flex;
-            gap: 1.5rem;
+        .login-form h2 {
+            color: var(--dark);
+            margin-bottom: 10px;
+            font-size: 1.8rem;
         }
 
-        .cyber-nav-btn {
-            background: transparent;
-            border: 2px solid;
-            border-image: linear-gradient(45deg, var(--neon-blue), var(--neon-green)) 1;
-            color: var(--neon-blue);
-            padding: 0.8rem 1.5rem;
-            font-family: 'Orbitron', monospace;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+        .login-form p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+            background: #f8f9fa;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(44, 85, 48, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
         }
 
-        .cyber-nav-btn:hover {
-            background: rgba(0, 243, 255, 0.1);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(44, 85, 48, 0.3);
+        }
+
+        .google-btn {
+            width: 100%;
+            padding: 15px;
+            background: white;
+            color: #333;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .google-btn:hover {
+            border-color: var(--primary);
             transform: translateY(-2px);
         }
 
-        /* HERO SECTION ÉPIQUE */
-        .cyber-hero {
-            min-height: 100vh;
+        .links {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 2rem;
-            position: relative;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 14px;
         }
 
-        .hero-content {
-            max-width: 1200px;
-            z-index: 2;
-        }
-
-        .hero-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 4.5rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple), var(--neon-pink), var(--neon-green));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 
-                0 0 30px rgba(0, 243, 255, 0.7),
-                0 0 60px rgba(179, 0, 255, 0.5),
-                0 0 90px rgba(255, 0, 200, 0.3);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            animation: textShine 3s ease-in-out infinite alternate;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        @keyframes textShine {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--neon-blue);
-            text-shadow: 0 0 15px var(--neon-blue);
-            margin-bottom: 3rem;
-            letter-spacing: 2px;
-            font-weight: 300;
-        }
-
-        .hero-description {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 600px;
-            margin: 0 auto 3rem;
-            line-height: 1.6;
-        }
-
-        /* BOUTONS HERO */
-        .hero-actions {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .cyber-primary-btn {
-            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
-            border: none;
-            padding: 1.2rem 2.5rem;
-            color: white;
-            font-family: 'Orbitron', monospace;
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.4);
+        .links a {
+            color: var(--primary);
             text-decoration: none;
+            font-weight: 600;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            margin-top: 15px;
+            display: none;
+            background: #ffeaea;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .back-home {
+            margin-top: 20px;
+        }
+
+        .back-home a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-        }
-
-        .cyber-primary-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 40px rgba(0, 243, 255, 0.6);
-        }
-
-        .cyber-secondary-btn {
-            background: transparent;
-            border: 2px solid;
-            border-image: linear-gradient(45deg, var(--neon-green), var(--cyber-yellow)) 1;
-            padding: 1.2rem 2.5rem;
-            color: var(--neon-green);
-            font-family: 'Orbitron', monospace;
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .cyber-secondary-btn:hover {
-            background: rgba(0, 255, 136, 0.1);
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
-            transform: translateY(-3px);
-        }
-
-        /* SECTION FEATURES */
-        .cyber-features {
-            padding: 6rem 2rem;
-            background: rgba(5, 5, 16, 0.6);
-            position: relative;
-        }
-
-        .section-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 3rem;
-            text-align: center;
-            color: var(--neon-green);
-            text-shadow: 0 0 20px var(--neon-green);
-            margin-bottom: 4rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            background: rgba(10, 10, 31, 0.8);
-            border: 2px solid;
-            border-image: linear-gradient(45deg, var(--neon-blue), var(--neon-purple)) 1;
-            padding: 2.5rem;
-            border-radius: 15px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0, 243, 255, 0.1) 0%, transparent 70%);
-            z-index: -1;
-            animation: pulse 8s infinite linear;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 40px rgba(0, 243, 255, 0.3);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            color: var(--neon-blue);
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 15px var(--neon-blue);
-        }
-
-        .feature-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.5rem;
-            color: var(--neon-green);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        .feature-description {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-        }
-
-        /* SECTION CTA */
-        .cyber-cta {
-            padding: 6rem 2rem;
-            text-align: center;
-            background: rgba(179, 0, 255, 0.1);
-            position: relative;
-        }
-
-        .cta-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 3rem;
-            color: var(--neon-pink);
-            text-shadow: 0 0 20px var(--neon-pink);
-            margin-bottom: 2rem;
-            letter-spacing: 2px;
-        }
-
-        .cta-subtitle {
-            font-size: 1.3rem;
-            color: var(--neon-blue);
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* FOOTER CYBERPUNK */
-        .cyber-footer {
-            background: rgba(5, 5, 16, 0.95);
-            border-top: 2px solid;
-            border-image: linear-gradient(45deg, var(--neon-purple), var(--neon-pink)) 1;
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-logo {
-            font-family: 'Orbitron', monospace;
-            font-size: 2rem;
-            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-text {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 2rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-link {
-            color: var(--neon-blue);
-            text-decoration: none;
-            font-family: 'Orbitron', monospace;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-
-        .footer-link:hover {
-            color: var(--neon-green);
-            text-shadow: 0 0 10px var(--neon-green);
-        }
-
-        /* SCAN LINES */
-        .scan-lines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom,
-                transparent 50%,
-                rgba(0, 255, 65, 0.03) 51%
-            );
-            background-size: 100% 4px;
-            pointer-events: none;
-            z-index: 2;
-            animation: scanMove 2s linear infinite;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .cyber-nav {
-                padding: 0 1.5rem;
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .hero-title {
-                font-size: 3rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .hero-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .cyber-primary-btn, .cyber-secondary-btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-            }
-            
-            .section-title {
-                font-size: 2.5rem;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .cyber-logo h1 {
-                font-size: 1.5rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .feature-card {
-                padding: 2rem 1.5rem;
-            }
+            gap: 8px;
         }
     </style>
 </head>
 <body>
-    <!-- EFFET MATRICE -->
-    <div class="matrix-bg"></div>
-    
-    <!-- PARTICULES ANIMÉES -->
-    <div class="particles" id="particles"></div>
-    
-    <!-- SCAN LINES -->
-    <div class="scan-lines"></div>
-    
-    <!-- HEADER CYBERPUNK -->
-    <header class="cyber-header">
-        <nav class="cyber-nav">
-            <div class="cyber-logo">
-                <h1>AFRICA.<span>TECH21</span></h1>
-            </div>
-            <div class="nav-buttons">
-                <a href="#features" class="cyber-nav-btn">
-                    <i class="fas fa-stars"></i> EXPLORER
-                </a>
-                <a href="login.html" class="cyber-nav-btn">
-                    <i class="fas fa-terminal"></i> CONNEXION
-                </a>
-                <a href="#cta" class="cyber-nav-btn">
-                    <i class="fas fa-rocket"></i> REJOINDRE
-                </a>
-            </div>
-        </nav>
-    </header>
-
-    <!-- HERO SECTION -->
-    <section class="cyber-hero">
-        <div class="hero-content">
-            <h1 class="hero-title">RÉVOLUTION TECHNOLOGIQUE 2024</h1>
-            <p class="hero-subtitle">L'AVENIR S'ÉCRIT MAINTENANT</p>
-            <p class="hero-description">
-                Rejoignez la communauté qui façonne le futur de l'Afrique technologique. 
-                Innovation, collaboration et excellence au service du développement continental.
-            </p>
-            <div class="hero-actions">
-                <a href="signup.html" class="cyber-primary-btn">
-                    <i class="fas fa-user-astronaut"></i>
-                    DEVENIR MEMBRE
-                </a>
-                <a href="#features" class="cyber-secondary-btn">
-                    <i class="fas fa-binoculars"></i>
-                    EXPLORER
-                </a>
-            </div>
+    <div class="login-container">
+        <div class="logo">
+            <h1>AFRICA.<span>TECH21</span></h1>
+            <p>Connexion à votre compte</p>
         </div>
-    </section>
-
-    <!-- SECTION FEATURES -->
-    <section class="cyber-features" id="features">
-        <h2 class="section-title">NOTRE ÉCOSYSTÈME</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <h3 class="feature-title">ROBOTIQUE AVANCÉE</h3>
-                <p class="feature-description">
-                    Développez des systèmes autonomes intelligents avec nos plateformes 
-                    de robotique de pointe et nos laboratoires équipés.
-                </p>
-            </div>
+        
+        <div class="login-form">
+            <h2>Bienvenue</h2>
+            <p>Connectez-vous à votre compte</p>
             
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-microchip"></i>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Adresse email</label>
+                    <input type="email" id="email" name="email" required placeholder="votre@email.com">
                 </div>
-                <h3 class="feature-title">IA & MACHINE LEARNING</h3>
-                <p class="feature-description">
-                    Maîtrisez l'intelligence artificielle avec nos ressources dédiées 
-                    et nos experts en algorithmes prédictifs.
-                </p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-satellite"></i>
+                
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" required placeholder="Votre mot de passe">
                 </div>
-                <h3 class="feature-title">INNOVATION SPATIALE</h3>
-                <p class="feature-description">
-                    Participez aux programmes spatiaux africains et développez 
-                    des technologies pour l'exploration interstellaire.
-                </p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-network-wired"></i>
-                </div>
-                <h3 class="feature-title">RÉSEAU GLOBAL</h3>
-                <p class="feature-description">
-                    Connectez-vous avec les meilleurs esprits technologiques 
-                    du continent et collaborez sur des projets révolutionnaires.
-                </p>
-            </div>
-        </div>
-    </section>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Se Connecter
+                </button>
 
-    <!-- SECTION CTA -->
-    <section class="cyber-cta" id="cta">
-        <h2 class="cta-title">PRÊT À REJOINDRE LA RÉVOLUTION ?</h2>
-        <p class="cta-subtitle">
-            Inscrivez-vous dès maintenant et faites partie de l'élite technologique 
-            qui transforme l'Afrique et impacte le monde entier.
-        </p>
-        <div class="hero-actions">
-            <a href="signup.html" class="cyber-primary-btn">
-                <i class="fas fa-rocket"></i>
-                COMMENCER MAINTENANT
-            </a>
-            <a href="login.html" class="cyber-secondary-btn">
-                <i class="fas fa-sign-in-alt"></i>
-                SE CONNECTER
-            </a>
-        </div>
-    </section>
+                <div class="error-message" id="errorMessage">
+                    Email ou mot de passe incorrect
+                </div>
+            </form>
 
-    <!-- FOOTER -->
-    <footer class="cyber-footer">
-        <div class="footer-content">
-            <div class="footer-logo">AFRICA.TECH21</div>
-            <p class="footer-text">
-                Propulsant l'innovation africaine vers les étoiles depuis 2024
-            </p>
-            <div class="footer-links">
-                <a href="#" class="footer-link">À PROPOS</a>
-                <a href="#" class="footer-link">CONTACT</a>
-                <a href="#" class="footer-link">MENTIONS LÉGALES</a>
-                <a href="#" class="footer-link">COMMUNAUTÉ</a>
+            <div class="links">
+                <a href="forgot-password.html">Mot de passe oublié ?</a>
+                <a href="signup.html">Créer un compte</a>
+            </div>
+
+            <div class="back-home">
+                <a href="index.html">
+                    <i class="fas fa-arrow-left"></i>
+                    Retour à l'accueil
+                </a>
             </div>
         </div>
-    </footer>
+    </div>
 
     <script>
-        // CRÉATION DES PARTICULES
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 40;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + 'vw';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
-                particlesContainer.appendChild(particle);
-            }
+        // Vérifier si déjà connecté
+        if (localStorage.getItem('userLoggedIn') === 'true') {
+            window.location.href = 'auth-dashboard.html';
         }
 
-        // ANIMATION DE DÉFILEMENT DOUX
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // EFFET DE TEXTE DYNAMIQUE
-        const heroTitle = document.querySelector('.hero-title');
-        const originalText = heroTitle.textContent;
-        
-        function glitchEffect() {
-            const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?';
-            let glitchedText = '';
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            for (let i = 0; i < originalText.length; i++) {
-                if (Math.random() < 0.1) {
-                    glitchedText += glitchChars[Math.floor(Math.random() * glitchChars.length)];
-                } else {
-                    glitchedText += originalText[i];
-                }
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Récupérer les utilisateurs enregistrés
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            
+            // Vérifier les identifiants
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                // Connexion réussie
+                localStorage.setItem('userLoggedIn', 'true');
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                window.location.href = 'auth-dashboard.html';
+            } else {
+                errorMessage.style.display = 'block';
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 5000);
             }
-            
-            heroTitle.textContent = glitchedText;
-            
-            setTimeout(() => {
-                heroTitle.textContent = originalText;
-            }, 100);
-        }
-
-        // INITIALISATION
-        document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
-            
-            // Effet de glitch aléatoire
-            setInterval(glitchEffect, 3000);
-            
-            // Animation d'apparition progressive
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-            
-            // Observer les éléments à animer
-            document.querySelectorAll('.feature-card').forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = 'all 0.6s ease-out';
-                observer.observe(card);
-            });
         });
+
+        // Fonction pour se connecter avec Google (visuel seulement pour l'instant)
+        function loginWithGoogle() {
+            alert('Fonctionnalité Google en cours de développement. Utilisez l\'inscription normale pour le moment.');
+        }
     </script>
 </body>
 </html>
