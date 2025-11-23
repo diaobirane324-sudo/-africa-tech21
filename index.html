@@ -965,6 +965,8 @@
                 <a href="#projets" class="btn btn-primary">Découvrir nos Projets</a>
                 <a href="#inscription" class="btn btn-outline">Rejoindre l'Aventure</a>
             </div>
+       
+</div>
         </div>
     </section>
 
@@ -1042,31 +1044,29 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="project-card" data-category="robotique">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Robot Assistant">
-                </div>
-                <div class="project-content">
-                    <span class="project-category">Robotique</span>
-                    <h3>Robot Assistant Acceuil</h3>
-                    <p>Un robot polyvalent pour rendre service les gens dans les acceuils comme les hôpitaux, universités etc.</p>
-                    <div class="project-status">
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 75%"></div>
-                        </div>
-                        <span>75%</span>
-                    </div>
-                    <div class="project-meta">
-                        <span><i class="far fa-calendar"></i> Début: Jan 2023</span>
-                        <span><i class="far fa-clock"></i> Fin: Oct 2023</span>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
-
+                <div class="project-card" data-category="robotique">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Robot Assistant">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Robotique</span>
+                        <h3>Robot Assistant Acceuil</h3>
+                        <p>Un robot polyvalent pour rendre service les gens dans les acceuils comme les hôpitaux, universités etc.</p>
+                        <div class="project-status">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 75%"></div>
+                            </div>
+                            <span>75%</span>
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="far fa-calendar"></i> Début: Jan 2023</span>
+                            <span><i class="far fa-clock"></i> Fin: Oct 2023</span>
+                        </div>
+                    </div>
+                </div>
     <!-- Section Projet R.S.M.A (Version Publique) -->
 <section id="rsma" style="padding: 4rem 2rem; background: linear-gradient(135deg, #1e3a5f, #4a90e2); color: white;">
     <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
@@ -1088,6 +1088,51 @@
         </a>
     </div>
 </section>
+                
+                <div class="project-card" data-category="informatique">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="IA Agricole">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Informatique</span>
+                        <h3>Système IA pour l'Agriculture</h3>
+                        <p>Intelligence artificielle pour optimiser l'irrigation et détecter les maladies des plantes.</p>
+                        <div class="project-status">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 60%"></div>
+                            </div>
+                            <span>60%</span>
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="far fa-calendar"></i> Début: Mar 2023</span>
+                            <span><i class="far fa-clock"></i> Fin: Dec 2023</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="electronique">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Capteurs Intelligents">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Électronique</span>
+                        <h3>Réseau de Capteurs Intelligents</h3>
+                        <p>Développement de capteurs low-cost pour la surveillance environnementale.</p>
+                        <div class="project-status">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 85%"></div>
+                            </div>
+                            <span>85%</span>
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="far fa-calendar"></i> Début: Nov 2022</span>
+                            <span><i class="far fa-clock"></i> Fin: Aug 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Registration Section -->
     <section class="registration" id="inscription">
@@ -1104,7 +1149,14 @@
                 </div>
                 
                 <div class="form-body">
-                   <form id="registrationForm">
+                   <!-- REMPLACÉ : Formulaire avec FormSubmit.co -->
+                   <form id="registrationForm" action="https://formsubmit.co/africa.tech21.net@gmail.com" method="POST">
+                        <!-- Configuration FormSubmit -->
+                        <input type="hidden" name="_subject" value="Nouvelle Candidature AFRICA.TECH21">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://diaobirane324-sudo.github.io/africa-tech21/success.html">
+                        
                         <div class="form-row">
                             <div class="form-column">
                                 <div class="form-group">
@@ -1392,16 +1444,23 @@
             document.querySelector('.file-upload-label').textContent = '📎 ' + fileName;
         });
 
-        // Form Submission avec LocalStorage
+        // Form Submission avec FormSubmit.co et localStorage
         document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
             const domaines = document.querySelectorAll('input[name^="interet_"]:checked');
             if (domaines.length === 0) {
+                e.preventDefault();
                 alert('Veuillez sélectionner au moins un domaine d\'intérêt.');
                 return;
             }
             
+            // Sauvegarder aussi dans localStorage (optionnel)
+            saveToLocalStorage();
+            
+            // FormSubmit.co gère l'envoi automatiquement
+            alert('Formulaire envoyé ! Vous recevrez une confirmation par email.');
+        });
+
+        function saveToLocalStorage() {
             // Récupérer les données du formulaire
             const formData = {
                 civilite: document.getElementById('civilite').value,
@@ -1416,8 +1475,7 @@
                 interet_electronique: document.getElementById('interet_electronique').checked,
                 interet_mecanique: document.getElementById('interet_mecanique').checked,
                 motivation: document.getElementById('motivation').value,
-                timestamp: new Date().toISOString(),
-                id: Date.now() // ID unique pour chaque candidature
+                timestamp: new Date().toISOString()
             };
 
             // Récupérer les candidatures existantes
@@ -1429,11 +1487,8 @@
             // Sauvegarder dans localStorage
             localStorage.setItem('africaTechCandidates', JSON.stringify(existingCandidates));
             
-            // Confirmation et reset du formulaire
-            alert('Votre candidature a été enregistrée avec succès ! Nous vous contacterons bientôt.');
-            document.getElementById('registrationForm').reset();
-            document.querySelector('.file-upload-label').textContent = '📎 Cliquez pour télécharger votre CV (PDF, DOC)';
-        });
+            console.log('Candidature sauvegardée dans localStorage');
+        }
 
         // Mobile Menu Toggle
         document.querySelector('.menu-toggle').addEventListener('click', function() {
@@ -1459,27 +1514,6 @@
                 });
             });
         });
-
-        // Gestion de l'état de connexion
-        function checkAuthStatus() {
-            const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
-            if (isLoggedIn) {
-                document.getElementById('loggedOut').style.display = 'none';
-                document.getElementById('loggedIn').style.display = 'flex';
-            } else {
-                document.getElementById('loggedOut').style.display = 'flex';
-                document.getElementById('loggedIn').style.display = 'none';
-            }
-        }
-
-        function logout() {
-            localStorage.removeItem('userLoggedIn');
-            checkAuthStatus();
-            alert('Vous avez été déconnecté avec succès.');
-        }
-
-        // Vérifier l'état de connexion au chargement
-        checkAuthStatus();
     </script>
 </body>
 </html>
