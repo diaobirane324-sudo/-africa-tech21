@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espace Membres - AFRICA.TECH21</title>
+    <title>Connexion - AFRICA.TECH21</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         :root {
             --cyber-blue: #00f0ff;
             --cyber-purple: #7b2cbf;
+            --cyber-pink: #ff00ff;
             --dark-bg: #0a0a12;
-            --panel-bg: rgba(16, 16, 32, 0.9);
+            --panel-bg: rgba(16, 16, 32, 0.95);
             --neon-glow: 0 0 10px var(--cyber-blue), 0 0 20px var(--cyber-blue);
+            --text-glow: 0 0 10px currentColor;
         }
 
         body {
@@ -46,11 +49,32 @@
             background-size: 50px 50px;
             animation: gridMove 20s linear infinite;
             pointer-events: none;
+            z-index: -2;
         }
 
         @keyframes gridMove {
             0% { transform: translate(0, 0); }
             100% { transform: translate(50px, 50px); }
+        }
+
+        /* Effet de lueur d'arrière-plan */
+        body::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(123, 44, 191, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 240, 255, 0.3) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
+            z-index: -3;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .cyber-container {
@@ -69,7 +93,7 @@
 
         @keyframes panelGlow {
             0% { box-shadow: 0 0 10px var(--cyber-blue), 0 0 20px var(--cyber-blue); }
-            100% { box-shadow: 0 0 20px var(--cyber-blue), 0 0 40px var(--cyber-blue); }
+            100% { box-shadow: 0 0 20px var(--cyber-blue), 0 0 40px var(--cyber-blue), 0 0 60px rgba(123, 44, 191, 0.3); }
         }
 
         .cyber-logo {
@@ -79,24 +103,38 @@
 
         .cyber-logo h1 {
             font-size: 2.5rem;
-            background: linear-gradient(45deg, var(--cyber-blue), #ff00ff);
+            background: linear-gradient(45deg, var(--cyber-blue), var(--cyber-pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
-            letter-spacing: 2px;
+            text-shadow: var(--text-glow);
+            letter-spacing: 3px;
             font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .cyber-logo p {
+            color: #8892b0;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
         }
 
         .cyber-logo::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 25%;
             width: 50%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--cyber-blue), transparent);
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--cyber-blue), var(--cyber-pink), transparent);
+            animation: lineGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes lineGlow {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
 
         .cyber-form h2 {
@@ -104,15 +142,16 @@
             margin-bottom: 15px;
             font-size: 1.8rem;
             font-weight: 300;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-transform: uppercase;
+            text-shadow: var(--text-glow);
         }
 
         .cyber-form p {
             color: #8892b0;
             margin-bottom: 35px;
             font-size: 0.9rem;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
         .cyber-input-group {
@@ -128,7 +167,8 @@
             font-weight: 600;
             text-transform: uppercase;
             font-size: 0.8rem;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            text-shadow: var(--text-glow);
         }
 
         .cyber-input {
@@ -170,6 +210,7 @@
             letter-spacing: 2px;
             position: relative;
             overflow: hidden;
+            margin-top: 10px;
         }
 
         .cyber-submit:hover {
@@ -198,8 +239,12 @@
             margin-top: 15px;
             font-size: 0.9rem;
             letter-spacing: 0.5px;
-            text-shadow: 0 0 10px rgba(255, 7, 58, 0.5);
+            text-shadow: var(--text-glow);
             display: none;
+            background: rgba(255, 7, 58, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 3px solid #ff073a;
         }
 
         .cyber-back {
@@ -216,11 +261,12 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            letter-spacing: 1px;
         }
 
         .cyber-back a:hover {
             color: var(--cyber-blue);
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            text-shadow: var(--text-glow);
         }
 
         /* Effets de particules */
@@ -241,6 +287,7 @@
             background: var(--cyber-blue);
             border-radius: 50%;
             animation: float 6s infinite linear;
+            box-shadow: 0 0 5px var(--cyber-blue);
         }
 
         @keyframes float {
@@ -259,6 +306,22 @@
                 opacity: 0;
             }
         }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cyber-container {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            
+            .cyber-logo h1 {
+                font-size: 2rem;
+            }
+            
+            .cyber-form h2 {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -268,33 +331,33 @@
     <div class="cyber-container">
         <div class="cyber-logo">
             <h1>AFRICA.TECH21</h1>
-            <p style="color: #8892b0; font-size: 0.9rem; margin-top: 10px;">SYSTEME MEMBRES</p>
+            <p>SYSTÈME MEMBRES</p>
         </div>
-        
+
         <div class="cyber-form">
             <h2>Accès Sécurisé</h2>
             <p>Identification requise pour accéder au réseau</p>
-            
+
             <form id="memberLoginForm">
                 <div class="cyber-input-group">
                     <label for="email">Identifiant</label>
                     <input type="email" id="email" name="email" required placeholder="user@africa.tech21" class="cyber-input">
                 </div>
-                
+
                 <div class="cyber-input-group">
                     <label for="password">Code d'Accès</label>
                     <input type="password" id="password" name="password" required placeholder="●●●●●●●●●●●●●●" class="cyber-input">
                 </div>
-                
+
                 <button type="submit" class="cyber-submit">
                     <i class="fas fa-terminal"></i> CONNEXION
                 </button>
-                
+
                 <div class="cyber-error" id="errorMessage">
                     <i class="fas fa-exclamation-triangle"></i> Identifiant ou code incorrect
                 </div>
             </form>
-            
+
             <div class="cyber-back">
                 <a href="index.html">
                     <i class="fas fa-arrow-left"></i> Retour au portail principal
@@ -317,9 +380,12 @@
             }
         }
 
-        // Mot de passe défini
-        const MEMBER_PASSWORD = "africa.tech21membres2026";
+        // Vérifier si déjà connecté
+        if (localStorage.getItem('userLoggedIn') === 'true') {
+            window.location.href = 'auth-dashboard.html';
+        }
 
+        // Gestion du formulaire
         document.getElementById('memberLoginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -327,23 +393,24 @@
             const password = document.getElementById('password').value;
             const errorMessage = document.getElementById('errorMessage');
             
-            // Validation simple
-            if (password === MEMBER_PASSWORD && email.includes('@')) {
-                // Stocker la session
-                localStorage.setItem('memberLoggedIn', 'true');
-                localStorage.setItem('memberEmail', email);
-                
-                // Rediriger vers l'espace membres
-                window.location.href = 'membre-dashboard.html';
+            // Récupérer les utilisateurs enregistrés
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            
+            // Vérifier les identifiants
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                // Connexion réussie
+                localStorage.setItem('userLoggedIn', 'true');
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                window.location.href = 'auth-dashboard.html';
             } else {
                 errorMessage.style.display = 'block';
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 5000);
             }
         });
-
-        // Vérifier si déjà connecté
-        if (localStorage.getItem('memberLoggedIn') === 'true') {
-            window.location.href = 'membre-dashboard.html';
-        }
 
         // Initialiser les particules
         createParticles();
