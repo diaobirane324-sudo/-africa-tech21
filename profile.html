@@ -3,211 +3,379 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Profil - AFRICA.TECH21</title>
+    <title>PROFIL OPERATEUR - AFRICA.TECH21</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-                * {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
         }
 
         :root {
-            --primary: #2c5530;
-            --secondary: #d4af37;
-            --dark: #1a2f3b;
-            --light: #f8f9fa;
+            --neon-blue: #00f3ff;
+            --neon-purple: #b300ff;
+            --neon-pink: #ff00c8;
+            --neon-green: #00ff88;
+            --cyber-yellow: #ffd300;
+            --dark-space: #0a0a1f;
+            --deep-space: #050510;
+            --matrix-green: #00ff41;
         }
 
         body {
-            background: var(--light);
-            color: #333;
-        }
-
-        .member-header {
-            background: linear-gradient(135deg, var(--dark), var(--primary));
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(179, 0, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 243, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 0, 200, 0.2) 0%, transparent 50%),
+                linear-gradient(135deg, var(--deep-space), var(--dark-space));
+            min-height: 100vh;
+            font-family: 'Exo 2', sans-serif;
             color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            overflow-x: hidden;
+            position: relative;
         }
 
-        .member-nav {
+        /* EFFETS DE MATRICE */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, transparent 95%, rgba(0, 255, 65, 0.03) 100%),
+                linear-gradient(transparent 95%, rgba(0, 255, 65, 0.03) 100%);
+            background-size: 50px 50px;
+            animation: matrixMove 20s infinite linear;
+            z-index: -3;
+        }
+
+        @keyframes matrixMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50px); }
+        }
+
+        /* PARTICULES */
+        .particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* HEADER CYBERPUNK */
+        .cyber-header {
+            background: rgba(5, 5, 16, 0.9);
+            border-bottom: 2px solid;
+            border-image: linear-gradient(45deg, var(--neon-blue), var(--neon-purple)) 1;
+            padding: 1.5rem 0;
+            backdrop-filter: blur(15px);
+            position: relative;
+            z-index: 100;
+        }
+
+        .cyber-nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            padding: 0 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .logo h1 {
-            font-size: 1.5rem;
+        .cyber-logo h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+            letter-spacing: 2px;
         }
 
-        .logo span {
-            color: var(--secondary);
+        .cyber-logo span {
+            color: var(--neon-green);
+            text-shadow: 0 0 15px var(--neon-green);
         }
 
         .nav-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
-        .nav-btn {
-            background: var(--secondary);
-            color: var(--dark);
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+        .cyber-nav-btn {
+            background: transparent;
+            border: 2px solid;
+            border-image: linear-gradient(45deg, var(--neon-blue), var(--neon-green)) 1;
+            color: var(--neon-blue);
+            padding: 0.8rem 1.5rem;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
             cursor: pointer;
-            font-weight: 600;
+            transition: all 0.3s ease;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
-        .profile-container {
-            padding: 2rem;
-            max-width: 1000px;
+        .cyber-nav-btn:hover {
+            background: rgba(0, 243, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* CONTAINER PRINCIPAL */
+        .cyber-profile-container {
+            padding: 3rem;
+            max-width: 1400px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
-        .profile-header {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
+        /* HEADER DU PROFIL */
+        .cyber-profile-header {
+            background: rgba(10, 10, 31, 0.8);
+            border: 2px solid;
+            border-image: linear-gradient(45deg, var(--neon-blue), var(--neon-purple)) 1;
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
             text-align: center;
+            position: relative;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 50px rgba(0, 243, 255, 0.2);
+            animation: headerGlow 3s ease-in-out infinite alternate;
         }
 
-        .profile-avatar {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--primary), var(--dark));
+        @keyframes headerGlow {
+            0% { box-shadow: 0 0 50px rgba(0, 243, 255, 0.2); }
+            100% { box-shadow: 0 0 70px rgba(179, 0, 255, 0.3); }
+        }
+
+        .cyber-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: bold;
             color: white;
-            margin: 0 auto 1rem;
+            margin: 0 auto 1.5rem;
+            border: 3px solid var(--neon-green);
+            box-shadow: 0 0 30px var(--neon-green);
+            animation: avatarPulse 2s infinite;
         }
 
-        .profile-name {
-            font-size: 1.8rem;
-            color: var(--dark);
+        @keyframes avatarPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cyber-profile-name {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            color: var(--neon-green);
+            text-shadow: 0 0 20px var(--neon-green);
             margin-bottom: 0.5rem;
+            letter-spacing: 2px;
         }
 
-        .profile-email {
-            color: #666;
+        .cyber-profile-email {
+            color: var(--neon-blue);
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px var(--neon-blue);
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        /* BOUTONS PROFIL */
+        .profile-actions {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cyber-edit-btn {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            border: none;
+            padding: 1rem 2rem;
+            color: white;
+            font-family: 'Orbitron', monospace;
             font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
         }
 
-        .profile-content {
+        .cyber-edit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.6);
+        }
+
+        .cyber-postuler-btn {
+            background: linear-gradient(45deg, var(--neon-green), var(--cyber-yellow));
+            border: none;
+            padding: 1rem 2rem;
+            color: var(--dark-space);
+            font-family: 'Orbitron', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+        }
+
+        .cyber-postuler-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
+        }
+
+        /* CONTENU DU PROFIL */
+        .cyber-profile-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
         }
 
-        .info-card, .stats-card {
-            background: white;
-            padding: 2rem;
+        /* CARTES CYBERPUNK */
+        .cyber-info-card, .cyber-stats-card {
+            background: rgba(10, 10, 31, 0.8);
+            border: 2px solid;
+            border-image: linear-gradient(45deg, var(--neon-blue), var(--neon-purple)) 1;
+            padding: 2.5rem;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.1);
+            transition: all 0.3s ease;
         }
 
-        .card-title {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-            border-bottom: 2px solid var(--secondary);
-            padding-bottom: 0.5rem;
+        .cyber-info-card:hover, .cyber-stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.2);
         }
 
-        .info-item {
+        .cyber-card-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            color: var(--neon-green);
+            text-shadow: 0 0 15px var(--neon-green);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid;
+            border-image: linear-gradient(90deg, var(--neon-blue), transparent) 1;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ITEMS D'INFORMATION */
+        .cyber-info-item {
             display: flex;
             justify-content: space-between;
-            padding: 1rem 0;
-            border-bottom: 1px solid #e9ecef;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            transition: all 0.3s ease;
         }
 
-        .info-item:last-child {
+        .cyber-info-item:hover {
+            background: rgba(0, 243, 255, 0.05);
+            padding-left: 1rem;
+            padding-right: 1rem;
+            margin: 0 -1rem;
+        }
+
+        .cyber-info-item:last-child {
             border-bottom: none;
         }
 
-        .info-label {
+        .cyber-info-label {
             font-weight: 600;
-            color: var(--dark);
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 1px;
         }
 
-        .info-value {
-            color: #666;
+        .cyber-info-value {
+            color: white;
+            font-weight: 500;
         }
 
-        .stats-grid {
+        /* STATISTIQUES */
+        .cyber-stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
-        .stat-item {
-            text-align: center;
-            padding: 1rem;
-            background: #f8f9fa;
+        .cyber-stat-item {
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid;
+            border-image: linear-gradient(45deg, var(--neon-blue), transparent) 1;
+            padding: 1.5rem;
             border-radius: 10px;
-        }
-
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .edit-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            margin-top: 1rem;
-            transition: all 0.3s;
-        }
-
-        .edit-btn:hover {
-            background: var(--dark);
-            transform: translateY(-2px);
-        }
-
-        .postuler-btn {
-            background: linear-gradient(135deg, #d4af37, #f1c40f);
-            color: #1a2f3b;
-            border: none;
-            padding: 12px 25px;
-            font-size: 1rem;
-            font-weight: 700;
-            border-radius: 25px;
-            cursor: pointer;
+            text-align: center;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-            margin-left: 10px;
         }
 
-        .postuler-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        .cyber-stat-item:hover {
+            transform: translateY(-3px);
+            background: rgba(0, 243, 255, 0.15);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
         }
 
-        .modal {
+        .cyber-stat-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--neon-green);
+            text-shadow: 0 0 15px var(--neon-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .cyber-stat-label {
+            color: var(--neon-blue);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* MODAL CYBERPUNK */
+        .cyber-modal {
             display: none;
             position: fixed;
             z-index: 1000;
@@ -215,240 +383,368 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
         }
 
-        .modal-content {
-            background-color: white;
+        .cyber-modal-content {
+            background: rgba(10, 10, 31, 0.95);
+            border: 2px solid;
+            border-image: linear-gradient(45deg, var(--neon-blue), var(--neon-purple)) 1;
             margin: 5% auto;
             padding: 0;
-            border-radius: 15px;
+            border-radius: 20px;
             width: 90%;
-            max-width: 500px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            box-shadow: 0 0 60px rgba(0, 243, 255, 0.3);
+            animation: modalAppear 0.5s ease-out;
         }
 
-        .modal-header {
-            background: linear-gradient(135deg, var(--primary), var(--dark));
+        @keyframes modalAppear {
+            from { opacity: 0; transform: scale(0.8) translateY(-50px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .cyber-modal-header {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
             color: white;
-            padding: 20px;
-            border-radius: 15px 15px 0 0;
+            padding: 1.5rem 2rem;
+            border-radius: 18px 18px 0 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .modal-body {
-            padding: 20px;
+        .cyber-modal-header h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        .form-group {
-            margin-bottom: 20px;
+        .cyber-close {
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .form-group label {
+        .cyber-close:hover {
+            color: var(--neon-green);
+            transform: scale(1.1);
+        }
+
+        .cyber-modal-body {
+            padding: 2rem;
+        }
+
+        .cyber-form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .cyber-form-label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 0.8rem;
             font-weight: 600;
-            color: var(--primary);
+            color: var(--neon-blue);
+            font-family: 'Orbitron', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px var(--neon-blue);
         }
 
-        .form-group input, .form-group select {
+        .cyber-form-input, .cyber-form-select {
             width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e1e5e9;
-            border-radius: 10px;
-            font-size: 16px;
-            background: #f8f9fa;
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid;
+            border-image: linear-gradient(45deg, var(--neon-blue), var(--neon-purple)) 1;
+            padding: 1rem;
+            color: white;
+            font-size: 1rem;
+            font-family: 'Exo 2', sans-serif;
+            transition: all 0.3s ease;
         }
 
-        .modal-buttons {
+        .cyber-form-input:focus, .cyber-form-select:focus {
+            outline: none;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+            border-image: linear-gradient(45deg, var(--neon-green), var(--neon-pink)) 1;
+        }
+
+        .cyber-modal-buttons {
             display: flex;
             gap: 1rem;
             justify-content: flex-end;
-            margin-top: 20px;
+            margin-top: 2rem;
         }
 
-        .btn {
-            padding: 10px 20px;
+        .cyber-btn {
+            padding: 1rem 2rem;
             border: none;
-            border-radius: 25px;
+            border-radius: 10px;
             cursor: pointer;
+            font-family: 'Orbitron', monospace;
             font-weight: 600;
-            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
         }
 
-        .btn-cancel {
-            background: #6c757d;
-            color: white;
+        .cyber-btn-cancel {
+            background: transparent;
+            border: 2px solid;
+            border-image: linear-gradient(45deg, #ff6b6b, #ff4757) 1;
+            color: #ff6b6b;
         }
 
-        .btn-save {
-            background: var(--primary);
-            color: white;
+        .cyber-btn-cancel:hover {
+            background: rgba(255, 107, 107, 0.1);
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .cyber-btn-save {
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
+            color: var(--dark-space);
+        }
+
+        .cyber-btn-save:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(0, 255, 136, 0.4);
+        }
+
+        /* SCAN LINES */
+        .scan-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent 50%,
+                rgba(0, 255, 65, 0.03) 51%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 2;
+            animation: scanMove 2s linear infinite;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .cyber-profile-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
 
         @media (max-width: 768px) {
-            .profile-content {
+            .cyber-nav {
+                padding: 0 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .cyber-profile-container {
+                padding: 1.5rem;
+            }
+            
+            .cyber-profile-header {
+                padding: 2rem 1.5rem;
+            }
+            
+            .cyber-stats-grid {
                 grid-template-columns: 1fr;
             }
             
-            .stats-grid {
-                grid-template-columns: 1fr;
+            .profile-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cyber-nav-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .cyber-nav-btn {
+                text-align: center;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cyber-logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            .cyber-profile-name {
+                font-size: 2rem;
+            }
+            
+            .cyber-avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+            
+            .cyber-info-card, .cyber-stats-card {
+                padding: 1.5rem;
             }
         }
     </style>
-    .postuler-btn {
-    background: linear-gradient(135deg, #d4af37, #f1c40f);
-    color: #1a2f3b;
-    border: none;
-    padding: 12px 25px;
-    font-size: 1rem;
-    font-weight: 700;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-    margin-left: 10px;
-}
-
-.postuler-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-}
 </head>
 <body>
-    <header class="member-header">
-        <nav class="member-nav">
-            <div class="logo">
-                <h1>AFRICA.<span>TECH21</span> | Mon Profil</h1>
+    <!-- EFFET MATRICE -->
+    <div class="matrix-bg"></div>
+    
+    <!-- PARTICULES ANIMÉES -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- SCAN LINES -->
+    <div class="scan-lines"></div>
+    
+    <!-- HEADER CYBERPUNK -->
+    <header class="cyber-header">
+        <nav class="cyber-nav">
+            <div class="cyber-logo">
+                <h1>AFRICA.<span>TECH21</span> | PROFIL OPERATEUR</h1>
             </div>
             <div class="nav-buttons">
-                <a href="auth-dashboard.html" class="nav-btn">
-                    <i class="fas fa-arrow-left"></i> Retour
+                <a href="auth-dashboard.html" class="cyber-nav-btn">
+                    <i class="fas fa-arrow-left"></i> RETOUR COMMANDE
                 </a>
-                <button class="nav-btn" onclick="logout()">
-                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+                <button class="cyber-nav-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> DÉCONNEXION
                 </button>
             </div>
         </nav>
     </header>
 
-    <main class="profile-container">
-        <section class="profile-header">
-            <div class="profile-avatar" id="profileAvatar">U</div>
-            <h1 class="profile-name" id="profileName">Utilisateur</h1>
-            <p class="profile-email" id="profileEmail">utilisateur@email.com</p>
-            <button class="edit-btn" onclick="openEditModal()">
-                <i class="fas fa-edit"></i> Modifier le profil
-            </button>
-            <button class="postuler-btn" onclick="openApplicationModal()" style="margin-top: 1rem;">
-    <i class="fas fa-rocket"></i> Postuler pour devenir membre officiel
-</button>
+    <!-- CONTENU PRINCIPAL -->
+    <main class="cyber-profile-container">
+        <!-- HEADER DU PROFIL -->
+        <section class="cyber-profile-header">
+            <div class="cyber-avatar" id="profileAvatar">U</div>
+            <h1 class="cyber-profile-name" id="profileName">OPERATEUR</h1>
+            <p class="cyber-profile-email" id="profileEmail">operateur@system.africa</p>
+            
+            <div class="profile-actions">
+                <button class="cyber-edit-btn" onclick="openEditModal()">
+                    <i class="fas fa-edit"></i> MODIFIER PROFIL
+                </button>
+                <button class="cyber-postuler-btn" onclick="openApplicationModal()">
+                    <i class="fas fa-rocket"></i> DEVENIR OFFICIEL
+                </button>
+            </div>
         </section>
 
-        <div class="profile-content">
-            <div class="info-card">
-                <h2 class="card-title">Informations Personnelles</h2>
-                <div class="info-item">
-                    <span class="info-label">Nom complet:</span>
-                    <span class="info-value" id="infoFullName">-</span>
+        <!-- CONTENU DU PROFIL -->
+        <div class="cyber-profile-content">
+            <!-- CARTE INFORMATIONS -->
+            <div class="cyber-info-card">
+                <h2 class="cyber-card-title">DONNÉES OPERATEUR</h2>
+                <div class="cyber-info-item">
+                    <span class="cyber-info-label">IDENTITÉ:</span>
+                    <span class="cyber-info-value" id="infoFullName">-</span>
                 </div>
-                <div class="info-item">
-                    <span class="info-label">Email:</span>
-                    <span class="info-value" id="infoEmail">-</span>
+                <div class="cyber-info-item">
+                    <span class="cyber-info-label">EMAIL:</span>
+                    <span class="cyber-info-value" id="infoEmail">-</span>
                 </div>
-                <div class="info-item">
-                    <span class="info-label">Téléphone:</span>
-                    <span class="info-value" id="infoPhone">-</span>
+                <div class="cyber-info-item">
+                    <span class="cyber-info-label">FREQUENCE:</span>
+                    <span class="cyber-info-value" id="infoPhone">-</span>
                 </div>
-                <div class="info-item">
-                    <span class="info-label">Niveau d'étude:</span>
-                    <span class="info-value" id="infoEducation">-</span>
+                <div class="cyber-info-item">
+                    <span class="cyber-info-label">NIVEAU TECH:</span>
+                    <span class="cyber-info-value" id="infoEducation">-</span>
                 </div>
-                <div class="info-item">
-                    <span class="info-label">Domaine d'intérêt:</span>
-                    <span class="info-value" id="infoDomain">-</span>
+                <div class="cyber-info-item">
+                    <span class="cyber-info-label">DOMAINE:</span>
+                    <span class="cyber-info-value" id="infoDomain">-</span>
                 </div>
-                <div class="info-item">
-                    <span class="info-label">Date d'inscription:</span>
-                    <span class="info-value" id="infoJoinDate">-</span>
+                <div class="cyber-info-item">
+                    <span class="cyber-info-label">INTÉGRATION:</span>
+                    <span class="cyber-info-value" id="infoJoinDate">-</span>
                 </div>
             </div>
 
-            <div class="stats-card">
-                <h2 class="card-title">Statistiques</h2>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number" id="statDays">1</div>
-                        <div class="stat-label">Jours membre</div>
+            <!-- CARTE STATISTIQUES -->
+            <div class="cyber-stats-card">
+                <h2 class="cyber-card-title">STATISTIQUES RÉSEAU</h2>
+                <div class="cyber-stats-grid">
+                    <div class="cyber-stat-item">
+                        <div class="cyber-stat-number" id="statDays">1</div>
+                        <div class="cyber-stat-label">JOURS ACTIF</div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number" id="statProjects">1</div>
-                        <div class="stat-label">Projets suivis</div>
+                    <div class="cyber-stat-item">
+                        <div class="cyber-stat-number" id="statProjects">1</div>
+                        <div class="cyber-stat-label">PROJETS</div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number" id="statMessages">0</div>
-                        <div class="stat-label">Messages</div>
+                    <div class="cyber-stat-item">
+                        <div class="cyber-stat-number" id="statMessages">0</div>
+                        <div class="cyber-stat-label">TRANSMISSIONS</div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number" id="statActivity">100%</div>
-                        <div class="stat-label">Activité</div>
+                    <div class="cyber-stat-item">
+                        <div class="cyber-stat-number" id="statActivity">100%</div>
+                        <div class="cyber-stat-label">EFFICACITÉ</div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Modal d'édition -->
-    <div id="editModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Modifier le profil</h2>
-                <span class="close" onclick="closeEditModal()">&times;</span>
+    <!-- MODAL D'ÉDITION CYBERPUNK -->
+    <div id="editModal" class="cyber-modal">
+        <div class="cyber-modal-content">
+            <div class="cyber-modal-header">
+                <h2>MODIFICATION PROFIL</h2>
+                <span class="cyber-close" onclick="closeEditModal()">&times;</span>
             </div>
-            <div class="modal-body">
+            <div class="cyber-modal-body">
                 <form id="editForm">
-                    <div class="form-group">
-                        <label for="editPrenom">Prénom</label>
-                        <input type="text" id="editPrenom" name="prenom" required>
+                    <div class="cyber-form-group">
+                        <label class="cyber-form-label" for="editPrenom">PRÉNOM</label>
+                        <input type="text" id="editPrenom" name="prenom" class="cyber-form-input" required>
                     </div>
-                    <div class="form-group">
-                        <label for="editNom">Nom</label>
-                        <input type="text" id="editNom" name="nom" required>
+                    <div class="cyber-form-group">
+                        <label class="cyber-form-label" for="editNom">NOM</label>
+                        <input type="text" id="editNom" name="nom" class="cyber-form-input" required>
                     </div>
-                    <div class="form-group">
-                        <label for="editEmail">Email</label>
-                        <input type="email" id="editEmail" name="email" required>
+                    <div class="cyber-form-group">
+                        <label class="cyber-form-label" for="editEmail">EMAIL</label>
+                        <input type="email" id="editEmail" name="email" class="cyber-form-input" required>
                     </div>
-                    <div class="form-group">
-                        <label for="editTelephone">Téléphone</label>
-                        <input type="tel" id="editTelephone" name="telephone" required>
+                    <div class="cyber-form-group">
+                        <label class="cyber-form-label" for="editTelephone">FRÉQUENCE</label>
+                        <input type="tel" id="editTelephone" name="telephone" class="cyber-form-input" required>
                     </div>
-                    <div class="form-group">
-                        <label for="editNiveauEtude">Niveau d'étude</label>
-                        <select id="editNiveauEtude" name="niveau_etude" required>
-                            <option value="Bac">Bac</option>
-                            <option value="Bac+2">Bac+2</option>
-                            <option value="Bac+3">Bac+3</option>
-                            <option value="Bac+5">Bac+5</option>
-                            <option value="Doctorat">Doctorat</option>
-                            <option value="Autre">Autre</option>
+                    <div class="cyber-form-group">
+                        <label class="cyber-form-label" for="editNiveauEtude">NIVEAU TECH</label>
+                        <select id="editNiveauEtude" name="niveau_etude" class="cyber-form-select" required>
+                            <option value="Bac">NIVEAU 1</option>
+                            <option value="Bac+2">NIVEAU 2</option>
+                            <option value="Bac+3">NIVEAU 3</option>
+                            <option value="Bac+5">NIVEAU 4</option>
+                            <option value="Doctorat">EXPERT</option>
+                            <option value="Autre">AUTRE</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="editDomaine">Domaine d'intérêt</label>
-                        <select id="editDomaine" name="domaine" required>
-                            <option value="Robotique">🤖 Robotique</option>
-                            <option value="Informatique">💻 Informatique</option>
-                            <option value="Electronique">🔌 Électronique</option>
-                            <option value="Mecanique">⚙️ Mécanique</option>
-                            <option value="Multidisciplinaire">🌐 Multidisciplinaire</option>
+                    <div class="cyber-form-group">
+                        <label class="cyber-form-label" for="editDomaine">DOMAINE</label>
+                        <select id="editDomaine" name="domaine" class="cyber-form-select" required>
+                            <option value="Robotique">🤖 ROBOTIQUE</option>
+                            <option value="Informatique">💻 INFORMATIQUE</option>
+                            <option value="Electronique">🔌 ÉLECTRONIQUE</option>
+                            <option value="Mecanique">⚙️ MÉCANIQUE</option>
+                            <option value="Multidisciplinaire">🌐 POLYVALENT</option>
                         </select>
                     </div>
-                    <div class="modal-buttons">
-                        <button type="button" class="btn btn-cancel" onclick="closeEditModal()">Annuler</button>
-                        <button type="submit" class="btn btn-save">Enregistrer</button>
+                    <div class="cyber-modal-buttons">
+                        <button type="button" class="cyber-btn cyber-btn-cancel" onclick="closeEditModal()">ANNULER</button>
+                        <button type="submit" class="cyber-btn cyber-btn-save">SAUVEGARDER</button>
                     </div>
                 </form>
             </div>
@@ -456,14 +752,29 @@
     </div>
 
     <script>
-        // Vérifier la connexion
+        // CRÉATION DES PARTICULES
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // VÉRIFICATION DE CONNEXION
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
         
         if (!currentUser) {
             window.location.href = 'login.html';
         }
 
-        // Afficher les informations du profil
+        // CHARGEMENT DU PROFIL
         function loadProfile() {
             document.getElementById('profileAvatar').textContent = currentUser.prenom.charAt(0).toUpperCase();
             document.getElementById('profileName').textContent = currentUser.prenom + ' ' + currentUser.nom;
@@ -491,7 +802,7 @@
             document.getElementById('statMessages').textContent = userMessages;
         }
 
-        // Modal d'édition
+        // MODAL D'ÉDITION
         function openEditModal() {
             // Remplir le formulaire avec les données actuelles
             document.getElementById('editPrenom').value = currentUser.prenom;
@@ -508,7 +819,7 @@
             document.getElementById('editModal').style.display = 'none';
         }
 
-        // Sauvegarder les modifications
+        // SAUVEGARDE DES MODIFICATIONS
         document.getElementById('editForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -533,16 +844,23 @@
             loadProfile();
             closeEditModal();
             
-            alert('Profil mis à jour avec succès !');
+            alert('PROFIL MIS À JOUR AVEC SUCCÈS !');
         });
 
+        // DÉCONNEXION
         function logout() {
             localStorage.removeItem('userLoggedIn');
             localStorage.removeItem('currentUser');
             window.location.href = 'index.html';
         }
 
-        // Fermer la modal en cliquant à l'extérieur
+        // POSTULER
+        function openApplicationModal() {
+            alert("POUR POSTULER, UTILISEZ LE BOUTON 'POSTULER' SUR LA PAGE DE COMMANDE PRINCIPALE.");
+            window.location.href = 'index.html';
+        }
+
+        // FERMER LA MODAL EN CLIQUANT À L'EXTÉRIEUR
         window.onclick = function(event) {
             const modal = document.getElementById('editModal');
             if (event.target === modal) {
@@ -550,12 +868,11 @@
             }
         }
 
-        // Charger le profil au démarrage
-        loadProfile();
+        // INITIALISATION
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            loadProfile();
+        });
     </script>
-    function openApplicationModal() {
-    alert("Pour postuler, utilisez le bouton 'POSTULER' sur la page d'accueil principale.");
-    window.location.href = 'index.html';
-}
 </body>
 </html>
