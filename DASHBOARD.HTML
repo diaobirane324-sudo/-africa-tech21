@@ -18,6 +18,7 @@
             --neon-blue: #00f0ff;
             --neon-purple: #7b2cbf;
             --neon-pink: #ff00ff;
+            --neon-green: #00ff88;
             --dark-space: #0a0a12;
             --deep-space: #050510;
             --panel-dark: rgba(16, 16, 32, 0.95);
@@ -25,6 +26,8 @@
             --text-primary: #ffffff;
             --text-secondary: #a0a8c0;
             --accent-glow: 0 0 15px var(--neon-blue);
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
         body {
@@ -35,7 +38,7 @@
             overflow-x: hidden;
         }
 
-        /* Effet de grille holographique */
+        /* Effets de fond */
         .hologram-grid {
             position: fixed;
             top: 0;
@@ -51,12 +54,6 @@
             z-index: -2;
         }
 
-        @keyframes gridScan {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-
-        /* Effets de lumière ambiante */
         .ambient-light {
             position: fixed;
             width: 500px;
@@ -81,12 +78,44 @@
             animation: floatLight 10s ease-in-out infinite reverse;
         }
 
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        @keyframes gridScan {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
         @keyframes floatLight {
             0%, 100% { transform: translate(0, 0) scale(1); }
             50% { transform: translate(50px, -30px) scale(1.1); }
         }
 
-        /* Header Neuromorphe */
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) translateX(100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Header */
         .neuro-header {
             background: rgba(20, 20, 35, 0.8);
             backdrop-filter: blur(20px);
@@ -154,41 +183,50 @@
             font-size: 0.95rem;
         }
 
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 2px solid;
+            border-image: linear-gradient(45deg, var(--neon-blue), var(--neon-green)) 1;
+            color: var(--neon-blue);
+            padding: 0.7rem 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .nav-btn:hover {
+            background: rgba(0, 240, 255, 0.1);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
         .logout-btn {
             background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 12px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
             cursor: pointer;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(123, 44, 191, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .logout-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
         }
 
         .logout-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 25px rgba(123, 44, 191, 0.6);
-            letter-spacing: 1.5px;
-        }
-
-        .logout-btn:hover::before {
-            left: 100%;
         }
 
         /* Container Principal */
@@ -200,14 +238,14 @@
 
         /* Hero Section */
         .hero-section {
-            background: linear-gradient(135deg, rgba(16, 16, 32, 0.9), rgba(32, 32, 64, 0.7));
-            border: 1px solid rgba(0, 240, 255, 0.2);
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
             border-radius: 25px;
             padding: 4rem;
             margin-bottom: 3rem;
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(15px);
             box-shadow: var(--panel-glow);
         }
 
@@ -254,15 +292,15 @@
         }
 
         .feature-card {
-            background: linear-gradient(135deg, rgba(20, 20, 35, 0.9), rgba(30, 30, 50, 0.7));
-            border: 1px solid rgba(0, 240, 255, 0.15);
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
             border-radius: 20px;
             padding: 3rem 2.5rem;
             transition: all 0.4s ease;
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(10px);
         }
 
         .feature-card::before {
@@ -279,9 +317,7 @@
         .feature-card:hover {
             transform: translateY(-10px) scale(1.02);
             border-color: var(--neon-blue);
-            box-shadow: 
-                0 15px 35px rgba(0, 0, 0, 0.5),
-                var(--panel-glow);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), var(--panel-glow);
         }
 
         .feature-card:hover::before {
@@ -335,12 +371,12 @@
 
         /* Section Forum */
         .forum-section {
-            background: linear-gradient(135deg, rgba(16, 16, 32, 0.95), rgba(25, 25, 45, 0.9));
-            border: 1px solid rgba(0, 240, 255, 0.2);
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
             border-radius: 25px;
             padding: 3rem;
             margin-bottom: 4rem;
-            backdrop-filter: blur(15px);
             box-shadow: var(--panel-glow);
         }
 
@@ -359,7 +395,7 @@
             max-height: 500px;
             overflow-y: auto;
             margin-bottom: 2.5rem;
-            border: 1px solid rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--glass-border);
             border-radius: 15px;
             padding: 2rem;
             background: rgba(10, 10, 20, 0.6);
@@ -367,7 +403,7 @@
 
         .message {
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--glass-border);
             border-radius: 15px;
             padding: 2rem;
             margin-bottom: 1.5rem;
@@ -426,7 +462,7 @@
             flex-grow: 1;
             padding: 1.5rem 2rem;
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 240, 255, 0.2);
+            border: 1px solid var(--glass-border);
             border-radius: 15px;
             color: var(--text-primary);
             font-size: 1.1rem;
@@ -463,16 +499,15 @@
         .send-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 25px rgba(123, 44, 191, 0.6);
-            letter-spacing: 2px;
         }
 
         /* Section Admin */
         .admin-section {
-            background: linear-gradient(135deg, rgba(16, 16, 32, 0.95), rgba(20, 20, 40, 0.9));
-            border: 1px solid rgba(0, 240, 255, 0.2);
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
             border-radius: 25px;
             padding: 3rem;
-            backdrop-filter: blur(15px);
             box-shadow: var(--panel-glow);
         }
 
@@ -514,7 +549,7 @@
             width: 100%;
             padding: 1.5rem 2rem;
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 240, 255, 0.2);
+            border: 1px solid var(--glass-border);
             border-radius: 12px;
             color: var(--text-primary);
             font-size: 1.1rem;
@@ -549,45 +584,7 @@
             box-shadow: 0 6px 25px rgba(123, 44, 191, 0.6);
         }
 
-        /* Animations de particules */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: var(--neon-blue);
-            border-radius: 50%;
-            animation: float 15s infinite linear;
-            box-shadow: 0 0 10px var(--neon-blue);
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) translateX(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) translateX(100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Scrollbar personnalisée */
+        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -602,8 +599,50 @@
             border-radius: 10px;
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, var(--neon-purple), var(--neon-blue));
+        /* Responsive */
+        @media (max-width: 768px) {
+            .neuro-header {
+                padding: 1rem 1.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .user-panel {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .dashboard-container {
+                padding: 1.5rem;
+            }
+
+            .hero-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .feature-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .input-group {
+                flex-direction: column;
+            }
+
+            .send-btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -619,11 +658,22 @@
         <div class="header-content">
             <div class="logo-container">
                 <h1>AFRICA.TECH21</h1>
-                <div class="subtitle">INNOVATION LAB • DASHBOARD</div>
+                <div class="subtitle">SYSTÈME DE CONTRÔLE PRINCIPAL</div>
             </div>
             <div class="user-panel">
                 <div class="user-badge">
                     <div class="user-email" id="userEmail">CHARGEMENT...</div>
+                </div>
+                <div class="nav-buttons">
+                    <a href="profile.html" class="nav-btn">
+                        <i class="fas fa-user"></i> Profil
+                    </a>
+                    <a href="rsma.html" class="nav-btn">
+                        <i class="fas fa-water"></i> RSMA
+                    </a>
+                    <a href="index.html" class="nav-btn">
+                        <i class="fas fa-home"></i> Accueil
+                    </a>
                 </div>
                 <button class="logout-btn" onclick="logout()">
                     <i class="fas fa-sign-out-alt"></i> DÉCONNEXION
@@ -636,7 +686,7 @@
     <main class="dashboard-container">
         <!-- Hero Section -->
         <section class="hero-section">
-            <h1 class="hero-title">SYSTÈME DE CONTRÔLE PRINCIPAL</h1>
+            <h1 class="hero-title">TABLEAU DE BORD PRINCIPAL</h1>
             <p class="hero-subtitle">
                 Interface de collaboration avancée pour les membres d'AFRICA.TECH21. 
                 Accédez aux projets confidentiels, communiquez avec l'équipe et gérez les développements techniques.
@@ -645,29 +695,38 @@
 
         <!-- Grid des Fonctionnalités -->
         <div class="features-grid">
-            <div class="feature-card" onclick="window.location.href='projet-binv.html'">
+            <div class="feature-card" onclick="window.location.href='rsma.html'">
                 <div class="feature-icon">
-                    <i class="fas fa-blind"></i>
+                    <i class="fas fa-water"></i>
                 </div>
-                <h3 class="feature-title">BINV_V360</h3>
+                <h3 class="feature-title">RSMA V1.0</h3>
                 <p class="feature-description">
-                    Système de navigation intelligent pour personnes malvoyantes. 
-                    Accès aux spécifications techniques complètes et aux données de développement.
+                    Système de robot sous-marin autonome pour l'exploration marine. 
+                    Accès aux spécifications techniques complètes et données de développement.
                 </p>
-                <div class="cyber-progress">
-                    <div class="cyber-progress-bar" style="width: 30%"></div>
-                </div>
                 <div class="feature-status status-active">STATUS: DÉVELOPPEMENT ACTIF</div>
             </div>
             
             <div class="feature-card" onclick="openProjectsModal()">
                 <div class="feature-icon">
-                    <i class="fas fa-project-diagram"></i>
+                    <i class="fas fa-robot"></i>
                 </div>
-                <h3 class="feature-title">LABORATOIRE TECH</h3>
+                <h3 class="feature-title">ROBOT ASSISTANT</h3>
                 <p class="feature-description">
-                    Accès exclusif aux projets R&D confidentiels. Documentation technique, 
-                    ressources de développement et collaborations internes.
+                    Développement d'un robot intelligent autonome pour l'accueil et l'assistance 
+                    dans les espaces publics avec reconnaissance vocale.
+                </p>
+                <div class="feature-status status-active">ACCÈS: AUTORISÉ</div>
+            </div>
+
+            <div class="feature-card" onclick="window.location.href='profile.html'">
+                <div class="feature-icon">
+                    <i class="fas fa-user-cog"></i>
+                </div>
+                <h3 class="feature-title">PROFIL TECHNIQUE</h3>
+                <p class="feature-description">
+                    Gestion de votre profil technique, compétences et participation aux projets. 
+                    Mettez à jour vos informations et suivez votre progression.
                 </p>
                 <div class="feature-status status-active">ACCÈS: AUTORISÉ</div>
             </div>
@@ -682,18 +741,6 @@
                     partage de ressources et coordination des développements.
                 </p>
                 <div class="feature-status status-coming">LANCEMENT: Q1 2024</div>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-database"></i>
-                </div>
-                <h3 class="feature-title">ARCHIVES TECHNIQUES</h3>
-                <p class="feature-description">
-                    Base de connaissances centralisée contenant les recherches, 
-                    brevets, documentation technique et historique des projets.
-                </p>
-                <div class="feature-status status-maintenance">MISE À JOUR: EN COURS</div>
             </div>
         </div>
 
@@ -722,35 +769,35 @@
         </section>
 
         <!-- Section Administration -->
-        <section class="admin-section" id="adminCandidatesSection">
+        <section class="admin-section">
             <div class="security-gate">
                 <h3 class="security-title">🔒 PORTAL ADMINISTRATEUR</h3>
                 <p style="color: var(--text-secondary); margin-bottom: 2rem;">
                     Accès sécurisé aux modules de gestion des candidatures et suivi des membres
                 </p>
                 
-                <form class="security-form" id="securityForm">
-                    <div class="form-group">
-                        <label class="form-label" for="adminCode">CODE D'AUTHENTIFICATION</label>
-                        <input type="password" id="adminCode" required placeholder="●●●●●●●●●●●●" class="form-input">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="adminMatricule">IDENTIFIANT ADMINISTRATEUR</label>
-                        <input type="text" id="adminMatricule" required placeholder="Saisissez votre identifiant" class="form-input">
-                    </div>
-                    
-                    <button type="submit" class="verify-btn">
-                        <i class="fas fa-lock"></i> VALIDER L'ACCÈS
-                    </button>
-                </form>
+                <div style="text-align: center;">
+                    <a href="formulaire-candidature.html" class="send-btn" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none;">
+                        <i class="fas fa-edit"></i> Gérer les Candidatures
+                    </a>
+                </div>
             </div>
         </section>
     </main>
 
     <script>
-        // ==================== SYSTÈME DE PARTICULES AVANCÉ ====================
-        function createAdvancedParticles() {
+        // ==================== INITIALISATION ====================
+
+        // Vérifier la connexion
+        if (localStorage.getItem('memberLoggedIn') !== 'true') {
+            window.location.href = 'espace-membres.html';
+        }
+
+        // Afficher l'email de l'utilisateur
+        document.getElementById('userEmail').textContent = localStorage.getItem('memberEmail') || 'UTILISATEUR';
+
+        // ==================== SYSTÈME DE PARTICULES ====================
+        function createParticles() {
             const particlesContainer = document.getElementById('particles');
             for (let i = 0; i < 50; i++) {
                 const particle = document.createElement('div');
@@ -763,98 +810,8 @@
             }
         }
 
-        // ==================== SYSTÈME DE SUIVI AVEC EMAILS ====================
+        // ==================== SYSTÈME DE FORUM ====================
         
-        // Enregistrer la connexion avec envoi d'email
-        function trackLogin() {
-            const userEmail = localStorage.getItem('memberEmail');
-            const now = new Date();
-            
-            // Récupérer les données existantes
-            const memberActivity = JSON.parse(localStorage.getItem('memberActivity') || '{}');
-            
-            if (!memberActivity[userEmail]) {
-                memberActivity[userEmail] = {
-                    totalConnections: 0,
-                    totalTime: 0,
-                    lastLogin: null,
-                    connections: []
-                };
-            }
-            
-            // Incrémenter le compteur
-            memberActivity[userEmail].totalConnections++;
-            memberActivity[userEmail].lastLogin = now.toISOString();
-            
-            // Ajouter cette connexion
-            memberActivity[userEmail].connections.push({
-                loginTime: now.toISOString(),
-                logoutTime: null,
-                duration: 0
-            });
-            
-            localStorage.setItem('memberActivity', JSON.stringify(memberActivity));
-            localStorage.setItem('currentSession', JSON.stringify({
-                email: userEmail,
-                loginTime: now.toISOString()
-            }));
-
-            // ========== ENVOYER EMAIL DE CONNEXION ==========
-            const formData = new FormData();
-            formData.append('email', userEmail);
-            formData.append('totalConnections', memberActivity[userEmail].totalConnections);
-            formData.append('loginTime', now.toLocaleString('fr-FR'));
-            formData.append('_subject', `🔐 CONNEXION MEMBRE - ${userEmail}`);
-            formData.append('_template', 'table');
-            
-            // Envoyer via FormSubmit - EMAIL INTÉGRÉ
-            fetch('https://formsubmit.co/ajax/africa.tech21.net@gmail.com', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => console.log('Email connexion envoyé:', data))
-            .catch(error => console.error('Erreur email connexion:', error));
-        }
-
-        // Enregistrer la déconnexion
-        function trackLogout() {
-            const currentSession = JSON.parse(localStorage.getItem('currentSession') || '{}');
-            if (currentSession.email) {
-                const now = new Date();
-                const loginTime = new Date(currentSession.loginTime);
-                const duration = Math.round((now - loginTime) / 60000); // en minutes
-                
-                const memberActivity = JSON.parse(localStorage.getItem('memberActivity') || '{}');
-                if (memberActivity[currentSession.email]) {
-                    const lastConnection = memberActivity[currentSession.email].connections[memberActivity[currentSession.email].connections.length - 1];
-                    if (lastConnection && !lastConnection.logoutTime) {
-                        lastConnection.logoutTime = now.toISOString();
-                        lastConnection.duration = duration;
-                        memberActivity[currentSession.email].totalTime += duration;
-                        localStorage.setItem('memberActivity', JSON.stringify(memberActivity));
-                    }
-                }
-                localStorage.removeItem('currentSession');
-            }
-        }
-
-        // ==================== INITIALISATION ====================
-
-        // Vérifier la connexion
-        if (localStorage.getItem('memberLoggedIn') !== 'true') {
-            window.location.href = 'espace-membres.html';
-        } else {
-            // Démarrer le suivi
-            trackLogin();
-        }
-
-        // Afficher l'email de l'utilisateur
-        document.getElementById('userEmail').textContent = localStorage.getItem('memberEmail') || 'UTILISATEUR';
-
-        // ==================== FORUM AVEC EMAILS ====================
-        
-        // Gestion du forum avec envoi d'emails
         function sendMessage() {
             const messageInput = document.getElementById('newMessage');
             const message = messageInput.value.trim();
@@ -882,30 +839,14 @@
                 
                 // Sauvegarder dans le localStorage
                 saveMessageToStorage(message, dateStr);
-                
-                // ========== ENVOYER EMAIL DU MESSAGE ==========
-                const formData = new FormData();
-                formData.append('email', userEmail);
-                formData.append('message', message);
-                formData.append('date', dateStr);
-                formData.append('_subject', `📧 NOUVEAU MESSAGE FORUM - ${userEmail}`);
-                formData.append('_template', 'table');
-                
-                // Envoyer via FormSubmit - EMAIL INTÉGRÉ
-                fetch('https://formsubmit.co/ajax/africa.tech21.net@gmail.com', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => console.log('Email message envoyé:', data))
-                .catch(error => console.error('Erreur email message:', error));
             }
         }
 
         function saveMessageToStorage(message, date) {
             const messages = JSON.parse(localStorage.getItem('forumMessages') || '[]');
+            const userEmail = localStorage.getItem('memberEmail');
             const newMessage = {
-                email: localStorage.getItem('memberEmail'),
+                email: userEmail,
                 message: message,
                 date: date,
                 timestamp: new Date().toISOString()
@@ -946,42 +887,17 @@
         // ==================== FONCTIONS UTILITAIRES ====================
 
         function openProjectsModal() {
-            // Implémentation de la modal des projets
             alert('Accès au laboratoire technique - Fonctionnalité en développement avancé');
         }
 
-        // Fonction de déconnexion
         function logout() {
-            trackLogout();
             localStorage.removeItem('memberLoggedIn');
             localStorage.removeItem('memberEmail');
+            localStorage.removeItem('currentUser');
             window.location.href = 'index.html';
         }
 
-        // ==================== ADMINISTRATION ====================
-
-        const ADMIN_CODE = "Birane186@00";
-        const ADMIN_MATRICULE = "N07519920251";
-
-        // Vérification de sécurité
-        document.getElementById('securityForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const code = document.getElementById('adminCode').value;
-            const matricule = document.getElementById('adminMatricule').value;
-            
-            if (code === ADMIN_CODE && matricule === ADMIN_MATRICULE) {
-                // Redirection vers l'interface admin
-                window.location.href = 'admin-dashboard.html';
-            } else {
-                alert('❌ Code d\'accès ou identifiant incorrect');
-            }
-        });
-
-        // ==================== INITIALISATION ====================
-
-        // Charger les messages au démarrage
-        loadMessages();
+        // ==================== ÉVÉNEMENTS ====================
 
         // Envoyer avec Enter
         document.getElementById('newMessage').addEventListener('keypress', function(e) {
@@ -990,16 +906,21 @@
             }
         });
 
+        // ==================== INITIALISATION ====================
+
+        // Charger les messages au démarrage
+        loadMessages();
+
         // Initialiser les particules
-        createAdvancedParticles();
+        createParticles();
 
         // Effet de saisie automatique pour les démos
         setTimeout(() => {
             const demoMessages = [
-                "Le module de navigation du BINV_V360 a passé les tests avec succès.",
-                "Nouvelles données de calibration disponibles pour le système RSMA.",
-                "Réunion technique prévue demain à 14h pour le projet Horus.",
-                "Les spécifications du réseau énergétique ont été mises à jour."
+                "Le module de navigation du RSMA a passé les tests avec succès.",
+                "Nouvelles données de calibration disponibles pour le système sonar.",
+                "Réunion technique prévue demain à 14h pour le projet Robot Assistant.",
+                "Les spécifications de l'interface utilisateur ont été mises à jour."
             ];
             
             let currentDemo = 0;
