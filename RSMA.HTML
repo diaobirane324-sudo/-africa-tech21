@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet RSMA - AFRICA.TECH21</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-purple: #b300ff;
+            --neon-pink: #ff00c8;
+            --neon-green: #00ff88;
+            --cyber-yellow: #ffd300;
+            --dark-space: #0a0a1f;
+            --deep-space: #050510;
+            --ocean-blue: #1e3a5f;
+            --water-blue: #4a90e2;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(30, 58, 95, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(74, 144, 226, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(0, 243, 255, 0.2) 0%, transparent 50%),
+                linear-gradient(135deg, var(--deep-space), var(--ocean-blue));
+            min-height: 100vh;
+            font-family: 'Exo 2', sans-serif;
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* EFFETS DE FOND */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, transparent 95%, rgba(0, 255, 255, 0.03) 100%),
+                linear-gradient(transparent 95%, rgba(0, 255, 255, 0.03) 100%);
+            background-size: 50px 50px;
+            animation: matrixMove 20s infinite linear;
+            z-index: -3;
+        }
+
+        .particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .scan-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent 50%,
+                rgba(0, 255, 255, 0.03) 51%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 2;
+            animation: scanMove 2s linear infinite;
+        }
+
+        @keyframes matrixMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50px); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes scanMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(4px); }
+        }
+
+        /* HEADER */
+        .cyber-header {
+            background: rgba(5, 5, 16, 0.9);
+            border-bottom: 2px solid;
+            border-image: linear-gradient(45deg, var(--neon-blue), var(--water-blue)) 1;
+            padding: 1.5rem 0;
+            backdrop-filter: blur(15px);
+            position: relative;
+            z-index: 100;
+        }
+
+        .cyber-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .cyber-logo h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--neon-blue), var(--water-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .cyber-logo span {
+            color: var(--neon-green);
+            text-shadow: 0 0 15px var(--neon-green);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .cyber-nav-btn {
+            background: transparent;
+            border: 2px solid;
+            border-image: linear-gradient(45deg, var(--neon-blue), var(--neon-green)) 1;
+            color: var(--neon-blue);
+            padding: 0.8rem 1.5rem;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cyber-nav-btn:hover {
+            background: rgba(0, 243, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* CONTENU PRINCIPAL */
+        .project-container {
+            padding: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* HERO SECTION */
+        .project-hero {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            padding: 4rem;
+            border-radius: 25px;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0, 243, 255, 0.2);
+        }
+
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 240, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(74, 144, 226, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .project-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, var(--neon-blue), var(--water-blue), var(--neon-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
+        }
+
+        .project-subtitle {
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            text-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        .project-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .project-image {
+            max-width: 600px;
+            margin: 2rem auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--glass-border);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* CONTENU DU PROJET */
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        /* CARTES */
+        .cyber-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .cyber-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.2);
+        }
+
+        .card-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            color: var(--neon-green);
+            text-shadow: 0 0 15px var(--neon-green);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid;
+            border-image: linear-gradient(90deg, var(--neon-blue), transparent) 1;
+            letter-spacing: 1.5px;
+        }
+
+        /* LISTE DES COMPOSANTS */
+        .component-list {
+            list-style: none;
+        }
+
+        .component-item {
+            padding: 1.2rem;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .component-item:hover {
+            background: rgba(0, 243, 255, 0.05);
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            margin: 0 -1rem;
+        }
+
+        .component-item:last-child {
+            border-bottom: none;
+        }
+
+        .component-name {
+            font-weight: 600;
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 1px;
+            min-width: 200px;
+        }
+
+        .component-role {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            flex: 1;
+            line-height: 1.5;
+        }
+
+        /* GRILLE DES FONCTIONNALITÉS */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid;
+            border-image: linear-gradient(45deg, var(--neon-blue), transparent) 1;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            background: rgba(0, 243, 255, 0.15);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+        }
+
+        .feature-card strong {
+            color: var(--neon-green);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.1rem;
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* SECTIONS SPÉCIALES */
+        .circuit-section {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.1);
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.2rem;
+            color: var(--neon-blue);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        .circuit-image {
+            max-width: 500px;
+            margin: 1.5rem auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--glass-border);
+        }
+
+        .circuit-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .info-box {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid var(--cyber-yellow);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .info-box strong {
+            color: var(--cyber-yellow);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .info-box code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-family: monospace;
+            color: var(--neon-blue);
+            border: 1px solid var(--neon-blue);
+            display: inline-block;
+            margin: 0.5rem 0;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .project-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cyber-nav {
+                padding: 0 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .project-container {
+                padding: 1.5rem;
+            }
+            
+            .project-hero {
+                padding: 2rem 1.5rem;
+            }
+            
+            .project-title {
+                font-size: 2.5rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .cyber-nav-btn {
+                text-align: center;
+                justify-content: center;
+            }
+
+            .component-item {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .component-name {
+                min-width: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-title {
+                font-size: 2rem;
+            }
+            
+            .cyber-card {
+                padding: 1.5rem;
+            }
+            
+            .circuit-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- EFFETS DE FOND -->
+    <div class="matrix-bg"></div>
+    <div class="particles" id="particles"></div>
+    <div class="scan-lines"></div>
+    
+    <!-- HEADER -->
+    <header class="cyber-header">
+        <nav class="cyber-nav">
+            <div class="cyber-logo">
+                <h1>AFRICA.<span>TECH21</span> | PROJET RSMA</h1>
+            </div>
+            <div class="nav-buttons">
+                <a href="dashboard.html" class="cyber-nav-btn">
+                    <i class="fas fa-arrow-left"></i> RETOUR DASHBOARD
+                </a>
+                <a href="index.html" class="cyber-nav-btn">
+                    <i class="fas fa-home"></i> ACCUEIL
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="project-container">
+        <!-- HERO SECTION -->
+        <section class="project-hero">
+            <h1 class="project-title">ROBOT SOUS-MARIN AUTONOME</h1>
+            <div class="project-subtitle">RSMA - Innovation Technologique pour l'Exploration Maritime</div>
+            <p class="project-description">
+                Projet révolutionnaire de robot sous-marin autonome pour l'exploration et la recherche marine. 
+                Développement d'une solution technologique africaine pour l'exploration des fonds marins.
+            </p>
+            
+            <div class="project-image">
+                <img src="https://images.unsplash.com/photo-1581093458791-8a6b22bbf7aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Robot Sous-marin Autonome">
+            </div>
+        </section>
+
+        <!-- CONTENU DU PROJET -->
+        <div class="project-content">
+            <!-- CARTE DESCRIPTION -->
+            <div class="cyber-card">
+                <h2 class="card-title">DESCRIPTION DU PROJET</h2>
+                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1.5rem; line-height: 1.6;">
+                    <strong>Objectif :</strong> Développer un robot sous-marin autonome capable d'explorer les fonds marins, 
+                    de capturer des images et vidéos, et de contribuer au développement de la technologie maritime en Afrique.
+                </p>
+                
+                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem; line-height: 1.6;">
+                    <strong>Mission :</strong> Créer une plateforme technologique open-source pour l'exploration marine 
+                    accessible aux chercheurs, étudiants et innovateurs africains.
+                </p>
+
+                <h3 style="color: var(--neon-blue); margin-bottom: 1rem; font-family: 'Orbitron';">FONCTIONNALITÉS PRINCIPALES</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <strong>📸 Capture Multimedia</strong>
+                        <p>Photos et vidéos HD en pleine plongée des espèces marines et œuvres sous-marines</p>
+                    </div>
+                    <div class="feature-card">
+                        <strong>🗺️ Cartographie</strong>
+                        <p>Fonctions avancées de cartographie des fonds marins avec modèles 3D</p>
+                    </div>
+                    <div class="feature-card">
+                        <strong>🤖 Autonomie</strong>
+                        <p>Navigation autonome avec parcours programmables et évitement d'obstacles</p>
+                    </div>
+                    <div class="feature-card">
+                        <strong>📡 Communication</strong>
+                        <p>Transmission WiFi/Radio en temps réel des données collectées</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 INNOVATION AFRICAINE</strong>
+                    <p>Ce projet pionnier va promouvoir le développement de la technologie maritime 
+                    et des appareils maritimes en Afrique, créant ainsi une nouvelle génération 
+                    d'ingénieurs et techniciens spécialisés.</p>
+                </div>
+            </div>
+
+            <!-- CARTE COMPOSANTS -->
+            <div class="cyber-card">
+                <h2 class="card-title">COMPOSANTS TECHNIQUES</h2>
+                <ul class="component-list">
+                    <li class="component-item">
+                        <span class="component-name">Arduino Uno/Mega</span>
+                        <span class="component-role">Cerveau du robot, contrôle capteurs et moteurs</span>
+                    </li>
+                    <li class="component-item">
+                        <span class="component-name">ESP32</span>
+                        <span class="component-role">Communication WiFi et traitement données avec possibilité d'intégrer l'IA</span>
+                    </li>
+                    <li class="component-item">
+                        <span class="component-name">3 à 6 Moteurs Thrusters</span>
+                        <span class="component-role">Pour avancer, plonger, tourner. Contrôles via ESC ou pont en H</span>
+                    </li>
+                    <li class="component-item">
+                        <span class="component-name">IMU (MPU6050)</span>
+                        <span class="component-role">Capteur pour la stabilisation et l'inclinaison</span>
+                    </li>
+                    <li class="component-item">
+                        <span class="component-name">Capteur Barométrique</span>
+                        <span class="component-role">Capteur de pression étanche pour mesurer la profondeur</span>
+                    </li>
+                    <li class="component-item">
+                        <span class="component-name">Capteur de Température</span>
+                        <span class="component-role">Régulation et surveillance en temps réel de la température</span>
+                    </li>
+                    <li class="component-item">
+                        <span class="component-name">Caméra ESP32-CAM</span>
+                        <span class="component-role">Pour les photos et vidéos (composant provisoire)</span>
+                    </li>
+                    <li class="component-item">
+                        <span class="component-name">Batterie Li-ion 11,1V</span>
+                        <span class="component-role">Alimentation étanche 2200mAh pour l'autonomie</span>
+                    </li>
+                    <li class="component-item">
+                        <span class="component-name">Structure PVC/Boîtier</span>
+                        <span class="component-role">Corps étanche du robot pour la protection</span>
+                    </li>
+                    <li class="component-item">
+                        <span class="component-name">Détecteur d'Incendie</span>
+                        <span class="component-role">Sécurité du système électronique</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION CIRCUIT -->
+        <section class="circuit-section">
+            <h2 class="section-title">ARCHITECTURE DU SYSTÈME</h2>
+            <div class="circuit-image">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Architecture du système RSMA">
+            </div>
+            <div class="info-box">
+                <strong>⚠️ IMPORTANT : SÉCURITÉ ÉTANCHE</strong>
+                <p>Le circuit électronique doit être isolé avec de la résine époxy ou une autre solution étanche 
+                pour assurer la protection complète dans l'environnement marin. Tests d'étanchéité obligatoires 
+                avant toute immersion.</p>
+                <code>Niveau d'étanchéité requis : IP68</code>
+            </div>
+        </section>
+
+        <!-- SECTION DESIGN -->
+        <section class="circuit-section">
+            <h2 class="section-title">DESIGN & ERGONOMIE</h2>
+            <div class="circuit-image">
+                <img src="https://images.unsplash.com/photo-1581093458791-8a6b22bbf7aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Design 3D Robot Sous-marin">
+            </div>
+            <p style="color: rgba(255, 255, 255, 0.8); text-align: center; max-width: 600px; margin: 1rem auto; line-height: 1.6;">
+                La structure mécanique intègre les hélices et assure la liaison entre tous les composants pour une navigation optimale. 
+                Design hydrodynamique pour une meilleure efficacité énergétique et stabilité en milieu aquatique.
+            </p>
+        </section>
+    </main>
+
+    <script>
+        // VÉRIFICATION DE CONNEXION
+        if (localStorage.getItem('memberLoggedIn') !== 'true') {
+            window.location.href = 'espace-membres.html';
+        }
+
+        // CRÉATION DES PARTICULES
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 25; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // INITIALISATION
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+        });
+    </script>
+</body>
+</html>
