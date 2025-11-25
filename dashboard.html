@@ -776,11 +776,21 @@
                     Accès sécurisé aux modules de gestion des candidatures et suivi des membres
                 </p>
                 
-                <div style="text-align: center;">
-                    <a href="formulaire-candidature.html" class="send-btn" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none;">
-                        <i class="fas fa-edit"></i> Gérer les Candidatures
-                    </a>
-                </div>
+                <form class="security-form" id="securityForm">
+                    <div class="form-group">
+                        <label class="form-label" for="adminMatricule">IDENTIFIANT ADMINISTRATEUR</label>
+                        <input type="text" id="adminMatricule" required placeholder="Saisissez N07519920251" class="form-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="adminPassword">MOT DE PASSE ADMIN</label>
+                        <input type="password" id="adminPassword" required placeholder="Saisissez votre mot de passe" class="form-input">
+                    </div>
+                    
+                    <button type="submit" class="verify-btn">
+                        <i class="fas fa-lock"></i> ACCÉDER AUX CANDIDATURES
+                    </button>
+                </form>
             </div>
         </section>
     </main>
@@ -896,6 +906,26 @@
             localStorage.removeItem('currentUser');
             window.location.href = 'index.html';
         }
+
+        // ==================== ADMINISTRATION ====================
+
+        const ADMIN_PASSWORD = "Birane186@00";
+        const ADMIN_MATRICULE = "N07519920251";
+
+        // Vérification de sécurité admin
+        document.getElementById('securityForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const matricule = document.getElementById('adminMatricule').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            if (password === ADMIN_PASSWORD && matricule === ADMIN_MATRICULE) {
+                // Redirection vers le formulaire de gestion des candidatures
+                window.location.href = 'formulaire-candidature.html';
+            } else {
+                alert('❌ Identifiant ou mot de passe administrateur incorrect');
+            }
+        });
 
         // ==================== ÉVÉNEMENTS ====================
 
