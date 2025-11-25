@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFRICA.TECH21 - Innovation Technologique Africaine</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-purple: #b300ff;
+            --neon-pink: #ff00c8;
+            --neon-green: #00ff88;
+            --cyber-yellow: #ffd300;
+            --dark-space: #0a0a1f;
+            --deep-space: #050510;
+            --matrix-green: #00ff41;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(179, 0, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 243, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 0, 200, 0.2) 0%, transparent 50%),
+                linear-gradient(135deg, var(--deep-space), var(--dark-space));
+            min-height: 100vh;
+            font-family: 'Exo 2', sans-serif;
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* EFFETS DE FOND */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, transparent 95%, rgba(0, 255, 65, 0.03) 100%),
+                linear-gradient(transparent 95%, rgba(0, 255, 65, 0.03) 100%);
+            background-size: 50px 50px;
+            animation: matrixMove 20s infinite linear;
+            z-index: -3;
+        }
+
+        .particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .scan-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent 50%,
+                rgba(0, 255, 65, 0.03) 51%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 2;
+            animation: scanMove 2s linear infinite;
+        }
+
+        @keyframes matrixMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50px); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes scanMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(4px); }
+        }
+
+        /* HEADER CYBERPUNK */
+        .cyber-header {
+            background: rgba(5, 5, 16, 0.9);
+            border-bottom: 2px solid;
+            border-image: linear-gradient(45deg, var(--neon-blue), var(--neon-purple)) 1;
+            padding: 1rem 0;
+            backdrop-filter: blur(15px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .cyber-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .cyber-logo h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .cyber-logo span {
+            color: var(--neon-green);
+            text-shadow: 0 0 15px var(--neon-green);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--neon-blue);
+            text-decoration: none;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+        }
+
+        .nav-menu a:hover {
+            color: var(--neon-green);
+            border: 1px solid;
+            border-image: linear-gradient(45deg, var(--neon-blue), var(--neon-green)) 1;
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+
+        .user-status {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .status-connected {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--neon-green);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            color: var(--neon-green);
+            font-family: 'Orbitron', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cyber-btn {
+            background: transparent;
+            border: 2px solid;
+            border-image: linear-gradient(45deg, var(--neon-blue), var(--neon-green)) 1;
+            color: var(--neon-blue);
+            padding: 0.8rem 1.5rem;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .cyber-btn:hover {
+            background: rgba(0, 243, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .cyber-btn-primary {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            color: white;
+            border: none;
+        }
+
+        /* HERO SECTION */
+        .cyber-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-green), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-btn {
+            padding: 1.2rem 2.5rem;
+            font-size: 1.1rem;
+            min-width: 200px;
+        }
+
+        /* SECTIONS */
+        .cyber-section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* PROJETS GRID */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cyber-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyber-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .cyber-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-blue);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 243, 255, 0.2);
+        }
+
+        .cyber-card:hover::before {
+            left: 100%;
+        }
+
+        .card-icon {
+            font-size: 4rem;
+            color: var(--neon-blue);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        .card-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .card-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .card-access {
+            color: var(--neon-pink);
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CONTACT */
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .contact-item i {
+            color: var(--neon-blue);
+            font-size: 1.5rem;
+            width: 40px;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .contact-item div {
+            flex: 1;
+        }
+
+        .contact-item strong {
+            color: var(--neon-green);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-family: 'Orbitron', monospace;
+        }
+
+        /* FOOTER */
+        .cyber-footer {
+            background: rgba(5, 5, 16, 0.9);
+            border-top: 2px solid;
+            border-image: linear-gradient(45deg, var(--neon-purple), var(--neon-blue)) 1;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: var(--neon-green);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .cyber-nav {
+                padding: 0 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cyber-section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- EFFETS DE FOND -->
+    <div class="matrix-bg"></div>
+    <div class="particles" id="particles"></div>
+    <div class="scan-lines"></div>
+    
+    <!-- HEADER -->
+    <header class="cyber-header">
+        <nav class="cyber-nav">
+            <div class="cyber-logo">
+                <h1>AFRICA.<span>TECH21</span></h1>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="rsma.html">RSMA</a></li>
+                <li><a href="#aide">Aide</a></li>
+            </ul>
+            
+            <div class="user-status" id="userStatus">
+                <!-- Le statut de connexion sera mis à jour par JavaScript -->
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="cyber-hero">
+        <div class="hero-content">
+            <h1 class="hero-title">INNOVATION TECHNOLOGIQUE AFRICAINE</h1>
+            <p class="hero-subtitle">
+                Rejoignez la révolution technologique et participez à des projets innovants 
+                qui façonnent l'avenir de l'Afrique. Développez vos compétences dans un 
+                environnement collaboratif et futuriste.
+            </p>
+            <div class="hero-buttons">
+                <a href="signup.html" class="cyber-btn cyber-btn-primary hero-btn">
+                    <i class="fas fa-rocket"></i> Commencer l'Aventure
+                </a>
+                <a href="espace-membres.html" class="cyber-btn hero-btn">
+                    <i class="fas fa-users"></i> Espace Membres
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION DEVENIR MEMBRE -->
+    <section id="devenir-membre" class="cyber-section">
+        <h2 class="section-title">Devenir Membre</h2>
+        <p class="section-subtitle">
+            Rejoignez notre communauté exclusive et travaillez sur des projets 
+            technologiques innovants avec des passionnés comme vous
+        </p>
+        
+        <div style="text-align: center;">
+            <a href="formulaire-candidature.html" class="cyber-btn cyber-btn-primary" style="padding: 1.2rem 2.5rem; font-size: 1.1rem;">
+                <i class="fas fa-edit"></i> Postuler pour Devenir Membre
+            </a>
+            <p style="margin-top: 1.5rem; color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">
+                ⚠️ Accès complet aux projets réservé aux membres officiels
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION PROJETS -->
+    <section id="projects" class="cyber-section">
+        <h2 class="section-title">Projets Innovants</h2>
+        <p class="section-subtitle">
+            Découvrez nos projets phares qui repoussent les limites de la technologie
+        </p>
+        
+        <div class="projects-grid">
+            <!-- PROJET ROBOT -->
+            <div class="cyber-card">
+                <div class="card-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3 class="card-title">Robot Assistant</h3>
+                <p class="card-description">
+                    Développement d'un robot intelligent autonome pour l'accueil et l'assistance 
+                    dans les espaces publics. Équipé de reconnaissance vocale et navigation autonome.
+                </p>
+                <div class="card-access">
+                    <i class="fas fa-lock"></i> Accès Membres
+                </div>
+            </div>
+
+            <!-- PROJET RSMA -->
+            <div class="cyber-card">
+                <div class="card-icon">
+                    <i class="fas fa-water"></i>
+                </div>
+                <h3 class="card-title">RSMA</h3>
+                <p class="card-description">
+                    Robot Sous-marin Autonome pour l'exploration et la recherche marine. 
+                    Capteurs environnementaux, caméras HD et système de propulsion avancé.
+                </p>
+                <a href="rsma.html" class="cyber-btn" style="margin-top: 1rem;">
+                    <i class="fas fa-eye"></i> Découvrir
+                </a>
+            </div>
+
+            <!-- PROJET INNOVATION -->
+            <div class="cyber-card">
+                <div class="card-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3 class="card-title">Laboratoire Tech</h3>
+                <p class="card-description">
+                    Plateforme collaborative pour le développement de projets innovants. 
+                    Intelligence artificielle, IoT, robotique et solutions digitales pour l'Afrique.
+                </p>
+                <div class="card-access">
+                    <i class="fas fa-lock"></i> Accès Membres
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION CONTACT -->
+    <section id="contact" class="cyber-section">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">Une question ? Un projet ? N'hésitez pas à nous contacter</p>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <strong>Email</strong>
+                    africa.tech21.net@gmail.com
+                </div>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <div>
+                    <strong>Téléphone</strong>
+                    +221 70 207 07 02
+                </div>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-clock"></i>
+                <div>
+                    <strong>Disponibilité</strong>
+                    Lundi - Vendredi, 8h - 18h
+                </div>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <strong>Localisation</strong>
+                    Sénégal, Afrique
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="cyber-footer">
+        <div class="footer-logo">AFRICA.<span>TECH21</span></div>
+        <p>Innovation Technologique Africaine</p>
+        <p>Propulsant l'avenir technologique de l'Afrique</p>
+        <p style="margin-top: 2rem; color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">
+            &copy; 2024 AFRICA.TECH21 - Tous droits réservés
+        </p>
+    </footer>
+
+    <script>
+        // CRÉATION DES PARTICULES
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // GESTION DU STATUT DE CONNEXION
+        function updateUserStatus() {
+            const userStatus = document.getElementById('userStatus');
+            const memberLoggedIn = localStorage.getItem('memberLoggedIn');
+            const memberEmail = localStorage.getItem('memberEmail');
+
+            if (memberLoggedIn === 'true' && memberEmail) {
+                userStatus.innerHTML = `
+                    <div class="status-connected">
+                        <i class="fas fa-user"></i> Connecté : ${memberEmail}
+                    </div>
+                    <a href="dashboard.html" class="cyber-btn">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                    <button class="cyber-btn" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Déconnexion
+                    </button>
+                `;
+            } else {
+                userStatus.innerHTML = `
+                    <a href="signup.html" class="cyber-btn">
+                        <i class="fas fa-user-plus"></i> S'inscrire
+                    </a>
+                    <a href="espace-membres.html" class="cyber-btn cyber-btn-primary">
+                        <i class="fas fa-sign-in-alt"></i> Connexion
+                    </a>
+                `;
+            }
+        }
+
+        // DÉCONNEXION
+        function logout() {
+            localStorage.removeItem('memberLoggedIn');
+            localStorage.removeItem('memberEmail');
+            localStorage.removeItem('currentUser');
+            updateUserStatus();
+            window.location.reload();
+        }
+
+        // ANIMATION AU SCROLL
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // INITIALISATION
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            updateUserStatus();
+            
+            // Animation des cartes
+            document.querySelectorAll('.cyber-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease-out';
+                observer.observe(card);
+            });
+
+            // Smooth scroll pour les ancres
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
