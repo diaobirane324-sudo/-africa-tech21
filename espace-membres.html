@@ -252,7 +252,6 @@
 
         .code-info strong {
             color: var(--neon-green);
-            font-family: 'Orbitron', monospace;
             display: block;
             margin-bottom: 0.5rem;
         }
@@ -463,9 +462,6 @@
                 <a href="signup.html">
                     <i class="fas fa-user-plus"></i> Pas encore de compte ? S'inscrire
                 </a>
-                <a href="forgot-password.html">
-                    <i class="fas fa-key"></i> Code oublié ?
-                </a>
             </div>
 
             <div class="back-home">
@@ -557,18 +553,9 @@
             }, 1000);
         });
 
-        // Remplissage automatique pour les tests (à retirer en production)
+        // Initialisation
         document.addEventListener('DOMContentLoaded', function() {
             createParticles();
-            
-            // Pré-remplir avec un email existant si disponible
-            const users = JSON.parse(localStorage.getItem('users') || '[]');
-            if (users.length > 0) {
-                document.getElementById('email').value = users[0].email;
-            }
-            
-            // Pré-remplir le code
-            document.getElementById('password').value = MEMBER_ACCESS_CODE;
         });
 
         // Entrée pour soumettre le formulaire
