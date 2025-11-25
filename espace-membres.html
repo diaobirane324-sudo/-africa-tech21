@@ -241,30 +241,6 @@
             color: var(--neon-blue);
         }
 
-        .code-info {
-            background: rgba(0, 243, 255, 0.1);
-            border: 1px solid var(--neon-blue);
-            border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .code-info strong {
-            color: var(--neon-green);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .code-info code {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            font-family: monospace;
-            color: var(--neon-blue);
-            border: 1px solid var(--neon-blue);
-        }
-
         /* BOUTONS */
         .cyber-submit-btn {
             width: 100%;
@@ -422,11 +398,6 @@
         <div class="login-form">
             <h2>Connexion</h2>
             <p>Identifiez-vous pour accéder au système</p>
-
-            <div class="code-info">
-                <strong>CODE D'ACCÈS REQUIS</strong>
-                <div>Utilisez le code : <code>africa.tech21membres2026</code></div>
-            </div>
             
             <form id="memberLoginForm">
                 <div class="form-group">
@@ -438,15 +409,15 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="cyber-label" for="password">Mot de passe commun</label>
+                    <label class="cyber-label" for="password">Mot de passe membre officiel</label>
                     <div class="input-container">
-                        <input type="password" id="password" name="password" class="cyber-input" required placeholder="Saisissez le code d'accès">
+                        <input type="password" id="password" name="password" class="cyber-input" required placeholder="Saisissez votre mot de passe">
                         <i class="fas fa-lock input-icon"></i>
                     </div>
                 </div>
 
                 <div class="error-message cyber-message" id="errorMessage">
-                    <i class="fas fa-exclamation-triangle"></i> Email non trouvé ou code incorrect
+                    <i class="fas fa-exclamation-triangle"></i> Email non trouvé ou mot de passe incorrect
                 </div>
 
                 <div class="success-message cyber-message" id="successMessage">
