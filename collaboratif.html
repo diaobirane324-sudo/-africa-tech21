@@ -849,8 +849,58 @@
             <h2 class="panel-title">
                 <i class="fas fa-hashtag"></i> CANAUX
             </h2>
-            <div class="channels-list" id="channelsList">
-                <div class="channel-item active" data-channel="general">
+           <div class="channels-list" id="channelsList">
+    <!-- Canal Général -->
+    <div class="channel-item active" data-channel="general" data-type="general">
+        <div class="channel-name"># Général</div>
+        <div class="channel-desc">Discussion générale de l'équipe</div>
+    </div>
+    
+    <!-- Canal Technique -->
+    <div class="channel-item" data-channel="technique" data-type="support">
+        <div class="channel-name"># Technique</div>
+        <div class="channel-desc">Support technique et aide</div>
+    </div>
+    
+    <!-- Canal RSMA -->
+    <div class="channel-item" data-channel="rsma" data-type="project" data-project="rsma">
+        <div class="channel-name">
+            <i class="fas fa-water" style="margin-right: 8px;"></i> # RSMA-Projet
+        </div>
+        <div class="channel-desc">
+            Robot sous-marin autonome<br>
+            <small style="color: var(--neon-green); font-size: 0.8rem;">
+                <i class="fas fa-circle"></i> Développement Actif
+            </small>
+        </div>
+    </div>
+    
+    <!-- Canal OXY -->
+    <div class="channel-item" data-channel="oxy" data-type="project" data-project="oxy">
+        <div class="channel-name">
+            <i class="fas fa-wind" style="margin-right: 8px;"></i> # OXY-Projet
+        </div>
+        <div class="channel-desc">
+            Système de production d'oxygène<br>
+            <small style="color: var(--neon-blue); font-size: 0.8rem;">
+                <i class="fas fa-flask"></i> Recherche & Développement
+            </small>
+        </div>
+    </div>
+    
+    <!-- Canal RGA -->
+    <div class="channel-item" data-channel="rga" data-type="project" data-project="rga">
+        <div class="channel-name">
+            <i class="fas fa-robot" style="margin-right: 8px;"></i> # RGA-Projet
+        </div>
+        <div class="channel-desc">
+            Robot guide autonome<br>
+            <small style="color: var(--neon-pink); font-size: 0.8rem;">
+                <i class="fas fa-cogs"></i> Prototypage
+            </small>
+        </div>
+    </div>
+</div>
                     <div class="channel-name"># Général</div>
                     <div class="channel-desc">Discussion générale de l'équipe</div>
                 </div>
