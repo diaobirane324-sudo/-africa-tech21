@@ -2008,8 +2008,8 @@
             return null;
         }
 
-     async function validateMatricule(matricule) {
-    console.log("DEBUG - Matricule brut reçu:", matricule); // LIGNE À AJOUTER
+   async function validateMatricule(matricule) {
+    console.log("DEBUG - Matricule brut reçu:", matricule);
     
     // LISTE RÉELLE DES MEMBRES AFRICA.TECH21
     const membersList = {
@@ -2035,22 +2035,21 @@
         // Cherche un bloc de lettres/chiffres de 10+ caractères
         const match = text.match(/[A-Z0-9]{10,}/i);
         if (match) {
-            console.log("DEBUG - Code extrait par regex:", match[0]); // AJOUTER
+            console.log("DEBUG - Code extrait par regex:", match[0]);
             return match[0].toUpperCase();
         }
         // Sinon, garde seulement lettres/chiffres
         const cleaned = text.toUpperCase().replace(/[^A-Z0-9]/g, '');
-        console.log("DEBUG - Code nettoyé:", cleaned); // AJOUTER
+        console.log("DEBUG - Code nettoyé:", cleaned);
         return cleaned;
     };
     
-    const cleanMatricule = extractCode(matricule); // CHANGER CETTE LIGNE
-    console.log("DEBUG - Matricule final pour validation:", cleanMatricule); // AJOUTER
+    const cleanMatricule = extractCode(matricule);
+    console.log("DEBUG - Matricule final pour validation:", cleanMatricule);
     
     document.getElementById('transcription').textContent = `🔍 Vérification: ${cleanMatricule}`;
     document.getElementById('matriculeDisplay').textContent = `MATRICULE: ${cleanMatricule}`;
     
-    // RESTE DU CODE (le setTimeout avec la validation)...
     // Simuler délai de vérification (1.5 secondes)
     setTimeout(() => {
         if (membersList[cleanMatricule]) {
