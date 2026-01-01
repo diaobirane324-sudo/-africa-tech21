@@ -1954,76 +1954,22 @@
         }
 
         // Étape 1: Reconnaissance vocale du matricule
-        function startMatriculeRecognition() {
-            console.log("DEBUG: Démarrage reconnaissance vocale");
-            
-            // VÉRIFIER COMPATIBILITÉ
-            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-                document.getElementById('transcription').textContent = 
-                    "❌ Reconnaissance vocale non supportée. Utilisez Chrome/Edge.";
-                console.error("Navigateur non compatible avec SpeechRecognition");
-                return;
-            }
-            
-            try {
-                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-                recognition = new SpeechRecognition();
-                recognition.lang = 'fr-FR';
-                recognition.continuous = false;
-                recognition.interimResults = false;
-                recognition.maxAlternatives = 1;
-                
-                recognition.onstart = () => {
-                    console.log("DEBUG: Micro activé");
-                    document.getElementById('transcription').textContent = "🎤 Micro activé... Parlez maintenant";
-                };
-                
-                recognition.onresult = (event) => {
-                    const transcript = event.results[0][0].transcript;
-                    console.log("DEBUG: Transcription reçue:", transcript);
-                    document.getElementById('transcription').textContent = transcript;
-                    
-                    // Extraire le matricule
-                    const matricule = extractMatricule(transcript);
-                    if (matricule) {
-                        console.log("DEBUG: Matricule extrait:", matricule);
-                        document.getElementById('matriculeDisplay').textContent = `MATRICULE: ${matricule}`;
-                        validateMatricule(matricule);
-                    } else {
-                        document.getElementById('transcription').textContent = 
-                            "❌ Matricule non détecté. Dites 'Mon matricule est MAJOR186ROBOTIC'";
-                    }
-                };
-                
-                recognition.onerror = (event) => {
-                    console.error("DEBUG: Erreur reconnaissance:", event.error);
-                    if (event.error === 'not-allowed') {
-                        document.getElementById('transcription').textContent = 
-                            "❌ Permission microphone refusée. Autorisez le micro.";
-                    } else if (event.error !== 'no-speech') {
-                        document.getElementById('transcription').textContent = 
-                            "❌ Erreur micro. Essayez manuellement.";
-                    }
-                };
-                
-                recognition.onend = () => {
-                    console.log("DEBUG: Reconnaissance terminée, redémarrage...");
-                    // Redémarrer après 1 seconde
-                    setTimeout(() => {
-                        if (currentStep === "matricule") {
-                            recognition.start();
-                        }
-                    }, 1000);
-                };
-                
-                recognition.start();
-                
-            } catch (error) {
-                console.error("DEBUG: Erreur initialisation:", error);
-                document.getElementById('transcription').textContent = 
-                    "❌ Erreur technique. Utilisez la saisie manuelle.";
-            }
-        }
+       function startMatriculeRecognition() {
+    console.log("DEBUG: Reconnaissance vocale en mode test");
+    
+    // MESSAGE SIMPLE POUR TEST - PAS DE RECONNAISSANCE VRAIE
+    document.getElementById('transcription').textContent = 
+        "✅ Modal IATECH ouvert! Testez avec : MAJOR186ROBOTIC";
+    
+    // NE PAS DÉMARRER LA RECONNAISSANCE VRAIE
+    console.log("Mode test activé - Reconnaissance désactivée temporairement");
+    
+    // Juste un petit délai pour l'affichage
+    setTimeout(() => {
+        document.getElementById('transcription').textContent = 
+            "🎤 Test réussi! Tapez un matricule manuellement";
+    }, 1000);
+}
 
         function stopRecognition() {
             if (recognition) {
