@@ -38,7 +38,6 @@
             overflow-x: hidden;
         }
 
-        /* === EFFETS DE FOND === */
         .hologram-grid {
             position: fixed;
             top: 0;
@@ -115,7 +114,6 @@
             100% { transform: translateY(-100px) translateX(100px) rotate(360deg); opacity: 0; }
         }
 
-        /* === HEADER === */
         .neuro-header {
             background: rgba(20, 20, 35, 0.8);
             backdrop-filter: blur(20px);
@@ -229,14 +227,12 @@
             box-shadow: 0 6px 25px rgba(123, 44, 191, 0.6);
         }
 
-        /* === CONTAINER PRINCIPAL === */
         .dashboard-container {
             padding: 3rem;
             max-width: 1600px;
             margin: 0 auto;
         }
 
-        /* === HERO SECTION === */
         .hero-section {
             background: var(--glass);
             backdrop-filter: blur(15px);
@@ -283,7 +279,6 @@
             line-height: 1.6;
         }
 
-        /* === GRID DES FONCTIONNALITÉS === */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -361,7 +356,6 @@
             text-shadow: var(--accent-glow);
         }
 
-        /* === SECTION FORUM === */
         .forum-section {
             background: var(--glass);
             backdrop-filter: blur(15px);
@@ -493,7 +487,6 @@
             box-shadow: 0 6px 25px rgba(123, 44, 191, 0.6);
         }
 
-        /* === SECTION ADMIN === */
         .admin-section {
             background: var(--glass);
             backdrop-filter: blur(15px);
@@ -576,7 +569,6 @@
             box-shadow: 0 6px 25px rgba(123, 44, 191, 0.6);
         }
 
-        /* === SECTION CANDIDATURES === */
         .candidates-section {
             background: var(--glass);
             backdrop-filter: blur(15px);
@@ -707,7 +699,6 @@
             font-size: 0.9rem;
         }
 
-        /* === MODAL IATECH === */
         .modal {
             display: none;
             position: fixed;
@@ -800,7 +791,6 @@
             background: rgba(20, 20, 35, 0.3);
         }
 
-        /* Étapes */
         .step-hidden { 
             display: none !important; 
         }
@@ -809,7 +799,6 @@
             display: block; 
         }
 
-        /* Étape 1: Demande matricule */
         .voice-prompt {
             text-align: center;
             margin-bottom: 3rem;
@@ -942,7 +931,6 @@
             box-shadow: 0 6px 20px rgba(123, 44, 191, 0.5);
         }
 
-        /* Étape 2: Chat IA */
         .chat-header {
             display: flex;
             justify-content: space-between;
@@ -974,23 +962,6 @@
             border: 1px solid rgba(0, 255, 136, 0.3);
             font-family: 'Orbitron', sans-serif;
             letter-spacing: 1px;
-        }
-
-        .voice-toggle {
-            background: rgba(0, 240, 255, 0.1);
-            border: 1px solid #00f0ff;
-            color: #00f0ff;
-            padding: 0.8rem 1.5rem;
-            border-radius: 12px;
-            cursor: pointer;
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-
-        .voice-toggle:hover {
-            background: rgba(0, 240, 255, 0.2);
         }
 
         .chat-messages {
@@ -1053,43 +1024,6 @@
             background: rgba(255, 255, 255, 0.08);
         }
 
-        .chat-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .voice-btn {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #7b2cbf, #ff00ff);
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .voice-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 25px rgba(255, 0, 255, 0.5);
-        }
-
-        .voice-btn.listening {
-            background: linear-gradient(135deg, #ff0000, #ff6b6b);
-            animation: listeningPulse 1s infinite;
-        }
-
-        @keyframes listeningPulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
-            50% { box-shadow: 0 0 0 15px rgba(255, 0, 0, 0); }
-        }
-
         .send-btn {
             background: linear-gradient(135deg, #00f0ff, #00ff88);
             color: #050510;
@@ -1113,7 +1047,6 @@
             box-shadow: 0 6px 25px rgba(0, 240, 255, 0.4);
         }
 
-        /* Étape 3: Chargement */
         .loading-ai {
             text-align: center;
             padding: 3rem;
@@ -1129,38 +1062,9 @@
             animation: spin 1.5s linear infinite;
         }
 
-        .hologram-loader::before {
-            content: '';
-            position: absolute;
-            top: -15px;
-            left: -15px;
-            right: -15px;
-            bottom: -15px;
-            border: 3px solid #ff00ff;
-            border-radius: 50%;
-            animation: spinReverse 2s linear infinite;
-        }
-
-        .hologram-loader::after {
-            content: '';
-            position: absolute;
-            top: -30px;
-            left: -30px;
-            right: -30px;
-            bottom: -30px;
-            border: 3px solid #00ff88;
-            border-radius: 50%;
-            animation: spin 2.5s linear infinite;
-        }
-
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-        }
-
-        @keyframes spinReverse {
-            0% { transform: rotate(360deg); }
-            100% { transform: rotate(0deg); }
         }
 
         .loading-ai p {
@@ -1188,7 +1092,6 @@
             font-size: 1.1rem;
         }
 
-        /* === SCROLLBAR === */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -1203,7 +1106,6 @@
             border-radius: 10px;
         }
 
-        /* === RESPONSIVE === */
         @media (max-width: 768px) {
             .neuro-header {
                 padding: 1rem 1.5rem;
@@ -1272,11 +1174,6 @@
                 flex-direction: column;
                 gap: 1rem;
                 align-items: flex-start;
-            }
-            
-            .chat-controls {
-                flex-direction: column;
-                gap: 1rem;
             }
             
             .send-btn {
@@ -1401,7 +1298,7 @@
                 <div class="feature-status status-active">ACCÈS: DISPONIBLE</div>
             </div>
             
-            <!-- Card IATECH ASSISTANT -->
+            <!-- CARD IATECH - FONCTIONNELLE -->
             <div class="feature-card" onclick="ouvrirIATech()">
                 <div class="feature-icon">
                     <i class="fas fa-robot"></i>
@@ -1467,11 +1364,10 @@
             </div>
         </section>
 
-        <!-- Section Candidatures (cachée par défaut) -->
+        <!-- Section Candidatures -->
         <section class="candidates-section" id="candidatesSection">
             <h2 class="section-title">GESTION DES CANDIDATURES</h2>
             
-            <!-- Message de bienvenue -->
             <div style="text-align: center; margin-bottom: 3rem;">
                 <h3 style="color: var(--neon-green); font-size: 2rem; margin-bottom: 1rem;">
                     <i class="fas fa-shield-alt"></i> BIENVENU MAJOR
@@ -1481,7 +1377,6 @@
                 </p>
             </div>
 
-            <!-- Statistiques -->
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-number" id="totalCandidates">0</div>
@@ -1501,15 +1396,12 @@
                 </div>
             </div>
 
-            <!-- Liste des candidatures -->
             <h3 style="color: var(--neon-blue); margin-bottom: 2rem; text-align: center;">
                 <i class="fas fa-list"></i> NOUVELLES CANDIDATURES
             </h3>
             <div class="candidates-list" id="candidatesList">
-                <!-- Les candidatures seront chargées ici -->
             </div>
 
-            <!-- Statistiques des membres -->
             <div class="member-stats">
                 <h3 style="color: var(--neon-blue); margin-bottom: 2rem; text-align: center;">
                     <i class="fas fa-chart-bar"></i> STATISTIQUES DES MEMBRES
@@ -1517,13 +1409,11 @@
                 <div class="stats-chart">
                     <h4 style="color: var(--neon-green); margin-bottom: 1rem;">Connexions par Membre</h4>
                     <div class="chart-container" id="connectionsChart">
-                        <!-- Graphique des connexions -->
                     </div>
                 </div>
                 <div class="stats-chart">
                     <h4 style="color: var(--neon-green); margin-bottom: 1rem;">Temps de Connexion (minutes)</h4>
                     <div class="chart-container" id="timeChart">
-                        <!-- Graphique du temps -->
                     </div>
                 </div>
             </div>
@@ -1539,19 +1429,19 @@
             </div>
             
             <div class="modal-body">
-                <!-- Étape 1: Demande matricule vocal -->
+                <!-- Étape 1 -->
                 <div id="matriculeStep" class="step-active">
                     <div class="voice-prompt">
                         <div class="pulse-ring" id="voicePulse">
                             <i class="fas fa-microphone"></i>
                         </div>
                         <p class="prompt-text">PRÉSENTEZ VOTRE MATRICULE VOCALEMENT</p>
-                        <p class="sub-prompt">Dites "Mon matricule est..." puis votre code</p>
+                        <p class="sub-prompt">Dites "Mon matricule est..." puis épelez lettre par lettre</p>
                     </div>
                     
                     <div class="voice-result">
                         <div class="transcript-box">
-                            <p id="transcription">🎤 Micro activé... Parlez maintenant</p>
+                            <p id="transcription">🎤 Appuyez sur le micro pour commencer...</p>
                         </div>
                         <div class="matricule-display" id="matriculeDisplay">
                             MATRICULE: ________
@@ -1563,85 +1453,63 @@
                                id="manualMatricule" 
                                placeholder="Ou saisir manuellement (ex: MAJOR186ROBOTIC)"
                                autocomplete="off">
-                        <button onclick="validateManualMatricule()">
+                        <button onclick="validerMatriculeManuel()">
                             <i class="fas fa-check-circle"></i> VALIDER
                         </button>
                     </div>
                 </div>
                 
-                <!-- Étape 2: Chat IA -->
+                <!-- Étape 2 -->
                 <div id="chatStep" class="step-hidden">
                     <div class="chat-header">
                         <div class="user-info">
                             <span id="memberName">CHARGEMENT...</span>
                             <span class="matricule-badge" id="currentMatricule">MATRICULE</span>
                         </div>
-                        <button class="voice-toggle" id="voiceToggle" onclick="toggleVoiceMode()">
-                            <i class="fas fa-microphone"></i> MODE VOCAL
-                        </button>
                     </div>
                     
                     <div class="chat-messages" id="iaChatMessages">
                         <div class="message ia-message">
-                            <p>Bonjour <span id="greetingName"></span> ! Je suis <strong>IATECH</strong>, votre assistant technique spécialisé. Je peux vous aider avec :</p>
-                            <ul style="margin-top: 10px; padding-left: 20px;">
-                                <li>Documentation technique des composants</li>
-                                <li>Problèmes de programmation</li>
-                                <li>Spécifications matérielles</li>
-                                <li>Tutoriels et procédures</li>
-                                <li>Diagnostic de problèmes</li>
-                            </ul>
-                            <p style="margin-top: 15px;">Posez-moi votre question technique !</p>
+                            <p>Bonjour ! Je suis <strong>IATECH</strong>, votre assistant technique spécialisé. Posez-moi votre question technique !</p>
                         </div>
                     </div>
                     
                     <div class="chat-input">
                         <textarea id="iaQuestion" 
-                                  placeholder="Tapez votre question technique ici... (ex: 'Comment programmer le capteur RSMA ?')"
+                                  placeholder="Tapez votre question technique ici..."
                                   rows="3"></textarea>
-                        <div class="chat-controls">
-                            <button class="voice-btn" id="voiceBtn" onclick="startVoiceInput()">
-                                <i class="fas fa-microphone"></i>
-                            </button>
-                            <button class="send-btn" onclick="askIATech()">
-                                <i class="fas fa-paper-plane"></i> DEMANDER À IATECH
-                            </button>
-                        </div>
+                        <button class="send-btn" onclick="askIATech()">
+                            <i class="fas fa-paper-plane"></i> DEMANDER À IATECH
+                        </button>
                     </div>
                 </div>
                 
-                <!-- Étape 3: Chargement -->
+                <!-- Étape 3 -->
                 <div id="loadingStep" class="step-hidden">
                     <div class="loading-ai">
                         <div class="hologram-loader"></div>
                         <p>IATECH TRAITE VOTRE DEMANDE...</p>
-                        <p style="color: #a0a8c0; font-size: 0.9rem; margin-top: 10px;">
-                            Analyse en cours de votre question technique
-                        </p>
                     </div>
                 </div>
             </div>
             
             <div class="modal-footer">
                 <p class="security-note">
-                    <i class="fas fa-shield-alt"></i> Sécurisé par vérification matricule • Session: <span id="sessionTimer">05:00</span>
+                    <i class="fas fa-shield-alt"></i> Sécurisé par vérification matricule
                 </p>
             </div>
         </div>
     </div>
 
     <script>
-        // ==================== INITIALISATION ====================
-
-        // Vérifier la connexion
+        // ==================== VÉRIFICATION CONNEXION ====================
         if (localStorage.getItem('memberLoggedIn') !== 'true') {
             window.location.href = 'espace-membres.html';
         }
 
-        // Afficher l'email de l'utilisateur
         document.getElementById('userEmail').textContent = localStorage.getItem('memberEmail') || 'UTILISATEUR';
 
-        // ==================== SYSTÈME DE PARTICULES ====================
+        // ==================== PARTICULES ====================
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
             for (let i = 0; i < 50; i++) {
@@ -1650,13 +1518,11 @@
                 particle.style.left = Math.random() * 100 + 'vw';
                 particle.style.animationDelay = Math.random() * 15 + 's';
                 particle.style.animationDuration = (8 + Math.random() * 12) + 's';
-                particle.style.background = Math.random() > 0.5 ? 'var(--neon-blue)' : 'var(--neon-purple)';
                 particlesContainer.appendChild(particle);
             }
         }
 
-        // ==================== SYSTÈME DE FORUM ====================
-        
+        // ==================== FORUM ====================
         function sendMessage() {
             const messageInput = document.getElementById('newMessage');
             const message = messageInput.value.trim();
@@ -1682,7 +1548,6 @@
                 messageInput.value = '';
                 forumMessages.scrollTop = forumMessages.scrollHeight;
                 
-                // Sauvegarder dans le localStorage
                 saveMessageToStorage(message, dateStr);
             }
         }
@@ -1704,15 +1569,12 @@
             const messages = JSON.parse(localStorage.getItem('forumMessages') || '[]');
             const forumMessages = document.getElementById('forumMessages');
             
-            // Vider les messages existants sauf le premier (message système)
             while (forumMessages.children.length > 1) {
                 forumMessages.removeChild(forumMessages.lastChild);
             }
             
-            // Trier les messages par timestamp
             messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
             
-            // Ajouter tous les messages
             messages.forEach(msg => {
                 const messageDiv = document.createElement('div');
                 messageDiv.className = 'message';
@@ -1729,8 +1591,7 @@
             forumMessages.scrollTop = forumMessages.scrollHeight;
         }
 
-        // ==================== FONCTIONS UTILITAIRES ====================
-
+        // ==================== LOGOUT ====================
         function logout() {
             localStorage.removeItem('memberLoggedIn');
             localStorage.removeItem('memberEmail');
@@ -1738,12 +1599,10 @@
             window.location.href = 'index.html';
         }
 
-        // ==================== ADMINISTRATION ====================
-
+        // ==================== ADMIN ====================
         const ADMIN_PASSWORD = "Birane186@00";
         const ADMIN_MATRICULE = "N@75199@DELTA@00";
 
-        // Vérification de sécurité admin
         document.getElementById('securityForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1751,31 +1610,22 @@
             const password = document.getElementById('adminPassword').value;
             
             if (password === ADMIN_PASSWORD && matricule === ADMIN_MATRICULE) {
-                // Afficher la section des candidatures
                 document.getElementById('candidatesSection').style.display = 'block';
-                
-                // Charger les données
                 loadCandidatesData();
                 loadMemberStats();
-                
-                // Scroll vers la section
                 document.getElementById('candidatesSection').scrollIntoView({ behavior: 'smooth' });
             } else {
                 alert('❌ Identifiant ou mot de passe administrateur incorrect');
             }
         });
 
-        // ==================== GESTION DES CANDIDATURES ====================
-
+        // ==================== CANDIDATURES ====================
         async function loadCandidatesData() {
             try {
                 const response = await fetch('https://script.google.com/macros/s/AKfycbxglvfDnYyCHY0_HLvDiwOvJ99exnUx3TvkqsVWCAv4QatkrVPCVL--MiHf0xNmRCU/exec');
                 const data = await response.json();
                 
-                // Mettre à jour les statistiques
                 document.getElementById('totalCandidates').textContent = data.length;
-                
-                // Afficher la liste des candidatures
                 const candidatesList = document.getElementById('candidatesList');
                 candidatesList.innerHTML = '';
                 
@@ -1809,7 +1659,6 @@
         }
 
         function loadMemberStats() {
-            // Simuler des données de membres
             const members = [
                 { name: "ALPHA", connections: 45, time: 1280 },
                 { name: "BETA", connections: 32, time: 890 },
@@ -1818,7 +1667,6 @@
                 { name: "EPSILON", connections: 19, time: 520 }
             ];
 
-            // Calculer les statistiques
             const totalMembers = members.length;
             const totalConnections = members.reduce((sum, member) => sum + member.connections, 0);
             const totalTime = members.reduce((sum, member) => sum + member.time, 0);
@@ -1826,12 +1674,10 @@
             const avgConnections = Math.round(totalConnections / totalMembers);
             const avgTime = Math.round(totalTime / totalMembers);
 
-            // Mettre à jour les statistiques
             document.getElementById('totalMembers').textContent = totalMembers;
             document.getElementById('avgConnections').textContent = avgConnections;
             document.getElementById('avgTime').textContent = avgTime;
 
-            // Créer les graphiques
             createConnectionsChart(members);
             createTimeChart(members);
         }
@@ -1855,7 +1701,7 @@
                 const container = document.createElement('div');
                 container.style.display = 'inline-block';
                 container.style.margin = '0 15px';
-                container.style.text-align = 'center';
+                container.style.textAlign = 'center';
                 
                 const label = document.createElement('div');
                 label.className = 'chart-label';
@@ -1886,7 +1732,7 @@
                 const container = document.createElement('div');
                 container.style.display = 'inline-block';
                 container.style.margin = '0 15px';
-                container.style.text-align = 'center';
+                container.style.textAlign = 'center';
                 
                 const label = document.createElement('div');
                 label.className = 'chart-label';
@@ -1899,24 +1745,32 @@
         }
 
         // ==================== IATECH ASSISTANT ====================
-
-        // Configuration
-        let currentStep = "matricule";
         let recognition = null;
-        let synthesis = null;
-        let sessionTimer = 300;
-        let timerInterval = null;
         let currentMember = null;
-        let isVoiceMode = true;
+        
+        const MEMBRES_VALIDES = {
+            "MAJOR186ROBOTIC": { 
+                name: "MAJOR", 
+                role: "Expert en Robotique"
+            },
+            "ABDOU627INFORMATIC": { 
+                name: "ABDOU", 
+                role: "Spécialiste Informatique"
+            },
+            "SCIENTIFIC838MEDICAL": { 
+                name: "SCIENTIFIC", 
+                role: "Expert Scientifique Médical"
+            }
+        };
 
-        // Fonctions d'interface
+        // ==================== OUVERTURE IATECH ====================
         function ouvrirIATech() {
-            console.log("OUVERTURE IATECH...");
+            console.log("🚀 Ouverture IATECH");
             
-            const modal = document.getElementById('iaTechModal');
-            modal.style.display = 'flex';
+            document.getElementById('iaTechModal').style.display = 'flex';
             
-            document.getElementById('transcription').textContent = "🎤 Micro activé... Parlez maintenant";
+            document.getElementById('transcription').textContent = 
+                "🎤 Appuyez sur le micro ou tapez votre matricule";
             document.getElementById('matriculeDisplay').textContent = "MATRICULE: ________";
             document.getElementById('manualMatricule').value = "";
             
@@ -1924,34 +1778,31 @@
             document.getElementById('chatStep').className = 'step-hidden';
             document.getElementById('loadingStep').className = 'step-hidden';
             
-            startMatriculeRecognition();
+            setTimeout(() => {
+                startMatriculeRecognition();
+            }, 500);
         }
 
         function fermerIATech() {
+            console.log("🔒 Fermeture IATECH");
+            
             document.getElementById('iaTechModal').style.display = 'none';
-            stopRecognition();
-            clearInterval(timerInterval);
-            resetIATech();
-        }
-
-        function resetIATech() {
-            currentStep = "matricule";
+            
+            if (recognition) {
+                recognition.stop();
+                recognition = null;
+            }
+            
             currentMember = null;
-            sessionTimer = 300;
-            
-            document.getElementById('matriculeStep').className = 'step-active';
-            document.getElementById('chatStep').className = 'step-hidden';
-            document.getElementById('loadingStep').className = 'step-hidden';
-            
-            document.getElementById('matriculeDisplay').textContent = "MATRICULE: ________";
-            document.getElementById('transcription').textContent = "🎤 Micro activé... Parlez maintenant";
-            document.getElementById('manualMatricule').value = "";
         }
 
-        // Reconnaissance vocale
         function startMatriculeRecognition() {
+            console.log("🎤 Démarrage reconnaissance vocale");
+            
             if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-                document.getElementById('transcription').textContent = "❌ Reconnaissance vocale non disponible";
+                console.error("❌ Reconnaissance vocale non supportée");
+                document.getElementById('transcription').textContent = 
+                    "❌ Reconnaissance vocale non disponible. Utilisez la saisie manuelle.";
                 return;
             }
             
@@ -1962,22 +1813,31 @@
             recognition.interimResults = true;
             
             recognition.onstart = () => {
-                console.log("✅ Reconnaissance vocale démarrée");
-                document.getElementById('transcription').textContent = "🎤 Micro activé... Parlez votre matricule";
+                console.log("✅ Reconnaissance active");
+                document.getElementById('transcription').textContent = 
+                    "🎤 Micro activé... Épelez votre matricule lettre par lettre";
             };
             
             recognition.onresult = (event) => {
                 let transcript = '';
+                
                 for (let i = event.resultIndex; i < event.results.length; i++) {
                     transcript += event.results[i][0].transcript;
                 }
                 
-                document.getElementById('transcription').textContent = `🎤 Vous dites: "${transcript}"`;
+                console.log("📝 Transcription:", transcript);
                 
-                const matricule = extractMatricule(transcript);
+                document.getElementById('transcription').textContent = 
+                    `🎤 Vous dites: "${transcript}"`;
+                
+                const matricule = extraireMatricule(transcript);
+                
                 if (matricule && matricule.length >= 10) {
-                    document.getElementById('matriculeDisplay').textContent = `MATRICULE: ${matricule}`;
+                    document.getElementById('matriculeDisplay').textContent = 
+                        `MATRICULE: ${matricule}`;
+                    
                     if (matricule.length >= 15) {
+                        console.log("✅ Matricule complet détecté:", matricule);
                         recognition.stop();
                         validateMatricule(matricule);
                     }
@@ -1985,198 +1845,175 @@
             };
             
             recognition.onerror = (event) => {
-                console.error("Erreur reconnaissance:", event.error);
+                console.error("❌ Erreur reconnaissance:", event.error);
+                
+                if (event.error === 'no-speech') {
+                    document.getElementById('transcription').textContent = 
+                        "🎤 Aucun son détecté. Parlez plus fort ou utilisez la saisie manuelle.";
+                } else {
+                    document.getElementById('transcription').textContent = 
+                        `❌ Erreur: ${event.error}. Utilisez la saisie manuelle.`;
+                }
             };
             
             recognition.onend = () => {
-                if (!currentMember) {
-                    setTimeout(() => startMatriculeRecognition(), 1000);
+                console.log("🔴 Reconnaissance arrêtée");
+                
+                if (!currentMember && document.getElementById('matriculeStep').className === 'step-active') {
+                    setTimeout(() => {
+                        startMatriculeRecognition();
+                    }, 1000);
                 }
             };
             
             try {
                 recognition.start();
             } catch (error) {
-                console.error("Erreur démarrage:", error);
+                console.error("❌ Erreur démarrage:", error);
+                document.getElementById('transcription').textContent = 
+                    "❌ Impossible de démarrer le micro. Utilisez la saisie manuelle.";
             }
         }
 
-        function stopRecognition() {
-            if (recognition) {
-                recognition.stop();
-            }
-        }
-
-        function extractMatricule(text) {
-            const matricules = ["MAJOR186ROBOTIC", "ABDOU627INFORMATIC", "SCIENTIFIC838MEDICAL"];
-            const cleaned = text.toUpperCase().replace(/\s+/g, '');
+        function extraireMatricule(texte) {
+            let cleaned = texte.toUpperCase().replace(/\s+/g, '');
             
-            for (const matricule of matricules) {
+            console.log("🔍 Texte nettoyé:", cleaned);
+            
+            for (const matricule of Object.keys(MEMBRES_VALIDES)) {
                 if (cleaned.includes(matricule)) {
+                    console.log("✅ Matricule trouvé:", matricule);
                     return matricule;
                 }
             }
             
             const pattern = /[A-Z0-9]{10,}/;
             const match = cleaned.match(pattern);
-            return match ? match[0] : cleaned;
+            
+            if (match) {
+                console.log("🔍 Pattern trouvé:", match[0]);
+                return match[0];
+            }
+            
+            return cleaned;
         }
 
-        // Validation matricule
         function validateMatricule(matricule) {
-            const membersList = {
-                "MAJOR186ROBOTIC": { 
-                    name: "MAJOR", 
-                    role: "Expert en Robotique"
-                },
-                "ABDOU627INFORMATIC": { 
-                    name: "ABDOU", 
-                    role: "Spécialiste Informatique"
-                },
-                "SCIENTIFIC838MEDICAL": { 
-                    name: "SCIENTIFIC", 
-                    role: "Expert Scientifique Médical"
-                }
-            };
+            console.log("🔐 Validation matricule:", matricule);
             
-            const cleanMatricule = extractMatricule(matricule);
+            const cleanMatricule = extraireMatricule(matricule);
             
-            document.getElementById('transcription').textContent = `🔍 Vérification: ${cleanMatricule}`;
-            document.getElementById('matriculeDisplay').textContent = `MATRICULE: ${cleanMatricule}`;
+            document.getElementById('transcription').textContent = 
+                `🔍 Vérification: ${cleanMatricule}`;
+            document.getElementById('matriculeDisplay').textContent = 
+                `MATRICULE: ${cleanMatricule}`;
             
             setTimeout(() => {
-                if (membersList[cleanMatricule]) {
+                if (MEMBRES_VALIDES[cleanMatricule]) {
                     currentMember = { 
-                        ...membersList[cleanMatricule], 
+                        ...MEMBRES_VALIDES[cleanMatricule], 
                         matricule: cleanMatricule 
                     };
                     
-                    document.getElementById('transcription').textContent = `✅ Matricule vérifié ! Bienvenue ${currentMember.name}`;
-                    showChatStep();
+                    console.log("✅ Membre validé:", currentMember);
                     
-                } else {
-                    document.getElementById('transcription').textContent = "❌ Matricule non reconnu. Veuillez réessayer.";
-                    document.getElementById('matriculeDisplay').textContent = "MATRICULE: INCONNU";
+                    document.getElementById('transcription').textContent = 
+                        `✅ Matricule vérifié ! Bienvenue ${currentMember.name}`;
                     
                     setTimeout(() => {
-                        document.getElementById('transcription').textContent = "🎤 Micro activé... Présentez votre matricule";
-                        document.getElementById('matriculeDisplay').textContent = "MATRICULE: ________";
+                        showChatStep();
+                    }, 1000);
+                    
+                } else {
+                    console.log("❌ Matricule non reconnu:", cleanMatricule);
+                    
+                    document.getElementById('transcription').textContent = 
+                        "❌ Matricule non reconnu. Veuillez réessayer.";
+                    document.getElementById('matriculeDisplay').textContent = 
+                        "MATRICULE: INCONNU";
+                    
+                    setTimeout(() => {
+                        document.getElementById('transcription').textContent = 
+                            "🎤 Appuyez sur le micro ou tapez votre matricule";
+                        document.getElementById('matriculeDisplay').textContent = 
+                            "MATRICULE: ________";
                     }, 3000);
                 }
             }, 1500);
         }
 
-        function validateManualMatricule() {
+        function validerMatriculeManuel() {
             const matricule = document.getElementById('manualMatricule').value.trim();
+            
             if (matricule) {
-                document.getElementById('matriculeDisplay').textContent = `MATRICULE: ${matricule}`;
+                console.log("✍️ Matricule saisi manuellement:", matricule);
                 validateMatricule(matricule);
             }
         }
 
-        // Chat IA
         function showChatStep() {
-            currentStep = "chat";
+            console.log("💬 Affichage chat IA");
+            
             document.getElementById('matriculeStep').className = 'step-hidden';
             document.getElementById('chatStep').className = 'step-active';
             
             document.getElementById('memberName').textContent = currentMember.name;
             document.getElementById('currentMatricule').textContent = currentMember.matricule;
-            document.getElementById('greetingName').textContent = currentMember.name.split(' ')[0];
             
-            startSessionTimer();
+            const chatMessages = document.getElementById('iaChatMessages');
+            chatMessages.innerHTML = `
+                <div class="message ia-message">
+                    <p>Bonjour <strong>${currentMember.name}</strong> ! Je suis <strong>IATECH</strong>, votre assistant technique spécialisé.</p>
+                    <p style="margin-top: 10px;">Je peux vous aider avec :</p>
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li>Documentation technique des composants</li>
+                        <li>Problèmes de programmation</li>
+                        <li>Spécifications matérielles</li>
+                        <li>Tutoriels et procédures</li>
+                        <li>Diagnostic de problèmes</li>
+                    </ul>
+                    <p style="margin-top: 15px;">Posez-moi votre question technique !</p>
+                </div>
+            `;
         }
 
-        function startSessionTimer() {
-            clearInterval(timerInterval);
-            sessionTimer = 300;
-            
-            timerInterval = setInterval(() => {
-                sessionTimer--;
-                const minutes = Math.floor(sessionTimer / 60);
-                const seconds = sessionTimer % 60;
-                document.getElementById('sessionTimer').textContent = 
-                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                
-                if (sessionTimer <= 0) {
-                    clearInterval(timerInterval);
-                    setTimeout(() => {
-                        fermerIATech();
-                        ouvrirIATech();
-                    }, 2000);
-                }
-            }, 1000);
-        }
-
-        function toggleVoiceMode() {
-            isVoiceMode = !isVoiceMode;
-            const btn = document.getElementById('voiceToggle');
-            if (isVoiceMode) {
-                btn.innerHTML = '<i class="fas fa-microphone"></i> MODE VOCAL ACTIVÉ';
-                btn.style.background = 'rgba(0, 240, 255, 0.2)';
-            } else {
-                btn.innerHTML = '<i class="fas fa-keyboard"></i> MODE TEXTE';
-                btn.style.background = 'rgba(255, 255, 255, 0.1)';
-            }
-        }
-
-        function startVoiceInput() {
-            if (!isVoiceMode) {
-                toggleVoiceMode();
-            }
-            
-            const voiceBtn = document.getElementById('voiceBtn');
-            voiceBtn.classList.add('listening');
-            
-            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-            recognition.lang = 'fr-FR';
-            recognition.onresult = (event) => {
-                const question = event.results[0][0].transcript;
-                document.getElementById('iaQuestion').value = question;
-                voiceBtn.classList.remove('listening');
-                
-                if (question.trim().length > 5) {
-                    askIATech();
-                }
-            };
-            
-            recognition.onerror = () => {
-                voiceBtn.classList.remove('listening');
-            };
-            
-            recognition.start();
-        }
-
-        async function askIATech() {
+        function askIATech() {
             const question = document.getElementById('iaQuestion').value.trim();
-            if (!question) return;
+            
+            if (!question) {
+                alert("⚠️ Veuillez saisir une question");
+                return;
+            }
+            
+            console.log("❓ Question posée:", question);
             
             document.getElementById('chatStep').className = 'step-hidden';
             document.getElementById('loadingStep').className = 'step-active';
             
             setTimeout(() => {
-                const responses = [
-                    `Pour ${question}, voici la procédure technique recommandée :\n1. Vérifier les connexions du capteur\n2. Calibrer avec l'outil RSMA Calibration Suite\n3. Exécuter le diagnostic système\n\nConsultez la documentation technique section 4.2 pour plus de détails.`,
-                    `Concernant votre question sur ${question}, le composant utilise le protocole I2C avec une tension de 3.3V. La documentation technique complète est disponible dans le référentiel Git sous /docs/technical_specs/.`,
-                    `Pour résoudre ce problème technique :\n• Vérifier la version du firmware (minimum v2.1.4)\n• Mettre à jour les drivers\n• Exécuter le script de diagnostic: npm run diagnose\n\nSi le problème persiste, consultez le forum technique #support.`,
-                    `Composant identifié. Spécifications :\n• Tension: 5V DC\n• Courant max: 500mA\n• Interface: SPI\n• Température: -40°C à 85°C\n\nRéférence technique: Datasheet RSMA-2024-${Math.floor(Math.random()*100)}`
+                const reponses = [
+                    `Pour ${question}, voici la procédure technique :\n1. Vérifier les connexions\n2. Calibrer le système\n3. Exécuter le diagnostic\n\nConsultez la documentation section 4.2.`,
+                    `Concernant ${question}, le composant utilise le protocole I2C avec 3.3V. Documentation complète dans /docs/technical_specs/.`,
+                    `Pour résoudre ce problème :\n• Vérifier firmware (min v2.1.4)\n• Mettre à jour drivers\n• Exécuter: npm run diagnose`,
+                    `Spécifications identifiées :\n• Tension: 5V DC\n• Courant: 500mA\n• Interface: SPI\n• Température: -40°C à 85°C`
                 ];
                 
-                const response = responses[Math.floor(Math.random() * responses.length)];
+                const reponse = reponses[Math.floor(Math.random() * reponses.length)];
                 
                 document.getElementById('loadingStep').className = 'step-hidden';
                 document.getElementById('chatStep').className = 'step-active';
                 
                 const chat = document.getElementById('iaChatMessages');
+                
                 const questionDiv = document.createElement('div');
                 questionDiv.className = 'message';
                 questionDiv.innerHTML = `<p><strong>Vous:</strong> ${question}</p>`;
                 chat.appendChild(questionDiv);
                 
-                const responseDiv = document.createElement('div');
-                responseDiv.className = 'message ia-message';
-                responseDiv.innerHTML = `<p><strong>IATECH:</strong> ${response}</p>`;
-                chat.appendChild(responseDiv);
+                const reponseDiv = document.createElement('div');
+                reponseDiv.className = 'message ia-message';
+                reponseDiv.innerHTML = `<p><strong>IATECH:</strong> ${reponse}</p>`;
+                chat.appendChild(reponseDiv);
                 
                 document.getElementById('iaQuestion').value = '';
                 chat.scrollTop = chat.scrollHeight;
@@ -2184,18 +2021,11 @@
             }, 2000);
         }
 
-        // ==================== ÉVÉNEMENTS ====================
-
-        document.getElementById('newMessage').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
-
-        // Initialisation au chargement
+        // ==================== INITIALISATION ====================
         window.addEventListener('load', () => {
-            loadMessages();
+            console.log("🚀 Dashboard chargé");
             createParticles();
+            loadMessages();
         });
     </script>
 </body>
