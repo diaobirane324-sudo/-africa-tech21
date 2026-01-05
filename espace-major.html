@@ -909,22 +909,40 @@ function projetRSMA() {
             }
         }
 
-        function afficherFichiers() {
+               function afficherFichiers() {
             const filesList = document.getElementById('filesList');
             filesList.innerHTML = '';
             
             fichiersMajor.forEach(fichier => {
                 const fileItem = document.createElement('div');
                 fileItem.className = `file-item ${fichierActuel?.id === fichier.id ? 'active' : ''}`;
-                fileItem.onclick = () => ouvrirFichier(fichier.id);
                 
                 const date = new Date(fichier.date).toLocaleDateString('fr-FR');
                 
                 fileItem.innerHTML = `
-                    <div class="file-name">${fichier.nom}</div>
-                    <div class="file-date">${date} - ${fichier.taille}</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <div style="flex: 1;">
+                            <div class="file-name">${fichier.nom}</div>
+                            <div class="file-date">${date} - ${fichier.taille}</div>
+                        </div>
+                        <button onclick="event.stopPropagation(); renommerFichier(${fichier.id})" 
+                                style="
+                                    background: rgba(255, 215, 0, 0.1);
+                                    border: 1px solid var(--major-gold);
+                                    color: var(--major-gold);
+                                    padding: 0.4rem 0.8rem;
+                                    border-radius: 5px;
+                                    cursor: pointer;
+                                    font-size: 0.8rem;
+                                    margin-left: 0.5rem;
+                                "
+                                title="Renommer le fichier">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
                 `;
                 
+                fileItem.onclick = () => ouvrirFichier(fichier.id);
                 filesList.appendChild(fileItem);
             });
         }
