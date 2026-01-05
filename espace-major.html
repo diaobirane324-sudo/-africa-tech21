@@ -1025,32 +1025,6 @@ DESCRIPTION: Projet technique confidentiel développé dans l'ESPACE MAJOR
                 document.getElementById('currentFileName').innerHTML = `<i class="fas fa-code"></i> ${fichier.nom}`;
             }
         }
-function initialiserProjet() {
-    console.log("Projet MAJOR initialisé");
-    // Votre code ici
-}
-
-// Documentation technique
-/*
-PROJET: ${nom}
-AUTEUR: MAJOR
-DATE: ${new Date().toLocaleDateString('fr-FR')}
-DESCRIPTION: Projet technique confidentiel
-*/`;
-
-            const nouveauFichier = {
-                id,
-                nom,
-                date,
-                contenu,
-                taille: `${contenu.length} caractères`
-            };
-
-            fichiersMajor.unshift(nouveauFichier);
-            sauvegarderFichiers();
-            afficherFichiers();
-            ouvrirFichier(id);
-        }
 
         function ouvrirFichier(id) {
             const fichier = fichiersMajor.find(f => f.id === id);
