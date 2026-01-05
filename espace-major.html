@@ -929,12 +929,55 @@ function projetRSMA() {
             });
         }
 
-        function creerNouveauFichier() {
+                function creerNouveauFichier() {
+            // ÉTAPE 1 : Demander le nom
+            const nomFichier = prompt("Nom du nouveau projet :", `projet_${fichiersMajor.length + 1}`);
+            
+            // Si l'utilisateur annule
+            if (nomFichier === null) return;
+            
+            // ÉTAPE 2 : Préparer le nom avec extension .js
+            let nom = nomFichier.trim();
+            if (nom === '') {
+                nom = `projet_${fichiersMajor.length + 1}.js`;
+            } else if (!nom.endsWith('.js')) {
+                nom = nom + '.js';
+            }
+            
+            // ÉTAPE 3 : Créer le fichier
             const id = Date.now();
-            const nom = `projet_${fichiersMajor.length + 1}.js`;
             const date = new Date().toISOString();
-            const contenu = `// Nouveau projet MAJOR
-// Créé le ${new Date().toLocaleDateString('fr-FR')}
+            
+            const contenu = `// ${nom}
+// Créé le ${new Date().toLocaleDateString('fr-FR')} par MAJOR
+
+function initialiserProjet() {
+    console.log("Projet ${nom} initialisé");
+    // Votre code ici
+}
+
+// ==================== DOCUMENTATION TECHNIQUE ====================
+/*
+PROJET: ${nom}
+AUTEUR: MAJOR
+DATE: ${new Date().toLocaleDateString('fr-FR')}
+VERSION: 1.0.0
+DESCRIPTION: Projet technique confidentiel développé dans l'ESPACE MAJOR
+*/`;
+
+            const nouveauFichier = {
+                id,
+                nom,
+                date,
+                contenu,
+                taille: `${contenu.length} caractères`
+            };
+
+            fichiersMajor.unshift(nouveauFichier);
+            sauvegarderFichiers();
+            afficherFichiers();
+            ouvrirFichier(id);
+        }
 
 function initialiserProjet() {
     console.log("Projet MAJOR initialisé");
