@@ -455,6 +455,167 @@
             line-height: 1.8;
         }
 
+        /* === INTERFACE DE DÉVELOPPEMENT === */
+        .dev-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* === PANEL FICHIERS === */
+        .files-panel {
+            background: rgba(5, 5, 5, 0.8);
+            border: 2px solid var(--major-blue);
+            border-radius: 15px;
+            padding: 1.5rem;
+            height: 600px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .files-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        .files-title {
+            color: var(--major-blue);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+        }
+
+        .new-file-btn {
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--major-blue);
+            color: var(--major-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .new-file-btn:hover {
+            background: rgba(0, 240, 255, 0.2);
+        }
+
+        .files-list {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .file-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--major-gold);
+        }
+
+        .file-item.active {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: var(--major-gold);
+        }
+
+        .file-name {
+            color: var(--major-gold);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .file-date {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        /* === ÉDITEUR DE CODE === */
+        .editor-panel {
+            background: rgba(5, 5, 5, 0.8);
+            border: 2px solid var(--major-gold);
+            border-radius: 15px;
+            padding: 1.5rem;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .editor-title {
+            color: var(--major-gold);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+        }
+
+        .editor-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .editor-btn {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid var(--major-gold);
+            color: var(--major-gold);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .editor-btn:hover {
+            background: rgba(255, 215, 0, 0.2);
+        }
+
+        .editor-btn.save {
+            background: rgba(0, 255, 136, 0.1);
+            border-color: #00FF88;
+            color: #00FF88;
+        }
+
+        .editor-btn.save:hover {
+            background: rgba(0, 255, 136, 0.2);
+        }
+
+        #codeEditor {
+            flex: 1;
+            background: #000;
+            color: #00FF00;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            resize: none;
+            white-space: pre;
+            overflow: auto;
+        }
+
+        #codeEditor:focus {
+            outline: none;
+            border-color: var(--major-blue);
+        }
+
         /* === RESPONSIVE === */
         @media (max-width: 768px) {
             .command-header {
@@ -485,6 +646,14 @@
 
             .welcome-title {
                 font-size: 2.5rem;
+            }
+
+            .dev-container {
+                grid-template-columns: 1fr;
+            }
+
+            .files-panel, .editor-panel {
+                height: 400px;
             }
         }
     </style>
@@ -555,62 +724,84 @@
                 </p>
             </div>
             
-            <!-- ICI JE VAIS AJOUTER L'ÉDITEUR DE CODE ET LE SYSTÈME DE FICHIERS -->
-            <div style="text-align: center; color: var(--major-gold); font-size: 1.3rem; margin-top: 4rem;">
-                <i class="fas fa-cog fa-spin"></i> Interface de développement en chargement...
+            <!-- INTERFACE DE DÉVELOPPEMENT -->
+            <div class="dev-container">
+                <!-- Panel Fichiers -->
+                <div class="files-panel">
+                    <div class="files-header">
+                        <h3 class="files-title"><i class="fas fa-folder"></i> PROJETS MAJOR</h3>
+                        <button class="new-file-btn" onclick="creerNouveauFichier()">
+                            <i class="fas fa-plus"></i> Nouveau
+                        </button>
+                    </div>
+                    
+                    <div class="files-list" id="filesList">
+                        <!-- Les fichiers seront chargés ici -->
+                    </div>
+                </div>
+                
+                <!-- Éditeur de Code -->
+                <div class="editor-panel">
+                    <div class="editor-header">
+                        <h3 class="editor-title" id="currentFileName">
+                            <i class="fas fa-code"></i> ÉDITEUR
+                        </h3>
+                        <div class="editor-controls">
+                            <button class="editor-btn" onclick="sauvegarderFichier()">
+                                <i class="fas fa-save"></i> Sauvegarder
+                            </button>
+                            <button class="editor-btn save" onclick="exporterFichier()">
+                                <i class="fas fa-download"></i> Exporter
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <textarea id="codeEditor" 
+                              placeholder="// Écrivez votre code ici...
+// Exemple : 
+function projetRSMA() {
+    console.log('Robot Sous-Marin Autonome');
+    // Code du projet...
+}"></textarea>
+                </div>
             </div>
         </section>
     </main>
 
     <script>
-        // === ÉTAPE 1 : CRÉATION DES PARTICULES DE PUISSANCE ===
+        // === ÉTAPE 1 : CRÉATION DES PARTICULES ===
         function createPowerParticles() {
             const particlesContainer = document.getElementById('powerParticles');
             
             for (let i = 0; i < 80; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
-                
-                // Position aléatoire
                 particle.style.left = Math.random() * 100 + 'vw';
-                
-                // Délai d'animation aléatoire
                 particle.style.animationDelay = Math.random() * 20 + 's';
-                
-                // Durée aléatoire
                 particle.style.animationDuration = (10 + Math.random() * 20) + 's';
                 
-                // Couleur aléatoire (or, rouge, bleu)
                 const colors = ['#FFD700', '#FF003C', '#00F0FF'];
                 const randomColor = colors[Math.floor(Math.random() * colors.length)];
                 particle.style.background = randomColor;
                 particle.style.boxShadow = `0 0 15px ${randomColor}`;
                 
-                // Taille aléatoire
                 const size = 2 + Math.random() * 4;
                 particle.style.width = size + 'px';
                 particle.style.height = size + 'px';
                 
                 particlesContainer.appendChild(particle);
             }
-            
-            console.log("✅ Particules de puissance créées");
         }
 
         // === ÉTAPE 2 : VÉRIFICATION DU CODE D'ACCÈS ===
         const ACCESS_CODE = "Birane186@00";
         
         document.getElementById('accessForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Empêche le rechargement de la page
+            e.preventDefault();
             
             const enteredCode = document.getElementById('accessCode').value;
             
-            console.log("🔐 Code entré :", enteredCode);
-            
             if (enteredCode === ACCESS_CODE) {
-                // CODE CORRECT
-                console.log("✅ Accès autorisé - Bienvenue MAJOR");
-                
                 // Animation de succès
                 const accessBtn = document.querySelector('.access-btn');
                 accessBtn.innerHTML = '<i class="fas fa-check"></i> ACCÈS AUTORISÉ';
@@ -619,38 +810,28 @@
                 
                 // Transition vers l'espace de travail
                 setTimeout(() => {
-                    // Masquer l'écran d'accès
                     document.getElementById('accessScreen').style.display = 'none';
-                    
-                    // Afficher l'espace de travail
                     const workspace = document.getElementById('workspace');
                     workspace.classList.add('active');
                     workspace.style.display = 'block';
                     
-                    console.log("🚀 Espace MAJOR déverrouillé");
-                    
-                    // Ici, je vais charger l'éditeur de code (étape suivante)
+                    // Initialiser l'espace de développement
+                    initialiserEspaceDev();
                     
                 }, 1000);
                 
             } else {
-                // CODE INCORRECT
-                console.log("❌ Code incorrect");
-                
                 // Animation d'erreur
                 const accessInput = document.getElementById('accessCode');
                 const accessBtn = document.querySelector('.access-btn');
                 
-                // Effet de secousse
                 accessInput.style.animation = 'shake 0.5s';
                 accessInput.style.borderColor = '#FF003C';
                 accessInput.style.boxShadow = '0 0 30px rgba(255, 0, 60, 0.5)';
                 
-                // Message d'erreur sur le bouton
                 accessBtn.innerHTML = '<i class="fas fa-times"></i> CODE INCORRECT';
                 accessBtn.style.background = 'linear-gradient(135deg, #FF003C, #CC0000)';
                 
-                // Réinitialiser après 2 secondes
                 setTimeout(() => {
                     accessInput.style.animation = '';
                     accessInput.style.borderColor = 'var(--major-gold)';
@@ -663,7 +844,141 @@
             }
         });
 
-        // === ÉTAPE 3 : ANIMATION DE SECOUSE ===
+        // === ÉTAPE 3 : SYSTÈME DE FICHIERS ===
+        let fichiersMajor = [];
+        let fichierActuel = null;
+
+        function initialiserEspaceDev() {
+            // Charger les fichiers sauvegardés
+            chargerFichiers();
+            
+            // Créer un fichier par défaut si vide
+            if (fichiersMajor.length === 0) {
+                creerNouveauFichier();
+            }
+        }
+
+        function chargerFichiers() {
+            const fichiersSauvegardes = localStorage.getItem('major_fichiers');
+            
+            if (fichiersSauvegardes) {
+                fichiersMajor = JSON.parse(fichiersSauvegardes);
+                afficherFichiers();
+                
+                // Charger le premier fichier
+                if (fichiersMajor.length > 0) {
+                    ouvrirFichier(fichiersMajor[0].id);
+                }
+            }
+        }
+
+        function afficherFichiers() {
+            const filesList = document.getElementById('filesList');
+            filesList.innerHTML = '';
+            
+            fichiersMajor.forEach(fichier => {
+                const fileItem = document.createElement('div');
+                fileItem.className = `file-item ${fichierActuel?.id === fichier.id ? 'active' : ''}`;
+                fileItem.onclick = () => ouvrirFichier(fichier.id);
+                
+                const date = new Date(fichier.date).toLocaleDateString('fr-FR');
+                
+                fileItem.innerHTML = `
+                    <div class="file-name">${fichier.nom}</div>
+                    <div class="file-date">${date} - ${fichier.taille}</div>
+                `;
+                
+                filesList.appendChild(fileItem);
+            });
+        }
+
+        function creerNouveauFichier() {
+            const id = Date.now();
+            const nom = `projet_${fichiersMajor.length + 1}.js`;
+            const date = new Date().toISOString();
+            const contenu = `// Nouveau projet MAJOR
+// Créé le ${new Date().toLocaleDateString('fr-FR')}
+
+function initialiserProjet() {
+    console.log("Projet MAJOR initialisé");
+    // Votre code ici
+}
+
+// Documentation technique
+/*
+PROJET: ${nom}
+AUTEUR: MAJOR
+DATE: ${new Date().toLocaleDateString('fr-FR')}
+DESCRIPTION: Projet technique confidentiel
+*/`;
+
+            const nouveauFichier = {
+                id,
+                nom,
+                date,
+                contenu,
+                taille: `${contenu.length} caractères`
+            };
+
+            fichiersMajor.unshift(nouveauFichier);
+            sauvegarderFichiers();
+            afficherFichiers();
+            ouvrirFichier(id);
+        }
+
+        function ouvrirFichier(id) {
+            const fichier = fichiersMajor.find(f => f.id === id);
+            if (!fichier) return;
+            
+            fichierActuel = fichier;
+            document.getElementById('codeEditor').value = fichier.contenu;
+            document.getElementById('currentFileName').innerHTML = `<i class="fas fa-code"></i> ${fichier.nom}`;
+            
+            afficherFichiers();
+        }
+
+        function sauvegarderFichier() {
+            if (!fichierActuel) return;
+            
+            const contenu = document.getElementById('codeEditor').value;
+            fichierActuel.contenu = contenu;
+            fichierActuel.date = new Date().toISOString();
+            fichierActuel.taille = `${contenu.length} caractères`;
+            
+            sauvegarderFichiers();
+            
+            // Animation de confirmation
+            const saveBtn = document.querySelector('.editor-btn');
+            const originalText = saveBtn.innerHTML;
+            saveBtn.innerHTML = '<i class="fas fa-check"></i> Sauvegardé';
+            saveBtn.style.background = 'rgba(0, 255, 136, 0.3)';
+            
+            setTimeout(() => {
+                saveBtn.innerHTML = originalText;
+                saveBtn.style.background = '';
+            }, 1500);
+        }
+
+        function sauvegarderFichiers() {
+            localStorage.setItem('major_fichiers', JSON.stringify(fichiersMajor));
+        }
+
+        function exporterFichier() {
+            if (!fichierActuel) return;
+            
+            const contenu = document.getElementById('codeEditor').value;
+            const blob = new Blob([contenu], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = fichierActuel.nom;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // === ÉTAPE 4 : ANIMATION DE SECOUSE ===
         const style = document.createElement('style');
         style.textContent = `
             @keyframes shake {
@@ -674,11 +989,8 @@
         `;
         document.head.appendChild(style);
 
-        // === ÉTAPE 4 : INITIALISATION ===
+        // === ÉTAPE 5 : INITIALISATION ===
         window.addEventListener('load', () => {
-            console.log("🚀 ESPACE MAJOR initialisé");
-            console.log("🔒 Code d'accès requis : Birane186@00");
-            
             createPowerParticles();
             
             // Focus automatique sur le champ de code
